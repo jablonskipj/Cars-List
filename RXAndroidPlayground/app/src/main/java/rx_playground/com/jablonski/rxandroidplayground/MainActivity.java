@@ -17,9 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
         CarsListFragment fragment = new CarsListFragment();
 
-        MainViewPresenter presenter = new MainViewPresenter(fragment);
-
-        fragment.setPresenter(presenter);
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().add(fragment, null).commit();
     }
