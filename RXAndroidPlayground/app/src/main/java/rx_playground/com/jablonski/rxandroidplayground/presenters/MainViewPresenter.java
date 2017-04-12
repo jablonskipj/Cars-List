@@ -10,7 +10,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.MainViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.contracts.ViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Concern;
 import rx_playground.com.jablonski.rxandroidplayground.model.Result;
 
@@ -18,12 +18,12 @@ import rx_playground.com.jablonski.rxandroidplayground.model.Result;
  * Created by yabol on 06.04.2017.
  */
 
-public class MainViewPresenter implements MainViewContract.Presenter, MainViewContract.Provider<Concern>{
-    MainViewContract.View view;
-    MainViewContract.Repository dataFetcher;
+public class MainViewPresenter implements ViewContract.Presenter, ViewContract.Provider<Concern>{
+    ViewContract.View view;
+    ViewContract.Repository dataFetcher;
     List<Concern> concerns;
 
-    public MainViewPresenter(MainViewContract.View view, MainViewContract.Repository dataFetcher){
+    public MainViewPresenter(ViewContract.View view, ViewContract.Repository dataFetcher){
         this.view = view;
         this.dataFetcher = dataFetcher;
     }
@@ -58,8 +58,8 @@ public class MainViewPresenter implements MainViewContract.Presenter, MainViewCo
     }
 
     public void setConcerns(List<Concern> concerns){
-        if(concerns == null)
-            concerns = new ArrayList<>();
+        if(this.concerns == null)
+            this.concerns = new ArrayList<>();
         this.concerns.addAll(concerns);
     }
 

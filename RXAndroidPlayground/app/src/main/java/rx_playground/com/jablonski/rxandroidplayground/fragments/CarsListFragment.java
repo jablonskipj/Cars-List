@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.MainViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.contracts.ViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.presenters.MainViewPresenter;
 import rx_playground.com.jablonski.rxandroidplayground.repositories.ConcernsRepository;
 
@@ -19,8 +19,8 @@ import rx_playground.com.jablonski.rxandroidplayground.repositories.ConcernsRepo
  * Created by yabol on 06.04.2017.
  */
 
-public class CarsListFragment extends Fragment implements MainViewContract.View{
-    private MainViewContract.Presenter presenter;
+public class CarsListFragment extends Fragment implements ViewContract.View{
+    private ViewContract.Presenter presenter;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
