@@ -10,7 +10,7 @@ import rx_playground.com.jablonski.rxandroidplayground.model.Result;
  * Created by yabol on 06.04.2017.
  */
 
-public class MainViewContract {
+public class ViewContract {
 
     public interface View{
         void showView();
