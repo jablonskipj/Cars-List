@@ -11,4 +11,11 @@ public class Concern {
     String name;
     String niceName;
     List<Car> models;
+
+    public String getName(){
+        return this.name;
+    }
+    public String getNiceName(){
+        return this.niceName;
+    }
 }

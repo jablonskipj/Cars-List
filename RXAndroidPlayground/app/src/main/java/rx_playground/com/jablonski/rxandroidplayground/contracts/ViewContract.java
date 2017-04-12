@@ -13,7 +13,8 @@ import rx_playground.com.jablonski.rxandroidplayground.model.Result;
 public class ViewContract {
 
     public interface View{
-        void showView();
+        void showView(List<Concern> concerns);
+        void loadElements();
     }
 
     public interface Presenter{

@@ -8,19 +8,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.model.Concern;
 import rx_playground.com.jablonski.rxandroidplayground.presenters.MainViewPresenter;
 import rx_playground.com.jablonski.rxandroidplayground.repositories.ConcernsRepository;
+import rx_playground.com.jablonski.rxandroidplayground.views.adapters.ConcernListAdapter;
 
 /**
  * Created by yabol on 06.04.2017.
  */
 
 public class CarsListFragment extends Fragment implements ViewContract.View{
-    private ViewContract.Presenter presenter;
+    private MainViewPresenter presenter;
+    private ConcernListAdapter adapter;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -45,11 +50,22 @@ public class CarsListFragment extends Fragment implements ViewContract.View{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        showView();
+        loadElements();
     }
 
     @Override
-    public void showView() {
+    public void showView(List<Concern> concerns) {
+        if(this.adapter == null){
+            adapter = new ConcernListAdapter(getContext(), this.presenter);
+            recyclerView.setAdapter(adapter);
+        }else{
+            adapter.notifyDataSetChanged();
+        }
+
+    }
+
+    @Override
+    public void loadElements() {
         this.presenter.loadElemetnts("2005");
     }
 

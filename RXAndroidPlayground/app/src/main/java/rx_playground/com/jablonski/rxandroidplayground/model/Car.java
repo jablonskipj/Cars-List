@@ -12,15 +12,6 @@ public class Car implements Parcelable {
     String name;
     String niceName;
 
-    public Car(Parcel in){
-        String [] fields = new String[3];
-        in.readStringArray(fields);
-
-        this.id = fields[0];
-        this.name = fields[1];
-        this.niceName = fields[2];
-    }
-
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator<Car>(){
 
         @Override
@@ -33,6 +24,17 @@ public class Car implements Parcelable {
             return new Car[size];
         }
     };
+
+    public Car(Parcel in){
+        String [] fields = new String[3];
+        in.readStringArray(fields);
+
+        this.id = fields[0];
+        this.name = fields[1];
+        this.niceName = fields[2];
+    }
+
+
     @Override
     public int describeContents() {
         return 0;

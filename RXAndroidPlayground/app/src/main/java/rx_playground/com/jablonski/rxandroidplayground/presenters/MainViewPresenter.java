@@ -67,7 +67,7 @@ public class MainViewPresenter implements ViewContract.Presenter, ViewContract.P
         this.concerns.add(concern);
     }
     public void displayView(){
-        view.showView();
+        view.showView(concerns);
     }
 
     @Override
