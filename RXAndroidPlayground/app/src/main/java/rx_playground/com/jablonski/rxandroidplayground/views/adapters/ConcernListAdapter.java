@@ -8,11 +8,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Concern;
+import rx_playground.com.jablonski.rxandroidplayground.utils.images.CircleImageTransformation;
 
 /**
  * Created by yabol on 12.04.2017.
@@ -20,11 +25,13 @@ import rx_playground.com.jablonski.rxandroidplayground.model.Concern;
 
 public class ConcernListAdapter extends RecyclerView.Adapter<ConcernListAdapter.ViewHolder> {
     private ViewContract.Provider<Concern> provider;
+    private List<Concern> concerns;
     private Context context;
     public ConcernListAdapter(Context context, ViewContract.Provider<Concern> provider){
         this.provider = provider;
         this.context = context;
     }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -39,6 +46,7 @@ public class ConcernListAdapter extends RecyclerView.Adapter<ConcernListAdapter.
             Concern concern = provider.getObject(position);
             if(concern != null){
                 holder.concernName.setText(concern.getNiceName());
+                Picasso.with(context).load(R.drawable.bmw).transform(new CircleImageTransformation()).into(holder.concernLogo);
             }
         }
     }

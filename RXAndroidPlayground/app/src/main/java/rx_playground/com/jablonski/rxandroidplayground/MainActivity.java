@@ -18,6 +18,6 @@ public class MainActivity extends AppCompatActivity {
         CarsListFragment fragment = new CarsListFragment();
 
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().add(fragment, null).commit();
+        manager.beginTransaction().replace(R.id.fragmentContainer, fragment).commit();
     }
 }

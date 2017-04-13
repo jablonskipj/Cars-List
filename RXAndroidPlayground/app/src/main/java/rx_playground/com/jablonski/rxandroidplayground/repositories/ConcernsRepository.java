@@ -1,8 +1,14 @@
 package rx_playground.com.jablonski.rxandroidplayground.repositories;
 
+import android.util.Log;
+
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Concern;
 import rx_playground.com.jablonski.rxandroidplayground.model.Result;
@@ -14,13 +20,39 @@ import rx_playground.com.jablonski.rxandroidplayground.network.NetworkConnector;
 
 public class ConcernsRepository implements ViewContract.Repository {
     private NetworkConnector connector;
+    private ViewContract.Presenter presenter;
+    private List<Concern> concerns;
 
-    public ConcernsRepository(){
+    public ConcernsRepository(ViewContract.Presenter presenter){
         this.connector = new NetworkConnector();
+        this.presenter = presenter;
     }
     @Override
-    public Observable<Result> getConcerns(String year) {
+    public void getConcerns(String year) {
 
-        return this.connector.getCarsByProductionYear(year);
+        this.connector.getCarsByProductionYear(year).
+                subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Result>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                Log.e("Subscribe", "hello");
+            }
+
+            @Override
+            public void onNext(Result concern) {
+                concerns = concern.makes;
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.e("Excepion", e.getMessage());
+            }
+
+            @Override
+            public void onComplete(){
+                presenter.displayElements(concerns);
+            }
+        });
+        //return this.connector.getCarsByProductionYear(year);
     }
 }

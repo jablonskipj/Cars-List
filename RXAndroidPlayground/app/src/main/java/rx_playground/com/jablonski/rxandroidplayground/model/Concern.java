@@ -12,6 +12,13 @@ public class Concern {
     String niceName;
     List<Car> models;
 
+    public Concern(String niceName){
+        this.niceName = niceName;
+    }
+    public Concern(){
+
+    }
+
     public String getName(){
         return this.name;
     }

@@ -18,56 +18,29 @@ import rx_playground.com.jablonski.rxandroidplayground.model.Result;
  * Created by yabol on 06.04.2017.
  */
 
-public class MainViewPresenter implements ViewContract.Presenter, ViewContract.Provider<Concern>{
+public class MainViewPresenter implements ViewContract.Presenter<Concern>, ViewContract.Provider<Concern>{
     ViewContract.View view;
-    ViewContract.Repository dataFetcher;
+    private ViewContract.Repository repository;
     List<Concern> concerns;
 
-    public MainViewPresenter(ViewContract.View view, ViewContract.Repository dataFetcher){
+    public MainViewPresenter(ViewContract.View view){
         this.view = view;
-        this.dataFetcher = dataFetcher;
+    }
+    public void setRepository(ViewContract.Repository repository){
+        this.repository = repository;
     }
     @Override
     public void loadElemetnts(String year) {
-        dataFetcher.getConcerns(year).
-        subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Result>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-                Log.e("Subscribe", "hello");
-            }
-
-            @Override
-            public void onNext(Result concern) {
-                setConcerns(concern.makes);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Log.e("Excepion", e.getMessage());
-            }
-
-            @Override
-            public void onComplete() {
-                displayView();
-            }
-        });
-
-        //todo find out how to fetch each list elemetn and finally build it please!
+        if(this.repository != null) {
+            this.repository.getConcerns(year);
+        }
 
     }
 
-    public void setConcerns(List<Concern> concerns){
-        if(this.concerns == null)
-            this.concerns = new ArrayList<>();
-        this.concerns.addAll(concerns);
-    }
-
-    public void addConcern(Concern concern){
-        this.concerns.add(concern);
-    }
-    public void displayView(){
-        view.showView(concerns);
+    @Override
+    public void displayElements(List<Concern> elements) {
+        this.concerns = elements;
+        this.view.showView(elements);
     }
 
     @Override

@@ -17,11 +17,12 @@ public class ViewContract {
         void loadElements();
     }
 
-    public interface Presenter{
+    public interface Presenter<T>{
         void loadElemetnts(String year);
+        void displayElements(List<T> elements);
     }
     public interface Repository{
-        Observable<Result> getConcerns(String year);
+        void getConcerns(String year);
     }
     public interface Provider<T>{
         int getCount();
