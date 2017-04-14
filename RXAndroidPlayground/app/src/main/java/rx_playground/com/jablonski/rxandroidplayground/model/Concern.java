@@ -1,5 +1,6 @@
 package rx_playground.com.jablonski.rxandroidplayground.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ public class Concern {
     int id;
     String name;
     String niceName;
-    List<Car> models;
+    ArrayList<Car> models;
 
     public Concern(String niceName){
         this.niceName = niceName;
@@ -24,5 +25,8 @@ public class Concern {
     }
     public String getNiceName(){
         return this.niceName;
+    }
+    public ArrayList<Car>getModels(){
+        return this.models;
     }
 }

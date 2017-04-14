@@ -1,8 +1,10 @@
 package rx_playground.com.jablonski.rxandroidplayground.contracts;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
+import rx_playground.com.jablonski.rxandroidplayground.model.Car;
 import rx_playground.com.jablonski.rxandroidplayground.model.Concern;
 import rx_playground.com.jablonski.rxandroidplayground.model.Result;
 
@@ -15,6 +17,7 @@ public class ViewContract {
     public interface View{
         void showView(List<Concern> concerns);
         void loadElements();
+        void showListFragment(ArrayList<Car> elements);
     }
 
     public interface Presenter<T>{
@@ -28,5 +31,8 @@ public class ViewContract {
         int getCount();
         int getId(int position);
         T getObject(int position);
+    }
+    public interface ListItemClickListener<T>{
+        void performClick(T item);
     }
 }

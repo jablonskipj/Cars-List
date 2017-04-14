@@ -1,29 +1,20 @@
 package rx_playground.com.jablonski.rxandroidplayground.presenters;
 
-import android.util.Log;
-
-import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Concern;
-import rx_playground.com.jablonski.rxandroidplayground.model.Result;
 
 /**
  * Created by yabol on 06.04.2017.
  */
 
-public class MainViewPresenter implements ViewContract.Presenter<Concern>, ViewContract.Provider<Concern>{
+public class ConcernsListPresenter implements ViewContract.Presenter<Concern>, ViewContract.Provider<Concern>, ViewContract.ListItemClickListener<Concern>{
     ViewContract.View view;
     private ViewContract.Repository repository;
     List<Concern> concerns;
 
-    public MainViewPresenter(ViewContract.View view){
+    public ConcernsListPresenter(ViewContract.View view){
         this.view = view;
     }
     public void setRepository(ViewContract.Repository repository){
@@ -34,7 +25,6 @@ public class MainViewPresenter implements ViewContract.Presenter<Concern>, ViewC
         if(this.repository != null) {
             this.repository.getConcerns(year);
         }
-
     }
 
     @Override
@@ -61,5 +51,10 @@ public class MainViewPresenter implements ViewContract.Presenter<Concern>, ViewC
         if(this.concerns != null)
             return this.concerns.get(position);
         return null;
+    }
+
+    @Override
+    public void performClick(Concern item) {
+        view.showListFragment(item.getModels());
     }
 }
