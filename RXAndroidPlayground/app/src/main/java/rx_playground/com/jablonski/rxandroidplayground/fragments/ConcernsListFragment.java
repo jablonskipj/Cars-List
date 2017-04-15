@@ -1,12 +1,13 @@
 package rx_playground.com.jablonski.rxandroidplayground.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -62,7 +63,17 @@ public class ConcernsListFragment extends Fragment implements ViewContract.View{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        loadElements();
+        if(savedInstanceState != null && savedInstanceState.getParcelableArrayList("Concerns") != null){
+            presenter.displayElements(savedInstanceState.<Concern>getParcelableArrayList("Concerns"));
+        }else {
+            loadElements();
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("Concerns", (ArrayList<? extends Parcelable>) presenter.getElements());
     }
 
     @Override
@@ -70,6 +81,8 @@ public class ConcernsListFragment extends Fragment implements ViewContract.View{
         if(this.adapter == null){
             this.adapter = new ConcernListAdapter(getContext(), this.presenter);
             this.adapter.setOnClickListener(this.presenter);
+        }
+        if(this.recyclerView.getAdapter() == null){
             this.recyclerView.setAdapter(this.adapter);
         }
         this.adapter.notifyDataSetChanged();
@@ -83,10 +96,10 @@ public class ConcernsListFragment extends Fragment implements ViewContract.View{
     }
 
     @Override
-    public void showListFragment(ArrayList<Car> elements) {
+    public void showListFragment(List<Car> elements) {
         CarsListFragment fragment = new CarsListFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList("Cars", elements);
+        bundle.putParcelableArrayList("Cars", (ArrayList<? extends Parcelable>) elements);
         fragment.setArguments(bundle);
         activity.startFragment(fragment);
     }

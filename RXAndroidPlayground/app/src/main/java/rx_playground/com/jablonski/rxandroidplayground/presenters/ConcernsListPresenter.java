@@ -1,5 +1,6 @@
 package rx_playground.com.jablonski.rxandroidplayground.presenters;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ViewContract;
@@ -10,9 +11,9 @@ import rx_playground.com.jablonski.rxandroidplayground.model.Concern;
  */
 
 public class ConcernsListPresenter implements ViewContract.Presenter<Concern>, ViewContract.Provider<Concern>, ViewContract.ListItemClickListener<Concern>{
-    ViewContract.View view;
+    private ViewContract.View view;
     private ViewContract.Repository repository;
-    List<Concern> concerns;
+    private List<Concern> concerns;
 
     public ConcernsListPresenter(ViewContract.View view){
         this.view = view;
@@ -31,6 +32,11 @@ public class ConcernsListPresenter implements ViewContract.Presenter<Concern>, V
     public void displayElements(List<Concern> elements) {
         this.concerns = elements;
         this.view.showView(elements);
+    }
+
+    @Override
+    public List<Concern> getElements() {
+        return concerns;
     }
 
     @Override

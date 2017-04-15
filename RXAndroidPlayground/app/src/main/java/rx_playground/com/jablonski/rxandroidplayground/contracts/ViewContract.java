@@ -17,12 +17,13 @@ public class ViewContract {
     public interface View{
         void showView(List<Concern> concerns);
         void loadElements();
-        void showListFragment(ArrayList<Car> elements);
+        void showListFragment(List<Car> elements);
     }
 
     public interface Presenter<T>{
         void loadElemetnts(String year);
         void displayElements(List<T> elements);
+        List<T> getElements();
     }
     public interface Repository{
         void getConcerns(String year);
