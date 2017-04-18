@@ -1,24 +1,24 @@
 package rx_playground.com.jablonski.rxandroidplayground.presenters;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import rx_playground.com.jablonski.rxandroidplayground.contracts.ViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
+import rx_playground.com.jablonski.rxandroidplayground.contracts.ConcernsViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Concern;
 
 /**
  * Created by yabol on 06.04.2017.
  */
 
-public class ConcernsListPresenter implements ViewContract.Presenter<Concern>, ViewContract.Provider<Concern>, ViewContract.ListItemClickListener<Concern>{
-    private ViewContract.View view;
-    private ViewContract.Repository repository;
+public class ConcernsListPresenter implements ConcernsViewContract.Presenter<Concern>, BaseViewCotract.BaseProvider<Concern>, BaseViewCotract.BaseOnItemCLickListener<Concern>{
+    private ConcernsViewContract.View view;
+    private ConcernsViewContract.Repository repository;
     private List<Concern> concerns;
 
-    public ConcernsListPresenter(ViewContract.View view){
+    public ConcernsListPresenter(ConcernsViewContract.View view){
         this.view = view;
     }
-    public void setRepository(ViewContract.Repository repository){
+    public void setRepository(ConcernsViewContract.Repository repository){
         this.repository = repository;
     }
     @Override
@@ -47,12 +47,7 @@ public class ConcernsListPresenter implements ViewContract.Presenter<Concern>, V
             return 0;
     }
 
-    @Override
-    public int getId(int position) {
-        return position;
-    }
 
-    @Override
     public Concern getObject(int position) {
         if(this.concerns != null)
             return this.concerns.get(position);

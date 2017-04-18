@@ -11,30 +11,30 @@ import android.widget.TextView;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.ViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
+import rx_playground.com.jablonski.rxandroidplayground.contracts.ConcernsViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Concern;
-import rx_playground.com.jablonski.rxandroidplayground.utils.images.CircleImageTransformation;
+import rx_playground.com.jablonski.rxandroidplayground.utils.images.ResourcesUtils;
 
 /**
  * Created by yabol on 12.04.2017.
  */
 
 public class ConcernListAdapter extends RecyclerView.Adapter<ConcernListAdapter.ViewHolder> {
-    private ViewContract.Provider<Concern> provider;
-    private ViewContract.ListItemClickListener<Concern> onClickListener;
-    private List<Concern> concerns;
+    private BaseViewCotract.BaseProvider<Concern> provider;
+    private BaseViewCotract.BaseOnItemCLickListener<Concern> onClickListener;
     private Context context;
-    public ConcernListAdapter(Context context, ViewContract.Provider<Concern> provider){
+    public ConcernListAdapter(Context context, BaseViewCotract.BaseProvider<Concern> provider){
         this.provider = provider;
         this.context = context;
     }
 
-    public void setOnClickListener(ViewContract.ListItemClickListener<Concern> onClickListener) {
+    public void setOnClickListener(BaseViewCotract.BaseOnItemCLickListener<Concern> onClickListener) {
         this.onClickListener = onClickListener;
     }
 
@@ -52,10 +52,9 @@ public class ConcernListAdapter extends RecyclerView.Adapter<ConcernListAdapter.
             if(concern != null){
                 holder.concernName.setText(concern.getNiceName());
                 Picasso.with(context).
-                        load(R.drawable.bmw).
-                        transform(new CircleImageTransformation()).
+                        load(ResourcesUtils.getDrawableIDByName(context, concern.getNiceName())).
                         memoryPolicy(MemoryPolicy.NO_STORE).
-                        fit().
+                        fit().centerInside().
                         into(holder.concernLogo);
                 if(this.onClickListener != null){
                     holder.rowView.setOnClickListener(new View.OnClickListener() {

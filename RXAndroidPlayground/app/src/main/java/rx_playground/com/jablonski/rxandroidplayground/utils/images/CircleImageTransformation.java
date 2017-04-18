@@ -20,8 +20,10 @@ public class CircleImageTransformation implements Transformation {
         int y = (source.getHeight() - size);
 
         Bitmap squaredBitmap = Bitmap.createBitmap(source, x, y, size, size);
-        if (squaredBitmap != source) {
-            source.recycle();
+        if (squaredBitmap != source){
+            if(!source.isRecycled()){
+                source.recycle();
+            }
         }
 
         Bitmap bitmap = Bitmap.createBitmap(size, size, source.getConfig());
@@ -36,7 +38,9 @@ public class CircleImageTransformation implements Transformation {
         float r = size / 2f;
         canvas.drawCircle(r, r, r, paint);
 
-        squaredBitmap.recycle();
+        if(!squaredBitmap.isRecycled()) {
+            squaredBitmap.recycle();
+        }
         return bitmap;
     }
 

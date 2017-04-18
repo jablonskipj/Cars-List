@@ -4,6 +4,7 @@ import android.content.res.Configuration;
 import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -12,7 +13,7 @@ import rx_playground.com.jablonski.rxandroidplayground.fragments.ConcernsListFra
 public class MainActivity extends AppCompatActivity {
 
     FragmentManager manager;
-    boolean rotation = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,12 +23,20 @@ public class MainActivity extends AppCompatActivity {
             ConcernsListFragment fragment = new ConcernsListFragment();
 
             manager = getSupportFragmentManager();
-            startFragment(fragment);
+            startFragment(fragment, true);
         }
+
     }
 
-    public void startFragment(Fragment fragment) {
-        manager.beginTransaction().replace(R.id.fragmentContainer, fragment).commit();
+
+    public void startFragment(Fragment fragment, boolean replace) {
+        FragmentTransaction transaction = manager.beginTransaction();
+        if(replace){
+            transaction.replace(R.id.fragmentContainer, fragment);
+        }else{
+            transaction.add(R.id.fragmentContainer, fragment);
+        }
+        transaction.commit();
 
     }
 

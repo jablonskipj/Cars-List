@@ -1,6 +1,5 @@
 package rx_playground.com.jablonski.rxandroidplayground.fragments;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
@@ -18,7 +17,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.MainActivity;
 import rx_playground.com.jablonski.rxandroidplayground.R;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.ViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
+import rx_playground.com.jablonski.rxandroidplayground.contracts.ConcernsViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Car;
 import rx_playground.com.jablonski.rxandroidplayground.model.Concern;
 import rx_playground.com.jablonski.rxandroidplayground.presenters.ConcernsListPresenter;
@@ -29,7 +29,7 @@ import rx_playground.com.jablonski.rxandroidplayground.views.adapters.ConcernLis
  * Created by yabol on 06.04.2017.
  */
 
-public class ConcernsListFragment extends Fragment implements ViewContract.View{
+public class ConcernsListFragment extends Fragment implements ConcernsViewContract.View<Concern>{
     private ConcernsListPresenter presenter;
     private ConcernListAdapter adapter;
 
@@ -90,6 +90,7 @@ public class ConcernsListFragment extends Fragment implements ViewContract.View{
     }
 
 
+
     @Override
     public void loadElements() {
         this.presenter.loadElemetnts("2005");
@@ -101,7 +102,7 @@ public class ConcernsListFragment extends Fragment implements ViewContract.View{
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList("Cars", (ArrayList<? extends Parcelable>) elements);
         fragment.setArguments(bundle);
-        activity.startFragment(fragment);
+        activity.startFragment(fragment, false);
     }
 
 }

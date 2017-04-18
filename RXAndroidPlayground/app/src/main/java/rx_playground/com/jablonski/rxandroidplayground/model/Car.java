@@ -12,6 +12,10 @@ public class Car implements Parcelable {
     String name;
     String niceName;
 
+    public String getNiceName(){
+        return this.niceName;
+    }
+
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator<Car>(){
 
         @Override
