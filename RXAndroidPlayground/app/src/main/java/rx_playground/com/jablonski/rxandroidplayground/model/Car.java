@@ -29,6 +29,10 @@ public class Car implements Parcelable {
         }
     };
 
+    public Car(String niceName){
+        this.niceName = niceName;
+    }
+
     public Car(Parcel in){
         String [] fields = new String[3];
         in.readStringArray(fields);

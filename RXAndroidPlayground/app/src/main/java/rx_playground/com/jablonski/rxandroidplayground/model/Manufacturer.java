@@ -22,6 +22,12 @@ public class Manufacturer implements Parcelable {
 
     }
 
+    public void addModel(Car car){
+        if(models == null) models = new ArrayList<>();
+
+        models.add(car);
+    }
+
     public String getName(){
         return this.name;
     }

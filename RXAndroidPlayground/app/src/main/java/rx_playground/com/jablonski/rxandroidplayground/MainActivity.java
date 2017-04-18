@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
     public void startFragment(Fragment fragment, boolean replace) {
         FragmentTransaction transaction = manager.beginTransaction();
         if(replace){
-            transaction.replace(R.id.fragmentContainer, fragment);
+            transaction.replace(R.id.fragmentContainer, fragment).addToBackStack(null);
         }else{
-            transaction.add(R.id.fragmentContainer, fragment);
+            transaction.add(R.id.fragmentContainer, fragment).addToBackStack(null);
         }
         transaction.commit();
 
@@ -48,6 +48,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        int fragmentsCount = getFragmentManager().getBackStackEntryCount();
+
+        if (fragmentsCount == 0) {
+            super.onBackPressed();
+        } else {
+            getFragmentManager().popBackStack();
+        }
 
     }
 }

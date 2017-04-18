@@ -22,6 +22,7 @@ import rx_playground.com.jablonski.rxandroidplayground.model.Car;
 import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
 import rx_playground.com.jablonski.rxandroidplayground.presenters.ConcernsListPresenter;
 import rx_playground.com.jablonski.rxandroidplayground.repositories.ConcernsRepository;
+import rx_playground.com.jablonski.rxandroidplayground.repositories.ConcernsRepositoryMock;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.ConcernListAdapter;
 
 /**
@@ -99,7 +100,7 @@ public class ConcernsListFragment extends Fragment implements ConcernsViewContra
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList("Cars", (ArrayList<? extends Parcelable>) elements);
         fragment.setArguments(bundle);
-        activity.startFragment(fragment, false);
+        activity.startFragment(fragment, true);
     }
 
 }
