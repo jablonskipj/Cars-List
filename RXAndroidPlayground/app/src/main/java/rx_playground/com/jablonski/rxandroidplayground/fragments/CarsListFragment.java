@@ -98,6 +98,6 @@ public class CarsListFragment extends Fragment implements CarsViewContract.View<
         if(this.recyclerView.getAdapter() == null){
             this.recyclerView.setAdapter(this.adapter);
         }
-        this.adapter.notifyDataSetChanged();
+        this.adapter.notifyItemRangeInserted(0, this.presenter.getCount() - 1);
     }
 }

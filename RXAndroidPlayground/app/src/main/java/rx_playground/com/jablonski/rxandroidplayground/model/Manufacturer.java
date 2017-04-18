@@ -4,22 +4,21 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by yabol on 08.04.2017.
  */
 
-public class Concern implements Parcelable {
+public class Manufacturer implements Parcelable {
     int id;
     String name;
     String niceName;
     ArrayList<Car> models;
 
-    public Concern(String niceName){
+    public Manufacturer(String niceName){
         this.niceName = niceName;
     }
-    public Concern(){
+    public Manufacturer(){
 
     }
 
@@ -33,20 +32,20 @@ public class Concern implements Parcelable {
         return this.models;
     }
 
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator<Concern>(){
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator<Manufacturer>(){
 
         @Override
-        public Concern createFromParcel(Parcel source) {
-            return new Concern(source);
+        public Manufacturer createFromParcel(Parcel source) {
+            return new Manufacturer(source);
         }
 
         @Override
-        public Concern[] newArray(int size) {
-            return new Concern[size];
+        public Manufacturer[] newArray(int size) {
+            return new Manufacturer[size];
         }
     };
 
-    public Concern(Parcel in){
+    public Manufacturer(Parcel in){
         String [] fields = new String[3];
         in.readStringArray(fields);
 

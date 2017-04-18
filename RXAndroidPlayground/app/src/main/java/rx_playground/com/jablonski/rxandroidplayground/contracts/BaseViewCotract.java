@@ -2,8 +2,6 @@ package rx_playground.com.jablonski.rxandroidplayground.contracts;
 
 import java.util.List;
 
-import rx_playground.com.jablonski.rxandroidplayground.model.Concern;
-
 /**
  * Created by yabol on 18.04.2017.
  */

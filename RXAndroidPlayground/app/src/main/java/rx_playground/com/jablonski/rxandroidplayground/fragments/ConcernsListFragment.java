@@ -17,10 +17,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.MainActivity;
 import rx_playground.com.jablonski.rxandroidplayground.R;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ConcernsViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Car;
-import rx_playground.com.jablonski.rxandroidplayground.model.Concern;
+import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
 import rx_playground.com.jablonski.rxandroidplayground.presenters.ConcernsListPresenter;
 import rx_playground.com.jablonski.rxandroidplayground.repositories.ConcernsRepository;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.ConcernListAdapter;
@@ -29,7 +28,7 @@ import rx_playground.com.jablonski.rxandroidplayground.views.adapters.ConcernLis
  * Created by yabol on 06.04.2017.
  */
 
-public class ConcernsListFragment extends Fragment implements ConcernsViewContract.View<Concern>{
+public class ConcernsListFragment extends Fragment implements ConcernsViewContract.View<Manufacturer>{
     private ConcernsListPresenter presenter;
     private ConcernListAdapter adapter;
 
@@ -64,7 +63,7 @@ public class ConcernsListFragment extends Fragment implements ConcernsViewContra
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if(savedInstanceState != null && savedInstanceState.getParcelableArrayList("Concerns") != null){
-            presenter.displayElements(savedInstanceState.<Concern>getParcelableArrayList("Concerns"));
+            presenter.displayElements(savedInstanceState.<Manufacturer>getParcelableArrayList("Concerns"));
         }else {
             loadElements();
         }
@@ -77,7 +76,7 @@ public class ConcernsListFragment extends Fragment implements ConcernsViewContra
     }
 
     @Override
-    public void showView(List<Concern> concerns) {
+    public void showView(List<Manufacturer> manufacturers) {
         if(this.adapter == null){
             this.adapter = new ConcernListAdapter(getContext(), this.presenter);
             this.adapter.setOnClickListener(this.presenter);
@@ -88,8 +87,6 @@ public class ConcernsListFragment extends Fragment implements ConcernsViewContra
         this.adapter.notifyDataSetChanged();
 
     }
-
-
 
     @Override
     public void loadElements() {

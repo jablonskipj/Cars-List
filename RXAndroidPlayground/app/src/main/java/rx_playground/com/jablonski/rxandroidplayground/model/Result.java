@@ -7,13 +7,13 @@ import java.util.List;
  */
 
 public class Result {
-    public List<Concern> makes;
+    public List<Manufacturer> makes;
 
-//    public List<Concern> getConcerns() {
+//    public List<Manufacturer> getManufacturers() {
 //        return concerns;
 //    }
 //
-//    public void setConcerns(List<Concern> concerns) {
+//    public void setConcerns(List<Manufacturer> concerns) {
 //        this.concerns = concerns;
 //    }
 }

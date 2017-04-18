@@ -9,7 +9,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ConcernsViewContract;
-import rx_playground.com.jablonski.rxandroidplayground.model.Concern;
+import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
 import rx_playground.com.jablonski.rxandroidplayground.model.Result;
 import rx_playground.com.jablonski.rxandroidplayground.network.NetworkConnector;
 
@@ -20,14 +20,14 @@ import rx_playground.com.jablonski.rxandroidplayground.network.NetworkConnector;
 public class ConcernsRepository implements ConcernsViewContract.Repository {
     private NetworkConnector connector;
     private ConcernsViewContract.Presenter presenter;
-    private List<Concern> concerns;
+    private List<Manufacturer> manufacturers;
 
     public ConcernsRepository(ConcernsViewContract.Presenter presenter){
         this.connector = new NetworkConnector();
         this.presenter = presenter;
     }
     @Override
-    public void getConcerns(String year) {
+    public void getManufacturers(String year) {
 
         this.connector.getCarsByProductionYear(year).
                 subscribeOn(Schedulers.newThread())
@@ -39,7 +39,7 @@ public class ConcernsRepository implements ConcernsViewContract.Repository {
 
             @Override
             public void onNext(Result concern) {
-                concerns = concern.makes;
+                manufacturers = concern.makes;
             }
 
             @Override
@@ -49,7 +49,7 @@ public class ConcernsRepository implements ConcernsViewContract.Repository {
 
             @Override
             public void onComplete(){
-                presenter.displayElements(concerns);
+                presenter.displayElements(manufacturers);
             }
         });
         //return this.connector.getCarsByProductionYear(year);

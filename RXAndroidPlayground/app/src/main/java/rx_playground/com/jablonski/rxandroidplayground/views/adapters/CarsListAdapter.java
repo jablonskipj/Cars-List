@@ -40,9 +40,11 @@ public class CarsListAdapter extends RecyclerView.Adapter<CarsListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Car car = provider.getObject(position);
-        if(car != null) {
-            holder.carName.setText(car.getNiceName());
+        if(holder != null) {
+            Car car = provider.getObject(position);
+            if (car != null) {
+                holder.carName.setText(car.getNiceName());
+            }
         }
     }
 

@@ -17,8 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.ConcernsViewContract;
-import rx_playground.com.jablonski.rxandroidplayground.model.Concern;
+import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
 import rx_playground.com.jablonski.rxandroidplayground.utils.images.ResourcesUtils;
 
 /**
@@ -26,15 +25,15 @@ import rx_playground.com.jablonski.rxandroidplayground.utils.images.ResourcesUti
  */
 
 public class ConcernListAdapter extends RecyclerView.Adapter<ConcernListAdapter.ViewHolder> {
-    private BaseViewCotract.BaseProvider<Concern> provider;
-    private BaseViewCotract.BaseOnItemCLickListener<Concern> onClickListener;
+    private BaseViewCotract.BaseProvider<Manufacturer> provider;
+    private BaseViewCotract.BaseOnItemCLickListener<Manufacturer> onClickListener;
     private Context context;
-    public ConcernListAdapter(Context context, BaseViewCotract.BaseProvider<Concern> provider){
+    public ConcernListAdapter(Context context, BaseViewCotract.BaseProvider<Manufacturer> provider){
         this.provider = provider;
         this.context = context;
     }
 
-    public void setOnClickListener(BaseViewCotract.BaseOnItemCLickListener<Concern> onClickListener) {
+    public void setOnClickListener(BaseViewCotract.BaseOnItemCLickListener<Manufacturer> onClickListener) {
         this.onClickListener = onClickListener;
     }
 
@@ -48,11 +47,11 @@ public class ConcernListAdapter extends RecyclerView.Adapter<ConcernListAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if(holder != null){
-            final Concern concern = provider.getObject(position);
-            if(concern != null){
-                holder.concernName.setText(concern.getNiceName());
+            final Manufacturer manufacturer = provider.getObject(position);
+            if(manufacturer != null){
+                holder.concernName.setText(manufacturer.getNiceName());
                 Picasso.with(context).
-                        load(ResourcesUtils.getDrawableIDByName(context, concern.getNiceName())).
+                        load(ResourcesUtils.getDrawableIDByName(context, manufacturer.getNiceName())).
                         memoryPolicy(MemoryPolicy.NO_STORE).
                         fit().centerInside().
                         into(holder.concernLogo);
@@ -60,7 +59,7 @@ public class ConcernListAdapter extends RecyclerView.Adapter<ConcernListAdapter.
                     holder.rowView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            onClickListener.performClick(concern);
+                            onClickListener.performClick(manufacturer);
                         }
                     });
                 }

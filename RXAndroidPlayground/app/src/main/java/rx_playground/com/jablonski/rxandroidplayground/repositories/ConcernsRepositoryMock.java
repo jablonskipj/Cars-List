@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ConcernsViewContract;
-import rx_playground.com.jablonski.rxandroidplayground.model.Concern;
+import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
 
 /**
  * Created by yabol on 13.04.2017.
@@ -17,10 +17,10 @@ public class ConcernsRepositoryMock implements ConcernsViewContract.Repository {
         this.presenter = presenter;
     }
     @Override
-    public void getConcerns(String year) {
-        List<Concern> concerns = new ArrayList<>();
-        concerns.add(new Concern("BMW"));
-        concerns.add(new Concern("Audi"));
-        presenter.displayElements(concerns);
+    public void getManufacturers(String year) {
+        List<Manufacturer> manufacturers = new ArrayList<>();
+        manufacturers.add(new Manufacturer("BMW"));
+        manufacturers.add(new Manufacturer("Audi"));
+        presenter.displayElements(manufacturers);
     }
 }
