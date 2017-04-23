@@ -10,11 +10,11 @@ import rx_playground.com.jablonski.rxandroidplayground.model.Model;
  * Created by yabol on 18.04.2017.
  */
 
-public class CarsListPresenter implements BaseViewCotract.BasePresenter<Model>, BaseViewCotract.BaseProvider<Model>, BaseViewCotract.BaseOnItemCLickListener<Model> {
-    private ModelsViewContract.View<Model> view;
+public class ModelsListPresenter implements BaseViewCotract.BasePresenter<Model>, BaseViewCotract.BaseProvider<Model>, BaseViewCotract.BaseOnItemCLickListener<Model> {
+    private ModelsViewContract.View view;
     private List<Model> models;
 
-    public CarsListPresenter(ModelsViewContract.View<Model> view){
+    public ModelsListPresenter(ModelsViewContract.View view){
         this.view = view;
     }
     @Override
@@ -42,6 +42,6 @@ public class CarsListPresenter implements BaseViewCotract.BasePresenter<Model>, 
 
     @Override
     public void performClick(Model object) {
-        view.openDetails(object);
+        view.openSubmodelsList(object.getNiceName());
     }
 }

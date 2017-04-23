@@ -16,7 +16,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import rx_playground.com.jablonski.rxandroidplayground.MainActivity;
+import rx_playground.com.jablonski.rxandroidplayground.activities.MainActivity;
 import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ManufacturersViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;

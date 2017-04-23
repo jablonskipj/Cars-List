@@ -1,4 +1,4 @@
-package rx_playground.com.jablonski.rxandroidplayground;
+package rx_playground.com.jablonski.rxandroidplayground.activities;
 
 import android.content.res.Configuration;
 import android.os.PersistableBundle;
@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.fragments.ManufacturersListFragment;
 
 public class MainActivity extends AppCompatActivity {

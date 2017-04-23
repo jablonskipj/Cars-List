@@ -80,4 +80,20 @@ public class Model implements Parcelable {
     public void setName(String name) {
         this.name = name;
     }
+
+    public List<Model> getSubmodels() {
+        return submodels;
+    }
+
+    public void setSubmodels(List<Model> submodels) {
+        this.submodels = submodels;
+    }
+
+    public String getSubmodelName() {
+        return submodelName;
+    }
+
+    public void setSubmodelName(String submodelName) {
+        this.submodelName = submodelName;
+    }
 }

@@ -4,6 +4,7 @@ import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import rx_playground.com.jablonski.rxandroidplayground.model.ModelsResult;
 import rx_playground.com.jablonski.rxandroidplayground.model.Result;
 
 /**
@@ -15,4 +16,7 @@ public interface CarsAPI {
 
    @GET("api/vehicle/v2/makes?state=used&view=basic&fmt=json&api_key=" + VEHICLES_API_KEY)
     Observable<Result> getManufacturersByYear(@Query("year") String year);
+
+    @GET("api/vehicle/v2/bmw/models?state=used&view=basic&fmt=json&api_key=" + VEHICLES_API_KEY)
+    Observable<ModelsResult> getSubmodels(@Query("submodel") String modelNiceName, @Query("year") String year);
 }

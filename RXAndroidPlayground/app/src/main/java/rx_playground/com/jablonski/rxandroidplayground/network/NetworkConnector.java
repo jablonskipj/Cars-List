@@ -9,6 +9,7 @@ import retrofit2.Retrofit;
 
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx_playground.com.jablonski.rxandroidplayground.model.ModelsResult;
 import rx_playground.com.jablonski.rxandroidplayground.model.Result;
 
 /**
@@ -30,35 +31,11 @@ public class NetworkConnector {
     }
 
     public Observable<Result> getManufacturersByName(String year){
-        Retrofit retrofit = new Retrofit.Builder().
-                baseUrl(BASE_URL).
-                addCallAdapterFactory(RxJava2CallAdapterFactory.create()).
-                addConverterFactory(GsonConverterFactory.create()).
-
-                build();
-        final CarsAPI api = retrofit.create(CarsAPI.class);
         return api.getManufacturersByYear(year);
     }
-    //private static final String BASE_URL = "https://vpic.nhtsa.dot.gov/";
-    /*public Observable<ManufacturersResult> getAllManufacturers(){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        final CarsAPI api = retrofit.create(CarsAPI.class);
-        return api.manufacturersList();
 
+    public Observable<ModelsResult> getSubmodels(String modelNiceName, String year){
+        return api.getSubmodels(modelNiceName, year);
     }
 
-    public Observable<CarsResult> getCarsByManufacturerName(String name){
-        Log.e("Call getCarsByName", name);
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        final CarsAPI api = retrofit.create(CarsAPI.class);
-        return api.carsList(name);
-    }*/
 }

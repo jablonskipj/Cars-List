@@ -15,10 +15,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import rx_playground.com.jablonski.rxandroidplayground.activities.MainActivity;
 import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelsViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
-import rx_playground.com.jablonski.rxandroidplayground.presenters.CarsListPresenter;
+import rx_playground.com.jablonski.rxandroidplayground.presenters.ModelsListPresenter;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.CarsListAdapter;
 
 /**
@@ -26,9 +27,10 @@ import rx_playground.com.jablonski.rxandroidplayground.views.adapters.CarsListAd
  */
 
 public class ModelsListFragment extends Fragment implements ModelsViewContract.View<Model>{
-    CarsListPresenter presenter;
-    CarsListAdapter adapter;
-    ArrayList<Model> models;
+    private ModelsListPresenter presenter;
+    private CarsListAdapter adapter;
+    private ArrayList<Model> models;
+    private MainActivity activity;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -40,6 +42,8 @@ public class ModelsListFragment extends Fragment implements ModelsViewContract.V
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        activity = (MainActivity) getActivity();
+
         Bundle bundle = getArguments();
         setRetainInstance(true);
 
@@ -48,7 +52,7 @@ public class ModelsListFragment extends Fragment implements ModelsViewContract.V
             proceedBundle(savedInstanceState);
         }
 
-        this.presenter = new CarsListPresenter(this);
+        this.presenter = new ModelsListPresenter(this);
 
     }
 
@@ -114,6 +118,9 @@ public class ModelsListFragment extends Fragment implements ModelsViewContract.V
 
     @Override
     public void openSubmodelsList(String modelNiceName) {
-
+        SubmdelsListFragment fragment = new SubmdelsListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("ModelNiceName", modelNiceName);
+        activity.startFragment(fragment, true);
     }
 }
