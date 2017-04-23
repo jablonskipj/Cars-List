@@ -26,7 +26,7 @@ import rx_playground.com.jablonski.rxandroidplayground.views.adapters.CarsListAd
  * Created by yabol on 14.04.2017.
  */
 
-public class ModelsListFragment extends Fragment implements ModelsViewContract.View<Model>{
+public class ModelsListFragment extends Fragment implements ModelsViewContract.View{
     private ModelsListPresenter presenter;
     private CarsListAdapter adapter;
     private ArrayList<Model> models;
@@ -121,6 +121,7 @@ public class ModelsListFragment extends Fragment implements ModelsViewContract.V
         SubmdelsListFragment fragment = new SubmdelsListFragment();
         Bundle bundle = new Bundle();
         bundle.putString("ModelNiceName", modelNiceName);
+        bundle.putString("year", "2017");
         activity.startFragment(fragment, true);
     }
 }

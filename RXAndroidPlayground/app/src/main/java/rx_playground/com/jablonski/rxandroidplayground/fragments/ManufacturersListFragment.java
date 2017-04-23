@@ -111,7 +111,7 @@ public class ManufacturersListFragment extends Fragment implements Manufacturers
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList("Cars", (ArrayList<? extends Parcelable>) models);
         fragment.setArguments(bundle);
-        activity.startFragment(fragment, true);
+        activity.startFragment(fragment, false);
     }
 
 }
