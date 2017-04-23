@@ -24,11 +24,11 @@ import rx_playground.com.jablonski.rxandroidplayground.utils.images.ResourcesUti
  * Created by yabol on 12.04.2017.
  */
 
-public class ConcernListAdapter extends RecyclerView.Adapter<ConcernListAdapter.ViewHolder> {
+public class ManufacturersListAdapter extends RecyclerView.Adapter<ManufacturersListAdapter.ViewHolder> {
     private BaseViewCotract.BaseProvider<Manufacturer> provider;
     private BaseViewCotract.BaseOnItemCLickListener<Manufacturer> onClickListener;
     private Context context;
-    public ConcernListAdapter(Context context, BaseViewCotract.BaseProvider<Manufacturer> provider){
+    public ManufacturersListAdapter(Context context, BaseViewCotract.BaseProvider<Manufacturer> provider){
         this.provider = provider;
         this.context = context;
     }
@@ -39,7 +39,7 @@ public class ConcernListAdapter extends RecyclerView.Adapter<ConcernListAdapter.
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View row = LayoutInflater.from(context).inflate(R.layout.concern_list_row, parent, false);
+        View row = LayoutInflater.from(context).inflate(R.layout.manufacturer_list_row, parent, false);
 
         return new ViewHolder(row);
     }
@@ -49,12 +49,13 @@ public class ConcernListAdapter extends RecyclerView.Adapter<ConcernListAdapter.
         if(holder != null){
             final Manufacturer manufacturer = provider.getObject(position);
             if(manufacturer != null){
-                holder.concernName.setText(manufacturer.getNiceName());
+                holder.manufacturerName.setText(manufacturer.getName());
                 Picasso.with(context).
-                        load(ResourcesUtils.getDrawableIDByName(context, manufacturer.getNiceName())).
+                        load(ResourcesUtils.getDrawableIDByName(context, manufacturer.getManufactureName())).
                         memoryPolicy(MemoryPolicy.NO_STORE).
                         fit().centerInside().
-                        into(holder.concernLogo);
+                        into(holder.manufacturerLogo);
+                holder.manufacturerFullName.setText(manufacturer.getManufactureName());
                 if(this.onClickListener != null){
                     holder.rowView.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -73,11 +74,13 @@ public class ConcernListAdapter extends RecyclerView.Adapter<ConcernListAdapter.
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.concernLogo)
-        ImageView concernLogo;
+        @BindView(R.id.manufacturerLogo)
+        ImageView manufacturerLogo;
 
-        @BindView(R.id.concernName)
-        TextView concernName;
+        @BindView(R.id.manufacturerName)
+        TextView manufacturerName;
+        @BindView(R.id.manufacturerFullName)
+        TextView manufacturerFullName;
         View rowView;
         public ViewHolder(View view){
             super(view);

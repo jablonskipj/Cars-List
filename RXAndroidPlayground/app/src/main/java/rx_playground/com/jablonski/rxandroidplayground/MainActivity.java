@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import rx_playground.com.jablonski.rxandroidplayground.fragments.ConcernsListFragment;
+import rx_playground.com.jablonski.rxandroidplayground.fragments.ManufacturersListFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if(savedInstanceState == null) {
-            ConcernsListFragment fragment = new ConcernsListFragment();
+            ManufacturersListFragment fragment = new ManufacturersListFragment();
 
             manager = getSupportFragmentManager();
             startFragment(fragment, true);

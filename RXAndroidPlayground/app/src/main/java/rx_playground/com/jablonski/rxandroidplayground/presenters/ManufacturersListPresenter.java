@@ -3,26 +3,27 @@ package rx_playground.com.jablonski.rxandroidplayground.presenters;
 import java.util.List;
 
 import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.ConcernsViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.contracts.ManufacturersViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
 
 /**
  * Created by yabol on 06.04.2017.
  */
 
-public class ConcernsListPresenter implements ConcernsViewContract.Presenter<Manufacturer>, BaseViewCotract.BaseProvider<Manufacturer>, BaseViewCotract.BaseOnItemCLickListener<Manufacturer>{
-    private ConcernsViewContract.View view;
-    private ConcernsViewContract.Repository repository;
+public class ManufacturersListPresenter implements ManufacturersViewContract.Presenter, BaseViewCotract.BaseProvider<Manufacturer>, BaseViewCotract.BaseOnItemCLickListener<Manufacturer>{
+    private ManufacturersViewContract.View view;
+    private ManufacturersViewContract.Repository repository;
     private List<Manufacturer> manufacturers;
 
-    public ConcernsListPresenter(ConcernsViewContract.View view){
+    public ManufacturersListPresenter(ManufacturersViewContract.View view){
         this.view = view;
     }
-    public void setRepository(ConcernsViewContract.Repository repository){
+    public void setRepository(ManufacturersViewContract.Repository repository){
         this.repository = repository;
     }
     @Override
-    public void loadElemetnts(String year) {
+    public void loadElements(String year) {
+        this.view.showLoadingIndicator();
         if(this.repository != null) {
             this.repository.getManufacturers(year);
         }
@@ -32,6 +33,7 @@ public class ConcernsListPresenter implements ConcernsViewContract.Presenter<Man
     public void displayElements(List<Manufacturer> elements) {
         this.manufacturers = elements;
         this.view.showView(elements);
+        this.view.hideLoadingIndicator();
     }
 
     @Override

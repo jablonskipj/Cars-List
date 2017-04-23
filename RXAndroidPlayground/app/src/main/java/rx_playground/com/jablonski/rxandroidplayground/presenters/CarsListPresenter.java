@@ -3,46 +3,45 @@ package rx_playground.com.jablonski.rxandroidplayground.presenters;
 import java.util.List;
 
 import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.CarsViewContract;
-import rx_playground.com.jablonski.rxandroidplayground.model.Car;
+import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelsViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 
 /**
  * Created by yabol on 18.04.2017.
  */
 
-public class CarsListPresenter implements BaseViewCotract.BasePresenter<Car>, BaseViewCotract.BaseProvider<Car>, BaseViewCotract.BaseOnItemCLickListener<Car> {
-    private CarsViewContract.View<Car> view;
-    private List<Car> cars;
+public class CarsListPresenter implements BaseViewCotract.BasePresenter<Model>, BaseViewCotract.BaseProvider<Model>, BaseViewCotract.BaseOnItemCLickListener<Model> {
+    private ModelsViewContract.View<Model> view;
+    private List<Model> models;
 
-    public CarsListPresenter(CarsViewContract.View<Car> view){
+    public CarsListPresenter(ModelsViewContract.View<Model> view){
         this.view = view;
     }
     @Override
-    public void displayElements(List<Car> elements) {
-        this.cars = elements;
-        view.showView(this.cars);
-
+    public void displayElements(List<Model> elements) {
+        this.models = elements;
+        view.showView(this.models);
     }
 
     @Override
-    public List<Car> getElements() {
-        return this.cars;
+    public List<Model> getElements() {
+        return this.models;
     }
 
     @Override
-    public Car getObject(int position) {
-        if(this.cars != null) return this.cars.get(position);
+    public Model getObject(int position) {
+        if(this.models != null) return this.models.get(position);
         return null;
     }
 
     @Override
     public int getCount() {
-        if(this.cars != null) return this.cars.size();
+        if(this.models != null) return this.models.size();
         return 0;
     }
 
     @Override
-    public void performClick(Car object) {
+    public void performClick(Model object) {
         view.openDetails(object);
     }
 }

@@ -3,6 +3,8 @@ package rx_playground.com.jablonski.rxandroidplayground.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**
@@ -10,10 +12,16 @@ import java.util.ArrayList;
  */
 
 public class Manufacturer implements Parcelable {
-    int id;
-    String name;
-    String niceName;
-    ArrayList<Car> models;
+    @SerializedName("Country")
+    private String country;
+    @SerializedName("name")
+    private String name;
+    @SerializedName("niceName")
+    private String niceName;
+    @SerializedName("id")
+    private int id;
+    @SerializedName("models")
+    ArrayList<Model> models;
 
     public Manufacturer(String niceName){
         this.niceName = niceName;
@@ -22,10 +30,10 @@ public class Manufacturer implements Parcelable {
 
     }
 
-    public void addModel(Car car){
+    public void addModel(Model model){
         if(models == null) models = new ArrayList<>();
 
-        models.add(car);
+        models.add(model);
     }
 
     public String getName(){
@@ -34,7 +42,11 @@ public class Manufacturer implements Parcelable {
     public String getNiceName(){
         return this.niceName;
     }
-    public ArrayList<Car>getModels(){
+
+    public String getManufactureName(){
+        return this.niceName == null ? this.name : this.niceName;
+    }
+    public ArrayList<Model>getModels(){
         return this.models;
     }
 
@@ -58,6 +70,7 @@ public class Manufacturer implements Parcelable {
         this.id = Integer.parseInt(fields[0]);
         this.name = fields[1];
         this.niceName = fields[2];
+        this.country = fields[3];
     }
 
 
@@ -71,8 +84,17 @@ public class Manufacturer implements Parcelable {
         dest.writeStringArray(new String[]{
                 String.valueOf(this.id),
                 this.name,
-                this.niceName
+                this.niceName,
+                this.country
         });
         dest.writeList(models);
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

@@ -2,6 +2,7 @@ package rx_playground.com.jablonski.rxandroidplayground.network;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx_playground.com.jablonski.rxandroidplayground.model.Result;
 
@@ -10,8 +11,8 @@ import rx_playground.com.jablonski.rxandroidplayground.model.Result;
  */
 
 public interface CarsAPI {
-    static final String API_KEY = "wkvh2xqvcb8j8sd5gc7779zq";
+    String VEHICLES_API_KEY = "wkvh2xqvcb8j8sd5gc7779zq";
 
-    @GET("api/vehicle/v2/makes?&view=basic&fmt=json&state=used&api_key=" + API_KEY)
-    Observable<Result> fetchCarsListByProductionYear(@Query("year") String year);
+   @GET("api/vehicle/v2/makes?state=used&view=basic&fmt=json&api_key=" + VEHICLES_API_KEY)
+    Observable<Result> getManufacturersByYear(@Query("year") String year);
 }

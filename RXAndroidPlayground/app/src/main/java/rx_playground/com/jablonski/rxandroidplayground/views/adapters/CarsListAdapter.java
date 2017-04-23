@@ -7,13 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
-import rx_playground.com.jablonski.rxandroidplayground.model.Car;
+import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 
 /**
  * Created by yabol on 18.04.2017.
@@ -21,15 +19,15 @@ import rx_playground.com.jablonski.rxandroidplayground.model.Car;
 
 public class CarsListAdapter extends RecyclerView.Adapter<CarsListAdapter.ViewHolder> {
     private Context context;
-    private BaseViewCotract.BaseProvider<Car> provider;
-    private BaseViewCotract.BaseOnItemCLickListener<Car> onItemCLickListener;
+    private BaseViewCotract.BaseProvider<Model> provider;
+    private BaseViewCotract.BaseOnItemCLickListener<Model> onItemCLickListener;
 
-    public CarsListAdapter(Context context, BaseViewCotract.BaseProvider<Car> provider){
+    public CarsListAdapter(Context context, BaseViewCotract.BaseProvider<Model> provider){
         this.context = context;
         this.provider = provider;
     }
 
-    public void setOnItemCLickListener(BaseViewCotract.BaseOnItemCLickListener<Car> onItemCLickListener){
+    public void setOnItemCLickListener(BaseViewCotract.BaseOnItemCLickListener<Model> onItemCLickListener){
         this.onItemCLickListener = onItemCLickListener;
     }
 
@@ -43,9 +41,9 @@ public class CarsListAdapter extends RecyclerView.Adapter<CarsListAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if(holder != null) {
-            Car car = provider.getObject(position);
-            if (car != null) {
-                holder.carName.setText(car.getNiceName());
+            Model model = provider.getObject(position);
+            if (model != null) {
+                holder.carName.setText(model.getName());
             }
         }
     }

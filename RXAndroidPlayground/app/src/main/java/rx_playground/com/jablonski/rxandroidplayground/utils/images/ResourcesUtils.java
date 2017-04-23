@@ -23,13 +23,14 @@ public class ResourcesUtils {
     }
 
     public static int getDrawableIDByName(Context context, String name){
-        Resources resources = context.getResources();
-        int id = resources.getIdentifier(name, "drawable", context.getPackageName());
-        if(id == 0){
-            return R.mipmap.ic_launcher_round;
-        }else{
-            return id;
+        if(name != null) {
+            Resources resources = context.getResources();
+            int id = resources.getIdentifier(name.toLowerCase(), "drawable", context.getPackageName());
+            if (id != 0) {
+                return id;
+            }
         }
+        return R.mipmap.ic_launcher_round;
     }
 
     public static Drawable getDrawable(Context context, int id){

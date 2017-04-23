@@ -8,7 +8,8 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.ConcernsViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
+import rx_playground.com.jablonski.rxandroidplayground.contracts.ManufacturersViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
 import rx_playground.com.jablonski.rxandroidplayground.model.Result;
 import rx_playground.com.jablonski.rxandroidplayground.network.NetworkConnector;
@@ -17,19 +18,19 @@ import rx_playground.com.jablonski.rxandroidplayground.network.NetworkConnector;
  * Created by yabol on 10.04.2017.
  */
 
-public class ConcernsRepository implements ConcernsViewContract.Repository {
+public class ManufacturersRepository implements ManufacturersViewContract.Repository {
     private NetworkConnector connector;
-    private ConcernsViewContract.Presenter presenter;
+    private BaseViewCotract.BasePresenter presenter;
     private List<Manufacturer> manufacturers;
 
-    public ConcernsRepository(ConcernsViewContract.Presenter presenter){
+    public ManufacturersRepository(BaseViewCotract.BasePresenter presenter){
         this.connector = new NetworkConnector();
         this.presenter = presenter;
     }
     @Override
     public void getManufacturers(String year) {
 
-        this.connector.getCarsByProductionYear(year).
+        this.connector.getManufacturersByName(year).
                 subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Result>() {
             @Override
@@ -38,8 +39,8 @@ public class ConcernsRepository implements ConcernsViewContract.Repository {
             }
 
             @Override
-            public void onNext(Result concern) {
-                manufacturers = concern.makes;
+            public void onNext(Result result) {
+                manufacturers = result.getManufacturers();
             }
 
             @Override
@@ -52,6 +53,6 @@ public class ConcernsRepository implements ConcernsViewContract.Repository {
                 presenter.displayElements(manufacturers);
             }
         });
-        //return this.connector.getCarsByProductionYear(year);
+        //return this.connector.getAllManufacturers(year);
     }
 }

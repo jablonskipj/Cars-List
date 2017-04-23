@@ -20,5 +20,8 @@ public class BaseViewCotract {
     }
     public interface BaseView<T>{
         void showView(List<T> elements);
+        void showLoadingIndicator();
+        void hideLoadingIndicator();
     }
+
 }

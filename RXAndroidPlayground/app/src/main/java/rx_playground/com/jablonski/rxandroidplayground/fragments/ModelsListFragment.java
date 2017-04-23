@@ -1,12 +1,11 @@
 package rx_playground.com.jablonski.rxandroidplayground.fragments;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,23 +16,26 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.CarsViewContract;
-import rx_playground.com.jablonski.rxandroidplayground.model.Car;
+import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelsViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.presenters.CarsListPresenter;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.CarsListAdapter;
-import rx_playground.com.jablonski.rxandroidplayground.views.adapters.ConcernListAdapter;
 
 /**
  * Created by yabol on 14.04.2017.
  */
 
-public class CarsListFragment extends Fragment implements CarsViewContract.View<Car>{
+public class ModelsListFragment extends Fragment implements ModelsViewContract.View<Model>{
     CarsListPresenter presenter;
     CarsListAdapter adapter;
+    ArrayList<Model> models;
+
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.refreshLayout)
+    SwipeRefreshLayout refreshLayout;
 
-    ArrayList<Car> cars;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,10 +45,10 @@ public class CarsListFragment extends Fragment implements CarsViewContract.View<
 
         proceedBundle(bundle);
         if(savedInstanceState != null){
-            this.cars = savedInstanceState.getParcelableArrayList("Cars");
+            proceedBundle(savedInstanceState);
         }
 
-        presenter = new CarsListPresenter(this);
+        this.presenter = new CarsListPresenter(this);
 
     }
 
@@ -56,6 +58,8 @@ public class CarsListFragment extends Fragment implements CarsViewContract.View<
         View view = inflater.inflate(R.layout.fragment_cars_list, container, false);
         ButterKnife.bind(this, view);
         this.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        this.refreshLayout.setEnabled(false);
+        this.refreshLayout.setRefreshing(false);
 
 
         return view;
@@ -64,17 +68,13 @@ public class CarsListFragment extends Fragment implements CarsViewContract.View<
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(cars != null){
-            presenter.displayElements(cars);
-        }
+        proceedBundle(savedInstanceState);
+        this.presenter.displayElements(this.models);
     }
 
     private void proceedBundle(@Nullable Bundle bundle){
         if(bundle != null) {
-            this.cars = bundle.getParcelableArrayList("Cars");
-            if(this.cars != null) {
-                Log.e("CarsListFragment", "Cars list size = " + this.cars.size());
-            }
+            this.models = bundle.getParcelableArrayList("Cars");
         }
     }
 
@@ -84,16 +84,12 @@ public class CarsListFragment extends Fragment implements CarsViewContract.View<
         if(outState == null){
             outState = new Bundle();
         }
-        outState.putParcelableArrayList("Cars", this.cars);
+        outState.putParcelableArrayList("Cars", this.models);
     }
 
-    @Override
-    public void openDetails(Car car) {
-        //todo implement open details and load images, informations and so on
-    }
 
     @Override
-    public void showView(List<Car> elements) {
+    public void showView(List<Model> elements) {
         if(this.adapter == null){
             this.adapter = new CarsListAdapter(getContext(), this.presenter);
             this.adapter.setOnItemCLickListener(this.presenter);
@@ -102,5 +98,22 @@ public class CarsListFragment extends Fragment implements CarsViewContract.View<
             this.recyclerView.setAdapter(this.adapter);
         }
         this.adapter.notifyItemRangeInserted(0, this.presenter.getCount() - 1);
+    }
+
+    @Override
+    public void showLoadingIndicator() {
+        this.refreshLayout.setEnabled(false);
+        this.refreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void hideLoadingIndicator() {
+        this.refreshLayout.setEnabled(false);
+        this.refreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void openSubmodelsList(String modelNiceName) {
+
     }
 }
