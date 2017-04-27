@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -63,6 +64,17 @@ public class Model implements Parcelable {
                 this.name,
                 this.niceName,
         });
+    }
+
+    public void addSubmodel(Model model){
+        if(this.submodels == null){
+            this.submodels = new ArrayList<>();
+        }
+        this.submodels.add(model);
+    }
+
+    public void setId(String id){
+        this.id = id;
     }
 
     public String getNiceName() {

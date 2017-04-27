@@ -17,6 +17,6 @@ public interface CarsAPI {
    @GET("api/vehicle/v2/makes?state=used&view=basic&fmt=json&api_key=" + VEHICLES_API_KEY)
     Observable<Result> getManufacturersByYear(@Query("year") String year);
 
-    @GET("api/vehicle/v2/bmw/models?state=used&view=basic&fmt=json&api_key=" + VEHICLES_API_KEY)
-    Observable<ModelsResult> getSubmodels(@Query("submodel") String modelNiceName, @Query("year") String year);
+    @GET("api/vehicle/v2/{manufacturer}/models?state=used&view=basic&fmt=json&api_key=" + VEHICLES_API_KEY)
+    Observable<ModelsResult> getSubmodels(@Path("manufacturer") String manufacturer, @Query("submodel") String modelNiceName, @Query("year") String year);
 }

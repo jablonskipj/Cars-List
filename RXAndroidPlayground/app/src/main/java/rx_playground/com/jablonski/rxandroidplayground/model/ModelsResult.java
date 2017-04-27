@@ -2,6 +2,7 @@ package rx_playground.com.jablonski.rxandroidplayground.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,6 +12,13 @@ import java.util.List;
 public class ModelsResult {
     @SerializedName("models")
     private List<Model> models;
+
+    public void addModel(Model model){
+        if(this.models == null){
+            this.models = new ArrayList<>();
+        }
+        this.models.add(model);
+    }
 
     public List<Model> getModels() {
         return models;

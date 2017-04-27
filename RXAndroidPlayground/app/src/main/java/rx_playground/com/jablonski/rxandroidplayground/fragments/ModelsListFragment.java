@@ -31,6 +31,7 @@ public class ModelsListFragment extends Fragment implements ModelsViewContract.V
     private CarsListAdapter adapter;
     private ArrayList<Model> models;
     private MainActivity activity;
+    private String manufacturer;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -79,6 +80,7 @@ public class ModelsListFragment extends Fragment implements ModelsViewContract.V
     private void proceedBundle(@Nullable Bundle bundle){
         if(bundle != null) {
             this.models = bundle.getParcelableArrayList("Cars");
+            this.manufacturer = bundle.getString("Manufacturer");
         }
     }
 
@@ -89,6 +91,7 @@ public class ModelsListFragment extends Fragment implements ModelsViewContract.V
             outState = new Bundle();
         }
         outState.putParcelableArrayList("Cars", this.models);
+        outState.putString("Manufacturer", this.manufacturer);
     }
 
 
@@ -120,8 +123,10 @@ public class ModelsListFragment extends Fragment implements ModelsViewContract.V
     public void openSubmodelsList(String modelNiceName) {
         SubmdelsListFragment fragment = new SubmdelsListFragment();
         Bundle bundle = new Bundle();
+        bundle.putString("Manufacturer", this.manufacturer);
         bundle.putString("ModelNiceName", modelNiceName);
         bundle.putString("year", "2017");
+        fragment.setArguments(bundle);
         activity.startFragment(fragment, true);
     }
 }

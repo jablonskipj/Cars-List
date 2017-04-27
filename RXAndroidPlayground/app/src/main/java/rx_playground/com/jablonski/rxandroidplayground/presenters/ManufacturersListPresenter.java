@@ -58,6 +58,6 @@ public class ManufacturersListPresenter implements ManufacturersViewContract.Pre
 
     @Override
     public void performClick(Manufacturer item) {
-        view.showListFragment(item.getModels());
+        view.showListFragment(item.getName(), item.getModels());
     }
 }

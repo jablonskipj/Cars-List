@@ -22,12 +22,12 @@ public class CarsListAdapter extends RecyclerView.Adapter<CarsListAdapter.ViewHo
     private BaseViewCotract.BaseProvider<Model> provider;
     private BaseViewCotract.BaseOnItemCLickListener<Model> onItemCLickListener;
 
-    public CarsListAdapter(Context context, BaseViewCotract.BaseProvider<Model> provider){
+    public CarsListAdapter(Context context, BaseViewCotract.BaseProvider<Model> provider) {
         this.context = context;
         this.provider = provider;
     }
 
-    public void setOnItemCLickListener(BaseViewCotract.BaseOnItemCLickListener<Model> onItemCLickListener){
+    public void setOnItemCLickListener(BaseViewCotract.BaseOnItemCLickListener<Model> onItemCLickListener) {
         this.onItemCLickListener = onItemCLickListener;
     }
 
@@ -40,11 +40,18 @@ public class CarsListAdapter extends RecyclerView.Adapter<CarsListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        if(holder != null) {
-            Model model = provider.getObject(position);
-            if (model != null) {
-                holder.carName.setText(model.getName());
-            }
+        if (holder != null) {
+            final Model model = provider.getObject(position);
+            holder.carName.setText(model.getName());
+            holder.row.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onItemCLickListener != null){
+                        onItemCLickListener.performClick(model);
+                    }
+                }
+            });
+
         }
     }
 
@@ -53,12 +60,15 @@ public class CarsListAdapter extends RecyclerView.Adapter<CarsListAdapter.ViewHo
         return provider.getCount();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.carName)
         TextView carName;
+        View row;
+
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            this.row = itemView;
         }
     }
 }

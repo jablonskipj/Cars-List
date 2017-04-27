@@ -106,9 +106,10 @@ public class ManufacturersListFragment extends Fragment implements Manufacturers
 
 
     @Override
-    public void showListFragment(List<Model> models) {
+    public void showListFragment(String manufacturer, List<Model> models) {
         ModelsListFragment fragment = new ModelsListFragment();
         Bundle bundle = new Bundle();
+        bundle.putString("Manufacturer", manufacturer);
         bundle.putParcelableArrayList("Cars", (ArrayList<? extends Parcelable>) models);
         fragment.setArguments(bundle);
         activity.startFragment(fragment, false);

@@ -25,8 +25,8 @@ public class SubmodelsRepository implements SubmodelsViewContract.Repository{
         this.connector = new NetworkConnector();
     }
     @Override
-    public void loadElements(String modelNiceName, String year) {
-        this.connector.getSubmodels(modelNiceName, year).
+    public void loadElements(String manufacturer, String modelNiceName, String year) {
+        this.connector.getSubmodels(manufacturer, modelNiceName, year).
                 subscribeOn(Schedulers.newThread()).
                 observeOn(AndroidSchedulers.mainThread()).
                 subscribe(new Observer<ModelsResult>() {
@@ -38,7 +38,7 @@ public class SubmodelsRepository implements SubmodelsViewContract.Repository{
             @Override
             public void onNext(ModelsResult modelsResult) {
                 if(modelsResult.getModels() != null && modelsResult.getModels().size() > 0) {
-                    elements.addAll(modelsResult.getModels().get(0).getSubmodels());
+                    elements = modelsResult.getModels().get(0).getSubmodels();
                 }
             }
 

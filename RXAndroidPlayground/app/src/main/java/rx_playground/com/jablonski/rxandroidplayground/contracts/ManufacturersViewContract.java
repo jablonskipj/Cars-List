@@ -12,7 +12,7 @@ import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
 public class ManufacturersViewContract {
 
     public interface View extends BaseViewCotract.BaseView<Manufacturer>{
-        void showListFragment(List<Model> models);
+        void showListFragment(String manufacturer, List<Model> models);
     }
     public interface Presenter extends BaseViewCotract.BasePresenter<Manufacturer>{
         void loadElements(String year);

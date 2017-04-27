@@ -55,9 +55,10 @@ public class SubmdelsListFragment extends Fragment implements SubmodelsViewContr
         super.onViewCreated(view, savedInstanceState);
         Bundle args = getArguments();
         if(savedInstanceState == null){
+            String manufacturer = args.getString("Manufacturer");
             String name = args.getString("ModelNiceName");
             String year = args.getString("year");
-            presenter.loadElements(name, year);
+            presenter.loadElements(manufacturer, name, year);
         }else{
             //todo restore data from savedInstanceState;
         }

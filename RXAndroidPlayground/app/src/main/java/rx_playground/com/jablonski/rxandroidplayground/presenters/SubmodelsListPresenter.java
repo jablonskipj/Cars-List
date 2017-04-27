@@ -33,7 +33,7 @@ public class SubmodelsListPresenter implements SubmodelsViewContract.Presenter {
     }
 
     @Override
-    public void loadElements(String niceName, String year) {
-        repository.loadElements(niceName, year);
+    public void loadElements(String manufacturer, String niceName, String year) {
+        repository.loadElements(manufacturer, niceName, year);
     }
 }

@@ -11,9 +11,9 @@ public class SubmodelsViewContract {
         void openModelDetails();
     }
     public interface Presenter extends BaseViewCotract.BasePresenter<Model>{
-        void loadElements(String niceName, String year);
+        void loadElements(String manufacturer, String niceName, String year);
     }
     public interface Repository{
-        void loadElements(String modelNiceName, String year);
+        void loadElements(String manufacturer, String modelNiceName, String year);
     }
 }

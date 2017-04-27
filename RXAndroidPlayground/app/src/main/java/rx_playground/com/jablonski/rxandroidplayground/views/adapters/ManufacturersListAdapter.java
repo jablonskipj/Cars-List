@@ -12,7 +12,6 @@ import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
 
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
@@ -28,7 +27,8 @@ public class ManufacturersListAdapter extends RecyclerView.Adapter<Manufacturers
     private BaseViewCotract.BaseProvider<Manufacturer> provider;
     private BaseViewCotract.BaseOnItemCLickListener<Manufacturer> onClickListener;
     private Context context;
-    public ManufacturersListAdapter(Context context, BaseViewCotract.BaseProvider<Manufacturer> provider){
+
+    public ManufacturersListAdapter(Context context, BaseViewCotract.BaseProvider<Manufacturer> provider) {
         this.provider = provider;
         this.context = context;
     }
@@ -46,25 +46,26 @@ public class ManufacturersListAdapter extends RecyclerView.Adapter<Manufacturers
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        if(holder != null){
+        if (holder != null) {
             final Manufacturer manufacturer = provider.getObject(position);
-            if(manufacturer != null){
-                holder.manufacturerName.setText(manufacturer.getName());
-                Picasso.with(context).
-                        load(ResourcesUtils.getDrawableIDByName(context, manufacturer.getManufactureName())).
-                        memoryPolicy(MemoryPolicy.NO_STORE).
-                        fit().centerInside().
-                        into(holder.manufacturerLogo);
-                holder.manufacturerFullName.setText(manufacturer.getManufactureName());
-                if(this.onClickListener != null){
-                    holder.rowView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            onClickListener.performClick(manufacturer);
-                        }
-                    });
+            holder.manufacturerName.setText(manufacturer.getName());
+            Picasso.with(context).
+                    load(ResourcesUtils.getDrawableIDByName(context, manufacturer.getManufactureName())).
+                    memoryPolicy(MemoryPolicy.NO_STORE).
+                    fit().centerInside().
+                    into(holder.manufacturerLogo);
+            holder.manufacturerFullName.setText(manufacturer.getManufactureName());
+
+            holder.rowView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onClickListener != null) {
+                        onClickListener.performClick(manufacturer);
+                    }
                 }
-            }
+            });
+
+
         }
     }
 
@@ -82,7 +83,8 @@ public class ManufacturersListAdapter extends RecyclerView.Adapter<Manufacturers
         @BindView(R.id.manufacturerFullName)
         TextView manufacturerFullName;
         View rowView;
-        public ViewHolder(View view){
+
+        public ViewHolder(View view) {
             super(view);
             this.rowView = view;
             ButterKnife.bind(this, view);
