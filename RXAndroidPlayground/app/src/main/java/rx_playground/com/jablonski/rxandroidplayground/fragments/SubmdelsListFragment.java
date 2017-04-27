@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,8 @@ import rx_playground.com.jablonski.rxandroidplayground.contracts.SubmodelsViewCo
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.presenters.SubmodelsListPresenter;
 import rx_playground.com.jablonski.rxandroidplayground.repositories.SubmodelsRepository;
+import rx_playground.com.jablonski.rxandroidplayground.views.adapters.CarsListAdapter;
+import rx_playground.com.jablonski.rxandroidplayground.views.adapters.SubmodelsListAdapter;
 
 /**
  * Created by yabol on 23.04.2017.
@@ -25,6 +28,8 @@ import rx_playground.com.jablonski.rxandroidplayground.repositories.SubmodelsRep
 
 public class SubmdelsListFragment extends Fragment implements SubmodelsViewContract.View{
     private SubmodelsListPresenter presenter;
+    private SubmodelsListAdapter adapter;
+
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.refreshLayout)
@@ -46,6 +51,8 @@ public class SubmdelsListFragment extends Fragment implements SubmodelsViewContr
         View view = inflater.inflate(R.layout.fragment_cars_list, container, false);
 
         ButterKnife.bind(this, view);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         return view;
     }
@@ -71,7 +78,14 @@ public class SubmdelsListFragment extends Fragment implements SubmodelsViewContr
 
     @Override
     public void showView(List<Model> elements) {
-
+        if(this.adapter == null){
+            this.adapter = new SubmodelsListAdapter(getContext(), this.presenter);
+            this.adapter.setOnClickListener(this.presenter);
+        }
+        if(this.recyclerView.getAdapter() == null){
+            this.recyclerView.setAdapter(this.adapter);
+        }
+        this.adapter.notifyItemRangeInserted(0, this.presenter.getCount() - 1);
     }
 
     @Override

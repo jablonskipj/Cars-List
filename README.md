@@ -10,3 +10,5 @@ List of libraries that are in use:
 - Retrofit
 - OkHttp
 - Picasso
+- JUnit
+- Espresso

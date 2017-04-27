@@ -7,12 +7,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <style name="listElementPadding">
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">16dp</item>
-    </style>
 
-    <style name="item_manufacturer_text_style">
+    <style name="item_text_style">
         <item name="android:paddingRight">16dp</item>
         <item name="android:paddingLeft">16dp</item>
     </style>

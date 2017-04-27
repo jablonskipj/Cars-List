@@ -1,6 +1,5 @@
 package rx_playground.com.jablonski.rxandroidplayground.deserializer;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;

@@ -29,7 +29,7 @@ public class ModelResultDeserializerTest {
 
     @Test
     public void testModelResultDeserializerFullData(){
-        String json = provider.getStringFromResourceile("fullModelResponsejson.json");
+        String json = provider.getStringFromResourceile("ModelResponseFull.json");
         if(json != null){
             JsonElement jsonElement = parser.parse(json);
             ModelsResult result = deserializer.getDeserializedObject(jsonElement);

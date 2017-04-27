@@ -9,6 +9,6 @@
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:textSize="16sp"
-        style="@style/listElementPadding"/>
+        style="@style/item_text_style"/>
 
 </LinearLayout>
