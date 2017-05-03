@@ -1,6 +1,7 @@
 package rx_playground.com.jablonski.rxandroidplayground.fragments;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -56,6 +58,12 @@ public class SubmdelsListFragment extends BaseListFragment implements SubmodelsV
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("Submodels", (ArrayList<? extends Parcelable>) presenter.getElements());
+    }
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Bundle args = getArguments();
@@ -63,9 +71,11 @@ public class SubmdelsListFragment extends BaseListFragment implements SubmodelsV
             String manufacturer = args.getString("Manufacturer");
             String name = args.getString("ModelNiceName");
             String year = args.getString("year");
+            showLoadingIndicator();
             presenter.loadElements(manufacturer, name, year);
         }else{
-            //todo restore data from savedInstanceState;
+            List<Model> models = savedInstanceState.getParcelableArrayList("Submodels");
+            presenter.displayElements(models);
         }
     }
 
@@ -84,6 +94,7 @@ public class SubmdelsListFragment extends BaseListFragment implements SubmodelsV
             this.recyclerView.setAdapter(this.adapter);
         }
         this.adapter.notifyItemRangeInserted(0, this.presenter.getCount() - 1);
+        hideLoadingIndicator();
     }
 
     @Override
