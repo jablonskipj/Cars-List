@@ -26,17 +26,17 @@ import rx_playground.com.jablonski.rxandroidplayground.views.adapters.CarsListAd
  * Created by yabol on 14.04.2017.
  */
 
-public class ModelsListFragment extends Fragment implements ModelsViewContract.View{
+public class ModelsListFragment extends BaseListFragment implements ModelsViewContract.View{
     private ModelsListPresenter presenter;
     private CarsListAdapter adapter;
     private ArrayList<Model> models;
     private MainActivity activity;
     private String manufacturer;
 
-    @BindView(R.id.recyclerView)
+   /* @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
+    SwipeRefreshLayout refreshLayout;*/
 
 
     @Override
@@ -60,8 +60,7 @@ public class ModelsListFragment extends Fragment implements ModelsViewContract.V
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_cars_list, container, false);
-        ButterKnife.bind(this, view);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
         this.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         this.refreshLayout.setEnabled(false);
         this.refreshLayout.setRefreshing(false);
@@ -105,18 +104,6 @@ public class ModelsListFragment extends Fragment implements ModelsViewContract.V
             this.recyclerView.setAdapter(this.adapter);
         }
         this.adapter.notifyItemRangeInserted(0, this.presenter.getCount() - 1);
-    }
-
-    @Override
-    public void showLoadingIndicator() {
-        this.refreshLayout.setEnabled(false);
-        this.refreshLayout.setRefreshing(false);
-    }
-
-    @Override
-    public void hideLoadingIndicator() {
-        this.refreshLayout.setEnabled(false);
-        this.refreshLayout.setRefreshing(false);
     }
 
     @Override

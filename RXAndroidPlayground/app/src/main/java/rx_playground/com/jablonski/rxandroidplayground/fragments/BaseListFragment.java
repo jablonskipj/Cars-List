@@ -13,12 +13,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.activities.MainActivity;
+import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
 
 /**
  * Created by yabol on 26.04.2017.
  */
 
-public class BaseListFragment extends Fragment {
+public abstract class BaseListFragment extends Fragment {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.refreshLayout)
@@ -39,5 +40,15 @@ public class BaseListFragment extends Fragment {
 
         ButterKnife.bind(this, view);
         return view;
+    }
+
+    protected void showLoadingIndicator(){
+        this.refreshLayout.setEnabled(true);
+        this.refreshLayout.setRefreshing(true);
+    }
+
+    protected void hideLoadingIndicator() {
+        this.refreshLayout.setEnabled(false);
+        this.refreshLayout.setRefreshing(false);
     }
 }

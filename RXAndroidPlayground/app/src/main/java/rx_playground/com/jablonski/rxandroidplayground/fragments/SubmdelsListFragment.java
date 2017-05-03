@@ -26,14 +26,14 @@ import rx_playground.com.jablonski.rxandroidplayground.views.adapters.SubmodelsL
  * Created by yabol on 23.04.2017.
  */
 
-public class SubmdelsListFragment extends Fragment implements SubmodelsViewContract.View{
+public class SubmdelsListFragment extends BaseListFragment implements SubmodelsViewContract.View{
     private SubmodelsListPresenter presenter;
     private SubmodelsListAdapter adapter;
 
-    @BindView(R.id.recyclerView)
+    /*@BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
+    SwipeRefreshLayout refreshLayout;*/
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,9 +48,7 @@ public class SubmdelsListFragment extends Fragment implements SubmodelsViewContr
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_cars_list, container, false);
-
-        ButterKnife.bind(this, view);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 

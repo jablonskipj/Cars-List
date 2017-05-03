@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="48dp">
 
     <TextView
         android:id="@+id/submodel_full_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="8dp"
         android:textSize="@dimen/item_title_size_16sp"
         android:textStyle="bold"
+        android:maxLines="1"
         style="@style/item_text_style"/>
     <TextView
         android:id="@+id/submodel_short_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
         android:textSize="@dimen/item_description_size_14sp"
+        android:maxLines="1"
         style="@style/item_text_style"/>
 
 </LinearLayout>

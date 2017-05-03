@@ -29,14 +29,10 @@ import rx_playground.com.jablonski.rxandroidplayground.views.adapters.Manufactur
  * Created by yabol on 06.04.2017.
  */
 
-public class ManufacturersListFragment extends Fragment implements ManufacturersViewContract.View{
+public class ManufacturersListFragment extends BaseListFragment implements ManufacturersViewContract.View{
     private ManufacturersListPresenter presenter;
     private ManufacturersListAdapter adapter;
 
-    @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
 
     MainActivity activity;
 
@@ -48,7 +44,6 @@ public class ManufacturersListFragment extends Fragment implements Manufacturers
         if(this.presenter == null){
             this.presenter = new ManufacturersListPresenter(this);
             ManufacturersRepository repository = new ManufacturersRepository(this.presenter);
-            //ManufacturersRepositoryMock repository = new ManufacturersRepositoryMock(presenter);
             this.presenter.setRepository(repository);
         }
     }
@@ -56,22 +51,12 @@ public class ManufacturersListFragment extends Fragment implements Manufacturers
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_cars_list, container, false);
-        ButterKnife.bind(this, view);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
         this.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
 
-    public void showLoadingIndicator(){
-        this.refreshLayout.setEnabled(true);
-        this.refreshLayout.setRefreshing(true);
-    }
 
-    @Override
-    public void hideLoadingIndicator() {
-        this.refreshLayout.setEnabled(false);
-        this.refreshLayout.setRefreshing(false);
-    }
 
 
     @Override
@@ -80,6 +65,7 @@ public class ManufacturersListFragment extends Fragment implements Manufacturers
         if(savedInstanceState != null && savedInstanceState.getParcelableArrayList("Concerns") != null){
             presenter.displayElements(savedInstanceState.<Manufacturer>getParcelableArrayList("Concerns"));
         }else {
+            showLoadingIndicator();
             presenter.loadElements("2017");
         }
     }
@@ -100,7 +86,7 @@ public class ManufacturersListFragment extends Fragment implements Manufacturers
             this.recyclerView.setAdapter(this.adapter);
         }
         this.adapter.notifyDataSetChanged();
-
+        hideLoadingIndicator();
     }
 
 

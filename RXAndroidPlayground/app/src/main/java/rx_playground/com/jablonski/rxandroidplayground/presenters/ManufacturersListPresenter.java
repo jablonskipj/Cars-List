@@ -23,7 +23,6 @@ public class ManufacturersListPresenter implements ManufacturersViewContract.Pre
     }
     @Override
     public void loadElements(String year) {
-        this.view.showLoadingIndicator();
         if(this.repository != null) {
             this.repository.getManufacturers(year);
         }
@@ -33,7 +32,6 @@ public class ManufacturersListPresenter implements ManufacturersViewContract.Pre
     public void displayElements(List<Manufacturer> elements) {
         this.manufacturers = elements;
         this.view.showView(elements);
-        this.view.hideLoadingIndicator();
     }
 
     @Override

@@ -46,8 +46,8 @@ public class SubmodelsListAdapter extends RecyclerView.Adapter<SubmodelsListAdap
 
         final Model model = provider.getObject(position);
         if(model != null){
-            holder.title.setText(model.getName());
-            holder.description.setText(model.getSubmodelName());
+            holder.title.setText(model.getSubmodelName());
+            holder.description.setText(model.getName());
             holder.view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
