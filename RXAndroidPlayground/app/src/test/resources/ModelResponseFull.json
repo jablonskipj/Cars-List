@@ -1,0 +1,408 @@
+{
+  "models": [
+    {
+      "id": "BMW_3_Series",
+      "name": "3 Series",
+      "niceName": "3-series",
+      "years": [
+        {
+          "id": 100535269,
+          "year": 2013,
+          "styles": [
+            {
+              "id": 200423469,
+              "name": "328i 4dr Sedan (2.0L 4cyl Turbo 6M)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "3 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "328i"
+            },
+            {
+              "id": 101414454,
+              "name": "ActiveHybrid 3 4dr Sedan (3.0L 6cyl Turbo gas/electric hybrid 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "fuel": "Hybrid",
+                "modelName": "3 Series Hybrid",
+                "niceName": "hybrid"
+              },
+              "trim": "ActiveHybrid 3"
+            },
+            {
+              "id": 200423804,
+              "name": "328i xDrive 4dr Sedan AWD (2.0L 4cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "3 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "328i xDrive"
+            },
+            {
+              "id": 200423805,
+              "name": "335i xDrive 4dr Sedan AWD (3.0L 6cyl Turbo 6M)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "3 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "335i xDrive"
+            },
+            {
+              "id": 200459518,
+              "name": "320i 4dr Sedan (2.0L 4cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "3 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "320i"
+            },
+            {
+              "id": 200460586,
+              "name": "320i xDrive 4dr Sedan AWD (2.0L 4cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "3 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "320i xDrive"
+            },
+            {
+              "id": 200423475,
+              "name": "335i 4dr Sedan (3.0L 6cyl Turbo 6M)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "3 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "335i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BMW_5_Series",
+      "name": "5 Series",
+      "niceName": "5-series",
+      "years": [
+        {
+          "id": 200429164,
+          "year": 2013,
+          "styles": [
+            {
+              "id": 200429165,
+              "name": "528i 4dr Sedan (2.0L 4cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "5 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "528i"
+            },
+            {
+              "id": 200429166,
+              "name": "528i xDrive 4dr Sedan AWD (2.0L 4cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "5 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "528i xDrive"
+            },
+            {
+              "id": 200429167,
+              "name": "535i 4dr Sedan (3.0L 6cyl Turbo 6M)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "5 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "535i"
+            },
+            {
+              "id": 200429168,
+              "name": "535i xDrive 4dr Sedan AWD (3.0L 6cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "5 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "535i xDrive"
+            },
+            {
+              "id": 200429170,
+              "name": "550i xDrive 4dr Sedan AWD (4.4L 8cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "5 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "550i xDrive"
+            },
+            {
+              "id": 200429169,
+              "name": "550i 4dr Sedan (4.4L 8cyl Turbo 6M)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "5 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "550i"
+            },
+            {
+              "id": 200429171,
+              "name": "ActiveHybrid 5 4dr Sedan (3.0L 6cyl Turbo gas/electric hybrid 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "fuel": "Hybrid",
+                "modelName": "5 Series Hybrid",
+                "niceName": "hybrid"
+              },
+              "trim": "ActiveHybrid 5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BMW_6_Series_Gran_Coupe",
+      "name": "6 Series Gran Coupe",
+      "niceName": "6-series-gran-coupe",
+      "years": [
+        {
+          "id": 100539109,
+          "year": 2013,
+          "styles": [
+            {
+              "id": 200441996,
+              "name": "650i 4dr Sedan (4.4L 8cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "6 Series Gran Coupe Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "650i"
+            },
+            {
+              "id": 200441997,
+              "name": "650i xDrive 4dr Sedan AWD (4.4L 8cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "6 Series Gran Coupe Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "650i xDrive"
+            },
+            {
+              "id": 101418788,
+              "name": "640i 4dr Sedan (3.0L 6cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "6 Series Gran Coupe Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "640i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BMW_7_Series",
+      "name": "7 Series",
+      "niceName": "7-series",
+      "years": [
+        {
+          "id": 200429759,
+          "year": 2013,
+          "styles": [
+            {
+              "id": 200429764,
+              "name": "750Li 4dr Sedan (4.4L 8cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "7 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "750Li"
+            },
+            {
+              "id": 200429884,
+              "name": "740Li xDrive 4dr Sedan AWD (3.0L 6cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "7 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "740Li xDrive"
+            },
+            {
+              "id": 200429763,
+              "name": "740i 4dr Sedan (3.0L 6cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "7 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "740i"
+            },
+            {
+              "id": 200429762,
+              "name": "740Li 4dr Sedan (3.0L 6cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "7 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "740Li"
+            },
+            {
+              "id": 200429768,
+              "name": "760Li 4dr Sedan (6.0L 12cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "7 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "760Li"
+            },
+            {
+              "id": 200429767,
+              "name": "750i xDrive 4dr Sedan AWD (4.4L 8cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "7 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "750i xDrive"
+            },
+            {
+              "id": 200429766,
+              "name": "750i 4dr Sedan (4.4L 8cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "7 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "750i"
+            },
+            {
+              "id": 200429765,
+              "name": "750Li xDrive 4dr Sedan AWD (4.4L 8cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "7 Series Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "750Li xDrive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BMW_ALPINA_B7",
+      "name": "ALPINA B7",
+      "niceName": "alpina-b7",
+      "years": [
+        {
+          "id": 401657905,
+          "year": 2013,
+          "styles": [
+            {
+              "id": 401657909,
+              "name": "LWB xDrive 4dr Sedan AWD (4.4L 8cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "ALPINA B7 Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "LWB xDrive"
+            },
+            {
+              "id": 401657906,
+              "name": "LWB 4dr Sedan (4.4L 8cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "ALPINA B7 Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "LWB"
+            },
+            {
+              "id": 401657907,
+              "name": "SWB xDrive 4dr Sedan AWD (4.4L 8cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "ALPINA B7 Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "SWB xDrive"
+            },
+            {
+              "id": 401657908,
+              "name": "SWB 4dr Sedan (4.4L 8cyl Turbo 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "ALPINA B7 Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "SWB"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BMW_ActiveHybrid_7",
+      "name": "ActiveHybrid 7",
+      "niceName": "activehybrid-7",
+      "years": [
+        {
+          "id": 200429760,
+          "year": 2013,
+          "styles": [
+            {
+              "id": 200429769,
+              "name": "740Li 4dr Sedan (3.0L 6cyl Turbo gas/electric hybrid 8A)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "ActiveHybrid 7 Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "740Li"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BMW_M5",
+      "name": "M5",
+      "niceName": "m5",
+      "years": [
+        {
+          "id": 100539329,
+          "year": 2013,
+          "styles": [
+            {
+              "id": 101212619,
+              "name": "4dr Sedan (4.4L 8cyl Turbo 7AM)",
+              "submodel": {
+                "body": "Sedan",
+                "modelName": "M5 Sedan",
+                "niceName": "sedan"
+              },
+              "trim": "Base"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modelsCount": 7
+}
