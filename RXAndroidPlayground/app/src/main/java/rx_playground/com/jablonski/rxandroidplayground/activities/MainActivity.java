@@ -5,30 +5,52 @@ import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.fragments.ManufacturersListFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     FragmentManager manager;
+    ActionBar actionBar;
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
+
+        actionBar = getSupportActionBar();
+
         if(savedInstanceState == null) {
             ManufacturersListFragment fragment = new ManufacturersListFragment();
 
             manager = getSupportFragmentManager();
             startFragment(fragment, true);
+
         }
 
     }
 
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
     public void startFragment(Fragment fragment, boolean replace) {
         FragmentTransaction transaction = manager.beginTransaction();
@@ -38,6 +60,13 @@ public class MainActivity extends AppCompatActivity {
             transaction.add(R.id.fragmentContainer, fragment).addToBackStack(null);
         }
         transaction.commit();
+
+        Log.e("MainActivity", "BackPress fragments count: " + manager.getBackStackEntryCount());
+
+        if(manager.getBackStackEntryCount() > 0){
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
     }
 
@@ -54,12 +83,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        int fragmentsCount = getFragmentManager().getBackStackEntryCount();
+        int fragmentsCount = manager.getBackStackEntryCount();
 
-        if (fragmentsCount == 0) {
-            super.onBackPressed();
+        Log.e("MainActivity", "BackPress fragments count: " + fragmentsCount);
+        if(fragmentsCount == 2){
+            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayShowHomeEnabled(false);
+        }
+
+        if (fragmentsCount == 1) {
+            finish();
         } else {
-            getFragmentManager().popBackStack();
+            manager.popBackStack();
         }
 
     }

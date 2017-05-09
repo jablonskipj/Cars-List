@@ -8,7 +8,7 @@ import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 
 public class SubmodelsViewContract {
     public interface View extends BaseViewCotract.BaseView<Model>{
-        void openModelDetails();
+        void openModelDetails(String styleId);
     }
     public interface Presenter extends BaseViewCotract.BasePresenter<Model>{
         void loadElements(String manufacturer, String niceName, String year);

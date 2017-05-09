@@ -39,6 +39,11 @@ public class CarsListAdapter extends RecyclerView.Adapter<CarsListAdapter.ViewHo
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
+
+    @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (holder != null) {
             final Model model = provider.getObject(position);

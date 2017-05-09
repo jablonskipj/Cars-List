@@ -21,7 +21,7 @@ public class ManufacturersRepositoryMock implements ManufacturersViewContract.Re
     @Override
     public void getManufacturers(String year) {
         List<Manufacturer> manufacturers = new ArrayList<>();
-        Manufacturer manu = new Manufacturer("bme");
+        Manufacturer manu = new Manufacturer("bmw");
         manu.addModel(new Model("x3"));
         manufacturers.add(manu);
         manufacturers.add(new Manufacturer("Audi"));

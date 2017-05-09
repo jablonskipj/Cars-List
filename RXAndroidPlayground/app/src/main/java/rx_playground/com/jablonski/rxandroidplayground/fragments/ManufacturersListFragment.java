@@ -23,6 +23,7 @@ import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
 import rx_playground.com.jablonski.rxandroidplayground.presenters.ManufacturersListPresenter;
 import rx_playground.com.jablonski.rxandroidplayground.repositories.ManufacturersRepository;
+import rx_playground.com.jablonski.rxandroidplayground.repositories.ManufacturersRepositoryMock;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.ManufacturersListAdapter;
 
 /**
@@ -44,6 +45,7 @@ public class ManufacturersListFragment extends BaseListFragment implements Manuf
         if(this.presenter == null){
             this.presenter = new ManufacturersListPresenter(this);
             ManufacturersRepository repository = new ManufacturersRepository(this.presenter);
+            //ManufacturersRepositoryMock repository = new ManufacturersRepositoryMock(this.presenter);
             this.presenter.setRepository(repository);
         }
     }

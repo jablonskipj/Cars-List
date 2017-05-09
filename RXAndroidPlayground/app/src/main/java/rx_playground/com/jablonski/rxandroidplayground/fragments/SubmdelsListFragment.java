@@ -1,12 +1,10 @@
 package rx_playground.com.jablonski.rxandroidplayground.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +12,11 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import rx_playground.com.jablonski.rxandroidplayground.R;
+import rx_playground.com.jablonski.rxandroidplayground.activities.DetailsActivity;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.SubmodelsViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.presenters.SubmodelsListPresenter;
 import rx_playground.com.jablonski.rxandroidplayground.repositories.SubmodelsRepository;
-import rx_playground.com.jablonski.rxandroidplayground.views.adapters.CarsListAdapter;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.SubmodelsListAdapter;
 
 /**
@@ -32,10 +27,6 @@ public class SubmdelsListFragment extends BaseListFragment implements SubmodelsV
     private SubmodelsListPresenter presenter;
     private SubmodelsListAdapter adapter;
 
-    /*@BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;*/
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,8 +71,10 @@ public class SubmdelsListFragment extends BaseListFragment implements SubmodelsV
     }
 
     @Override
-    public void openModelDetails() {
-
+    public void openModelDetails(String styleId) {
+        Intent intent = new Intent(getContext(), DetailsActivity.class);
+        intent.putExtra("StyleId", styleId);
+        getContext().startActivity(intent);
     }
 
     @Override
@@ -97,13 +90,4 @@ public class SubmdelsListFragment extends BaseListFragment implements SubmodelsV
         hideLoadingIndicator();
     }
 
-    @Override
-    public void showLoadingIndicator() {
-
-    }
-
-    @Override
-    public void hideLoadingIndicator() {
-
-    }
 }

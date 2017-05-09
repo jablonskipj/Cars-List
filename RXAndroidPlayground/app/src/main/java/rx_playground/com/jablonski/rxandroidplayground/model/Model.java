@@ -77,6 +77,10 @@ public class Model implements Parcelable {
         this.id = id;
     }
 
+    public String getId(){
+        return this.id;
+    }
+
     public String getNiceName() {
         return niceName;
     }
@@ -108,4 +112,5 @@ public class Model implements Parcelable {
     public void setSubmodelName(String submodelName) {
         this.submodelName = submodelName;
     }
+
 }
