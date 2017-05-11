@@ -85,7 +85,7 @@ public class ModelsListFragment extends BaseListFragment implements ModelsViewCo
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+        //super.onSaveInstanceState(outState);
         if(outState == null){
             outState = new Bundle();
         }

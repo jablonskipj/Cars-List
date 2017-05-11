@@ -23,6 +23,13 @@ public class Model implements Parcelable {
     private List<Model> submodels;
     @SerializedName("trim")
     private String submodelName;
+    private Engine engine;
+    private Transmission transmission;
+    private Category category;
+    private int numberOfDoors;
+    private String drivenWheels;
+
+
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator<Model>() {
 
@@ -113,4 +120,43 @@ public class Model implements Parcelable {
         this.submodelName = submodelName;
     }
 
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
+    public Transmission getTransmission() {
+        return transmission;
+    }
+
+    public void setTransmission(Transmission transmission) {
+        this.transmission = transmission;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public int getNumberOfDoors() {
+        return numberOfDoors;
+    }
+
+    public void setNumberOfDoors(int numberOfDoors) {
+        this.numberOfDoors = numberOfDoors;
+    }
+
+    public String getDrivenWheels() {
+        return drivenWheels;
+    }
+
+    public void setDrivenWheels(String drivenWheels) {
+        this.drivenWheels = drivenWheels;
+    }
 }

@@ -12,6 +12,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx_playground.com.jablonski.rxandroidplayground.deserializer.GsonModelsResultDeserializer;
+import rx_playground.com.jablonski.rxandroidplayground.model.ModelDetailsResult;
 import rx_playground.com.jablonski.rxandroidplayground.model.ModelsResult;
 import rx_playground.com.jablonski.rxandroidplayground.model.Result;
 
@@ -21,22 +22,9 @@ import rx_playground.com.jablonski.rxandroidplayground.model.Result;
 
 public class NetworkConnector {
     private static final String BASE_URL = "https://api.edmunds.com/";
+    CarsAPI api;
 
     public NetworkConnector() {
-
-    }
-
-    public Observable<Result> getManufacturersByName(String year) {
-        Retrofit retrofit = new Retrofit.Builder().
-                baseUrl(BASE_URL).
-                addCallAdapterFactory(RxJava2CallAdapterFactory.create()).
-                addConverterFactory(GsonConverterFactory.create()).
-                build();
-        CarsAPI api = retrofit.create(CarsAPI.class);
-        return api.getManufacturersByYear(year);
-    }
-
-    public Observable<ModelsResult> getSubmodels(String manufacturer, String modelNiceName, String year) {
         Gson gson = new GsonBuilder().
                 setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).
                 setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").
@@ -47,10 +35,21 @@ public class NetworkConnector {
                 baseUrl(BASE_URL).
                 addCallAdapterFactory(RxJava2CallAdapterFactory.create()).
                 addConverterFactory(GsonConverterFactory.create(gson)).
+                addConverterFactory(GsonConverterFactory.create()).
                 build();
-        CarsAPI api = retrofit.create(CarsAPI.class);
+        this.api = retrofit.create(CarsAPI.class);
+    }
 
+    public Observable<Result> getManufacturersByName(String year) {
+        return api.getManufacturersByYear(year);
+    }
+
+    public Observable<ModelsResult> getSubmodels(String manufacturer, String modelNiceName, String year) {
         return api.getSubmodels(manufacturer, modelNiceName, year);
+    }
+
+    public Observable<ModelDetailsResult> getModelsDetails(String modelId){
+        return api.getModelDetails(modelId);
     }
 
 }

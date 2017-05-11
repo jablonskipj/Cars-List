@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         }else{
             transaction.add(R.id.fragmentContainer, fragment).addToBackStack(null);
         }
-        transaction.commit();
+        transaction.commitAllowingStateLoss();
 
         Log.e("MainActivity", "BackPress fragments count: " + manager.getBackStackEntryCount());
 
