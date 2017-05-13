@@ -30,7 +30,6 @@ public class ModelsListFragment extends BaseListFragment implements ModelsViewCo
     private ModelsListPresenter presenter;
     private CarsListAdapter adapter;
     private ArrayList<Model> models;
-    private MainActivity activity;
     private String manufacturer;
 
    /* @BindView(R.id.recyclerView)
@@ -43,10 +42,7 @@ public class ModelsListFragment extends BaseListFragment implements ModelsViewCo
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        activity = (MainActivity) getActivity();
-
         Bundle bundle = getArguments();
-        setRetainInstance(true);
 
         proceedBundle(bundle);
         if(savedInstanceState != null){
@@ -85,7 +81,7 @@ public class ModelsListFragment extends BaseListFragment implements ModelsViewCo
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        //super.onSaveInstanceState(outState);
+        super.onSaveInstanceState(outState);
         if(outState == null){
             outState = new Bundle();
         }

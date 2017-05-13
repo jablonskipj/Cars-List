@@ -32,7 +32,6 @@ public class SubmdelsListFragment extends BaseListFragment implements SubmodelsV
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setRetainInstance(true);
         presenter = new SubmodelsListPresenter(this);
         SubmodelsRepository repository = new SubmodelsRepository(presenter);
         presenter.setRepository(repository);

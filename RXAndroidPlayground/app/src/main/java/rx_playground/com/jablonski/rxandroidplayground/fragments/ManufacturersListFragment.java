@@ -1,5 +1,6 @@
 package rx_playground.com.jablonski.rxandroidplayground.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
@@ -34,13 +35,9 @@ public class ManufacturersListFragment extends BaseListFragment implements Manuf
     private ManufacturersListPresenter presenter;
     private ManufacturersListAdapter adapter;
 
-
-    MainActivity activity;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
         activity = (MainActivity) getActivity();
         if(this.presenter == null){
             this.presenter = new ManufacturersListPresenter(this);
@@ -48,6 +45,11 @@ public class ManufacturersListFragment extends BaseListFragment implements Manuf
             //ManufacturersRepositoryMock repository = new ManufacturersRepositoryMock(this.presenter);
             this.presenter.setRepository(repository);
         }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
     }
 
     @Nullable

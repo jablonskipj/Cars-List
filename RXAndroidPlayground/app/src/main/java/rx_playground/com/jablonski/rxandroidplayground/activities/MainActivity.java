@@ -34,16 +34,16 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         actionBar = getSupportActionBar();
+        manager = getSupportFragmentManager();
 
         if(savedInstanceState == null) {
             ManufacturersListFragment fragment = new ManufacturersListFragment();
-
-            manager = getSupportFragmentManager();
             startFragment(fragment, true);
 
         }
 
     }
+
 
 
     @Override
@@ -63,11 +63,15 @@ public class MainActivity extends AppCompatActivity {
 
         Log.e("MainActivity", "BackPress fragments count: " + manager.getBackStackEntryCount());
 
-        if(manager.getBackStackEntryCount() > 0){
+        manageToolbarBackButton(manager);
+    }
+
+    private void manageToolbarBackButton(FragmentManager manager){
+        int fragmentsCount = manager.getBackStackEntryCount();
+        if(fragmentsCount > 0){
             actionBar.setDisplayShowHomeEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-
     }
 
     @Override

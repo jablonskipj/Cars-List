@@ -1,10 +1,13 @@
 package rx_playground.com.jablonski.rxandroidplayground.fragments;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +34,13 @@ public abstract class BaseListFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activity = (MainActivity) getActivity();
+        Log.e("onCreate", this.getClass().getName());
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.e("onAttach", this.getClass().getName());
     }
 
     @Nullable
@@ -40,6 +50,12 @@ public abstract class BaseListFragment extends Fragment {
 
         ButterKnife.bind(this, view);
         return view;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.e("OnSavedInstanceState", this.getClass().getName());
     }
 
     protected void showLoadingIndicator(){
