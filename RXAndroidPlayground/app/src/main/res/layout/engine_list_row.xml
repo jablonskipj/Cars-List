@@ -9,25 +9,17 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/titleElement"
+            android:id="@+id/engineTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/details_engine_title"
-            android:paddingTop="24dp"
-            android:paddingBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingRight="16dp"
-            android:textSize="24sp"/>
+            style="@style/card_item_title_element"/>
 
         <TextView
             android:id="@+id/engineName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/titleElement"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_below="@id/engineTitle"
             android:layout_toLeftOf="@+id/engineCompression"
             android:layout_toStartOf="@id/engineCompression"
             android:textSize="@dimen/item_description_size_14sp"
@@ -37,9 +29,7 @@
             android:id="@id/engineCompression"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/titleElement"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+            android:layout_below="@id/engineTitle"
             android:textSize="@dimen/item_description_size_14sp"
             style="@style/card_item_right_element"/>
 
@@ -48,8 +38,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/engineName"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:layout_toLeftOf="@+id/engineSize"
             android:layout_toStartOf="@id/engineSize"
             android:textSize="@dimen/item_description_size_14sp"
@@ -60,8 +48,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/engineName"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
             android:textSize="@dimen/item_description_size_14sp"
             style="@style/card_item_right_element"/>
 
@@ -69,8 +55,6 @@
             android:id="@+id/engineDisplacement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:layout_below="@id/engineCylindersCount"
             android:layout_toLeftOf="@+id/engineConfiguration"
             android:layout_toStartOf="@id/engineConfiguration"
@@ -81,8 +65,6 @@
             android:id="@id/engineConfiguration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
             android:layout_below="@id/engineCylindersCount"
             android:textSize="@dimen/item_description_size_14sp"
             style="@style/card_item_right_element"/>
@@ -91,8 +73,6 @@
             android:id="@+id/engineHorsePower"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
             android:layout_below="@id/engineDisplacement"
             android:layout_toLeftOf="@+id/engineTorque"
             android:layout_toStartOf="@id/engineTorque"
@@ -103,8 +83,6 @@
             android:id="@id/engineTorque"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_below="@id/engineDisplacement"
             android:textSize="@dimen/item_description_size_14sp"
             style="@style/card_item_right_element"/>

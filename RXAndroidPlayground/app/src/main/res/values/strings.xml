@@ -2,4 +2,6 @@
     <string name="app_name">RXAndroidPlayground</string>
     <string name="details_engine_title">Engine</string>
     <string name="details_engine_compression">Compression</string>
+    <string name="details_category_title">Category</string>
+    <string name="details_transmission_title">Transmission</string>
 </resources>

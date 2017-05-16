@@ -5,17 +5,17 @@ package rx_playground.com.jablonski.rxandroidplayground.model;
  */
 
 public class Category implements ListElement{
-    private String vechicleSize;
+    private String vehicleSize;
     private String primaryBodyType;
     private String vehicleStyle;
     private String vehicleType;
 
-    public String getVechicleSize() {
-        return vechicleSize;
+    public String getVehicleSize() {
+        return vehicleSize;
     }
 
-    public void setVechicleSize(String vechicleSize) {
-        this.vechicleSize = vechicleSize;
+    public void setVehicleSize(String vehicleSize) {
+        this.vehicleSize = vehicleSize;
     }
 
     public String getPrimaryBodyType() {

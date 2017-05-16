@@ -21,7 +21,7 @@ public class Manufacturer implements Parcelable {
     @SerializedName("id")
     private int id;
     @SerializedName("models")
-    ArrayList<Model> models;
+    private ArrayList<Model> models;
 
     public Manufacturer(String niceName){
         this.niceName = niceName;
