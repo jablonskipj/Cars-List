@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RXAndroidPlayground</string>
+    <string name="details_engine_title">Engine</string>
+    <string name="details_engine_compression">Compression</string>
 </resources>

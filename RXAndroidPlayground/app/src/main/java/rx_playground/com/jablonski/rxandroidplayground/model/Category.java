@@ -4,7 +4,7 @@ package rx_playground.com.jablonski.rxandroidplayground.model;
  * Created by yabol on 11.05.2017.
  */
 
-public class Category {
+public class Category implements ListElement{
     private String vechicleSize;
     private String primaryBodyType;
     private String vehicleStyle;
@@ -40,5 +40,16 @@ public class Category {
 
     public void setVehicleType(String vehicleType) {
         this.vehicleType = vehicleType;
+    }
+
+    @Override
+    public int getViewType() {
+        return 1;
+    }
+
+    @Override
+    public RowConfig getRowConfig() {
+        RowConfig config = new RowConfig();
+        return config;
     }
 }

@@ -9,6 +9,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
+import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelDetailsContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.model.ModelDetailsResult;
 import rx_playground.com.jablonski.rxandroidplayground.network.NetworkConnector;
@@ -21,9 +22,11 @@ public class ModelDetailsRepository {
 
     private NetworkConnector connector;
     private Model model;
+    private ModelDetailsContract.Presenter presenter;
 
-    public ModelDetailsRepository(BaseViewCotract.BasePresenter presenter){
+    public ModelDetailsRepository(ModelDetailsContract.Presenter presenter){
         this.connector = new NetworkConnector();
+        this.presenter = presenter;
 
     }
 
@@ -53,7 +56,7 @@ public class ModelDetailsRepository {
 
             @Override
             public void onComplete(){
-               // presenter.displayElements(models);
+               presenter.displayModel(model);
             }
         });
     }

@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by yabol on 09.05.2017.
  */
 
-public class Engine {
+public class Engine implements ListElement {
     private String id;
     private String name;
     private float compressionRation;
@@ -88,5 +88,16 @@ public class Engine {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public int getViewType() {
+        return 2;
+    }
+
+    public RowConfig getRowConfig(){
+        RowConfig config = new RowConfig();
+
+        return config;
     }
 }

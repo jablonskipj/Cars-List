@@ -12,7 +12,7 @@ import java.util.List;
  * Created by yabol on 08.04.2017.
  */
 
-public class Model implements Parcelable {
+public class Model implements Parcelable, ListElement {
     @SerializedName("id")
     private String id;
     @SerializedName("name")
@@ -28,7 +28,6 @@ public class Model implements Parcelable {
     private Category category;
     private int numberOfDoors;
     private String drivenWheels;
-
 
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator<Model>() {
@@ -73,18 +72,18 @@ public class Model implements Parcelable {
         });
     }
 
-    public void addSubmodel(Model model){
-        if(this.submodels == null){
+    public void addSubmodel(Model model) {
+        if (this.submodels == null) {
             this.submodels = new ArrayList<>();
         }
         this.submodels.add(model);
     }
 
-    public void setId(String id){
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getId(){
+    public String getId() {
         return this.id;
     }
 
@@ -158,5 +157,16 @@ public class Model implements Parcelable {
 
     public void setDrivenWheels(String drivenWheels) {
         this.drivenWheels = drivenWheels;
+    }
+
+    @Override
+    public int getViewType() {
+        return 0;
+    }
+
+    @Override
+    public RowConfig getRowConfig() {
+        RowConfig config = new RowConfig();
+        return config;
     }
 }

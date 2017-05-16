@@ -4,7 +4,7 @@ package rx_playground.com.jablonski.rxandroidplayground.model;
  * Created by yabol on 11.05.2017.
  */
 
-public class Transmission {
+public class Transmission implements ListElement {
     private String id;
     private String name;
     private String transmissionType;
@@ -31,5 +31,16 @@ public class Transmission {
 
     public void setTransmissionType(String transmissionType) {
         this.transmissionType = transmissionType;
+    }
+
+    @Override
+    public int getViewType() {
+        return 3;
+    }
+
+    @Override
+    public RowConfig getRowConfig() {
+        RowConfig config = new RowConfig();
+        return config;
     }
 }
