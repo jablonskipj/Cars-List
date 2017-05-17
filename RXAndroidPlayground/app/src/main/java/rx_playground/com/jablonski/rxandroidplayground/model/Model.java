@@ -167,6 +167,7 @@ public class Model implements Parcelable, ListElement {
     @Override
     public RowConfig getRowConfig() {
         RowConfig config = new RowConfig();
+        config.addValue("modelName", this.name);
         return config;
     }
 }

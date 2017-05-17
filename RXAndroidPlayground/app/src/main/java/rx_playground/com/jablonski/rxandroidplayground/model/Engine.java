@@ -16,7 +16,10 @@ public class Engine implements ListElement {
     @SerializedName("horsepower")
     private int horsePower;
     private int totalValves;
+    private int torque;
     private String type;
+    private float displacement;
+
 
     public String getId() {
         return id;
@@ -96,8 +99,33 @@ public class Engine implements ListElement {
     }
 
     public RowConfig getRowConfig(){
-        RowConfig config = new RowConfig();
 
+        //TODO better way to format ints and floats to string NEEDED
+        RowConfig config = new RowConfig();
+        config.addValue("engineName", this.name);
+        config.addValue("engineCompressionRation", String.valueOf(this.compressionRation));
+        config.addValue("engineCylinderCount", String.valueOf(this.cylinder));
+        config.addValue("engineSize", String.valueOf(this.size));
+        config.addValue("engineConfiguration", this.configuration);
+        config.addValue("engineHorsePower", String.valueOf(this.horsePower));
+        config.addValue("engineTorque", String.valueOf(this.totalValves));
+        config.addValue("engineDisplacement", String.valueOf(this.displacement));
         return config;
+    }
+
+    public int getTorque() {
+        return torque;
+    }
+
+    public void setTorque(int torque) {
+        this.torque = torque;
+    }
+
+    public float getDisplacement() {
+        return displacement;
+    }
+
+    public void setDisplacement(float displacement) {
+        this.displacement = displacement;
     }
 }

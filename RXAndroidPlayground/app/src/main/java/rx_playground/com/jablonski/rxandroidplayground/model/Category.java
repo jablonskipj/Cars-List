@@ -50,6 +50,10 @@ public class Category implements ListElement{
     @Override
     public RowConfig getRowConfig() {
         RowConfig config = new RowConfig();
+        config.addValue("vehicleSize", this.vehicleSize);
+        config.addValue("primaryBodyType", this.primaryBodyType);
+        config.addValue("vehicleStyle", this.vehicleStyle);
+        config.addValue("vehicleType", this.vehicleType);
         return config;
     }
 }

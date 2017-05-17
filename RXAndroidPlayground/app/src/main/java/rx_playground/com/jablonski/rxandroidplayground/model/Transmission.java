@@ -41,6 +41,8 @@ public class Transmission implements ListElement {
     @Override
     public RowConfig getRowConfig() {
         RowConfig config = new RowConfig();
+        config.addValue("transmissionName", this.name);
+        config.addValue("transmissionType", this.transmissionType);
         return config;
     }
 }
