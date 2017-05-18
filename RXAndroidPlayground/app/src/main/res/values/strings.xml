@@ -13,4 +13,8 @@
     <string name="details_engine_torque">Torque: %1$s</string>
     <string name="details_engine_displacement">Displacement %1$s cm\00B3</string>
     <string name="details_transmission_type">Type: %1$s</string>
+    <string name="details_vehicle_size">Size: %1$s</string>
+    <string name="details_vehicle_primary_body_type">Body type: %1$s</string>
+    <string name="details_vehicle_style">Style: %1$s</string>
+    <string name="details_vehicle_type">Type: %1$s</string>
 </resources>

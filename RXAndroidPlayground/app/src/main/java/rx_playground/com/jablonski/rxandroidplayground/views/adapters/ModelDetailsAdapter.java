@@ -10,6 +10,7 @@ import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelDetailsContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.RowConfig;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.holder.BaseDetailViewHolder;
+import rx_playground.com.jablonski.rxandroidplayground.views.adapters.holder.CategoryViewHolder;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.holder.DetailHolder;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.holder.EngineViewHolder;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.holder.ModelViewHolder;
@@ -39,11 +40,12 @@ public class ModelDetailsAdapter extends RecyclerView.Adapter<BaseDetailViewHold
                 holder = new ModelViewHolder(view);
                 break;
             case 1:
-
+                view = this.inflater.inflate(R.layout.category_list_row, null);
+                holder = new CategoryViewHolder(view, this.context);
                 break;
             case 2:
                 view = this.inflater.inflate(R.layout.engine_list_row, null);
-                holder = new EngineViewHolder(view, context);
+                holder = new EngineViewHolder(view, this.context);
                 break;
             case 3:
                 view = this.inflater.inflate(R.layout.transmission_list_row, null);
