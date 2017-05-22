@@ -26,7 +26,6 @@ public class NetworkConnector {
 
     public NetworkConnector() {
         Gson gson = new GsonBuilder().
-                setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).
                 setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").
                 registerTypeAdapter(ModelsResult.class, new GsonModelsResultDeserializer()).
                 create();

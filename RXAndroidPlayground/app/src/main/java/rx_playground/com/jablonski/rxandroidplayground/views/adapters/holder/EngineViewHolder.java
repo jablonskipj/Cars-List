@@ -4,9 +4,12 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
+import rx_playground.com.jablonski.rxandroidplayground.model.Engine;
 import rx_playground.com.jablonski.rxandroidplayground.model.RowConfig;
 
 /**
@@ -40,13 +43,13 @@ public class EngineViewHolder extends BaseDetailViewHolder  {
 
     @Override
     public void setUp(RowConfig config) {
-        this.engineName.setText(this.context.getString(R.string.details_engine_name, config.getValue("engineName")));
-        this.engineCompression.setText(this.context.getString(R.string.details_engine_compression_ration, config.getValue("engineCompressionRation")));
-        this.engineCylindersCount.setText(this.context.getString(R.string.details_engine_cylinder_count, config.getValue("engineCylinderCount")));
-        this.engineSize.setText(this.context.getString(R.string.details_engine_size, config.getValue("engineSize")));
-        this.engineConfiguration.setText(this.context.getString(R.string.details_engine_configuration, config.getValue("engineConfiguration")));
-        this.engineHorsePower.setText(this.context.getString(R.string.details_engine_horse_power, config.getValue("engineHorsePower")));
-        this.engineTorque.setText(this.context.getString(R.string.details_engine_torque, config.getValue("engineTorque")));
-        this.engineDisplacement.setText(this.context.getString(R.string.details_engine_displacement, config.getValue("engineDisplacement")));
+        this.engineName.setText(this.context.getString(R.string.details_engine_name, config.getValue(Engine.ENGINE_NAME)));
+        this.engineCompression.setText(this.context.getString(R.string.details_engine_compression_ration, config.getValue(Engine.ENGINE_COMPRESSION_RATIO)));
+        this.engineCylindersCount.setText(this.context.getString(R.string.details_engine_cylinder_count, config.getValue(Engine.ENGINE_CYLINDERS_COUNT)));
+        this.engineSize.setText(this.context.getString(R.string.details_engine_size, config.getValue(Engine.ENGINE_SIZE)));
+        this.engineConfiguration.setText(this.context.getString(R.string.details_engine_configuration, config.getValue(Engine.ENGINE_CONFIGURATION)));
+        this.engineHorsePower.setText(this.context.getString(R.string.details_engine_horse_power, config.getValue(Engine.ENGINE_POWER)));
+        this.engineTorque.setText(this.context.getString(R.string.details_engine_torque, config.getValue(Engine.ENGINE_TORQUE)));
+        this.engineDisplacement.setText(this.context.getString(R.string.details_engine_displacement, config.getValue(Engine.ENGINE_DISPLACEMENT)));
     }
 }

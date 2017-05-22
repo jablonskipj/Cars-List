@@ -7,6 +7,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
+import rx_playground.com.jablonski.rxandroidplayground.model.Category;
 import rx_playground.com.jablonski.rxandroidplayground.model.RowConfig;
 
 /**
@@ -34,9 +35,9 @@ public class CategoryViewHolder extends BaseDetailViewHolder {
 
     @Override
     public void setUp(RowConfig config) {
-        this.vehicleSize.setText(this.context.getString(R.string.details_vehicle_size, config.getValue("vehicleSize")));
-        this.primaryBodyType.setText(this.context.getString(R.string.details_vehicle_primary_body_type, config.getValue("primaryBodyType")));
-        this.vehicleStyle.setText(this.context.getString(R.string.details_vehicle_style, config.getValue("vehicleStyle")));
-        this.vehicleType.setText(this.context.getString(R.string.details_vehicle_type, config.getValue("vehicleType")));
+        this.vehicleSize.setText(this.context.getString(R.string.details_vehicle_size, config.getValue(Category.VEHICLE_SIZE)));
+        this.primaryBodyType.setText(this.context.getString(R.string.details_vehicle_primary_body_type, config.getValue(Category.VEHICLE_BODY_TYPE)));
+        this.vehicleStyle.setText(this.context.getString(R.string.details_vehicle_style, config.getValue(Category.VEHICLE_STYLE)));
+        this.vehicleType.setText(this.context.getString(R.string.details_vehicle_type, config.getValue(Category.VEHICLE_TYPE)));
     }
 }

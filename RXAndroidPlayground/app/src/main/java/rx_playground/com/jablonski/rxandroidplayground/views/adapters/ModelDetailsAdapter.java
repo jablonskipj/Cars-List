@@ -28,7 +28,7 @@ public class ModelDetailsAdapter extends RecyclerView.Adapter<BaseDetailViewHold
     public ModelDetailsAdapter(Context context, ModelDetailsContract.Provider provider){
         this.provider = provider;
         this.context = context;
-        inflater = LayoutInflater.from(context);
+        this.inflater = LayoutInflater.from(context);
     }
     @Override
     public BaseDetailViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -37,7 +37,7 @@ public class ModelDetailsAdapter extends RecyclerView.Adapter<BaseDetailViewHold
         switch (viewType){
             case 0:
                 view = this.inflater.inflate(R.layout.model_list_row, null);
-                holder = new ModelViewHolder(view);
+                holder = new ModelViewHolder(view, this.context);
                 break;
             case 1:
                 view = this.inflater.inflate(R.layout.category_list_row, null);
@@ -60,7 +60,7 @@ public class ModelDetailsAdapter extends RecyclerView.Adapter<BaseDetailViewHold
 
     @Override
     public void onBindViewHolder(BaseDetailViewHolder holder, int position) {
-        RowConfig config = provider.getObject(position);
+        RowConfig config = this.provider.getObject(position);
 
         holder.setUp(config);
 
@@ -68,11 +68,11 @@ public class ModelDetailsAdapter extends RecyclerView.Adapter<BaseDetailViewHold
 
     @Override
     public int getItemViewType(int position) {
-        return provider.getPositionType(position);
+        return this.provider.getPositionType(position);
     }
 
     @Override
     public int getItemCount() {
-        return provider.getCount();
+        return this.provider.getCount();
     }
 }

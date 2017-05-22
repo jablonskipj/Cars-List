@@ -32,11 +32,6 @@ public class ModelsListFragment extends BaseListFragment implements ModelsViewCo
     private ArrayList<Model> models;
     private String manufacturer;
 
-   /* @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;*/
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

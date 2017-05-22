@@ -1,13 +1,24 @@
 package rx_playground.com.jablonski.rxandroidplayground.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by yabol on 11.05.2017.
  */
 
 public class Category implements ListElement{
+    public static final String VEHICLE_SIZE = "vehicleSize";
+    public static final String VEHICLE_BODY_TYPE = "primaryBodyType";
+    public static final String VEHICLE_STYLE = "vehicleStyle";
+    public static final String VEHICLE_TYPE = "vehicleType";
+
+    @SerializedName("vehicleSize")
     private String vehicleSize;
+    @SerializedName("primaryBodyType")
     private String primaryBodyType;
+    @SerializedName("vehicleStyle")
     private String vehicleStyle;
+    @SerializedName("vehicleType")
     private String vehicleType;
 
     public String getVehicleSize() {
@@ -50,10 +61,10 @@ public class Category implements ListElement{
     @Override
     public RowConfig getRowConfig() {
         RowConfig config = new RowConfig();
-        config.addValue("vehicleSize", this.vehicleSize);
-        config.addValue("primaryBodyType", this.primaryBodyType);
-        config.addValue("vehicleStyle", this.vehicleStyle);
-        config.addValue("vehicleType", this.vehicleType);
+        config.addValue(VEHICLE_SIZE, this.vehicleSize);
+        config.addValue(VEHICLE_BODY_TYPE, this.primaryBodyType);
+        config.addValue(VEHICLE_STYLE, this.vehicleStyle);
+        config.addValue(VEHICLE_TYPE, this.vehicleType);
         return config;
     }
 }

@@ -2,22 +2,40 @@ package rx_playground.com.jablonski.rxandroidplayground.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.NumberFormat;
+
 /**
  * Created by yabol on 09.05.2017.
  */
 
 public class Engine implements ListElement {
+    public static final String ENGINE_NAME = "engineName";
+    public static final String ENGINE_COMPRESSION_RATIO = "engineCompressionRatio";
+    public static final String ENGINE_CYLINDERS_COUNT = "engineCylinderCount";
+    public static final String ENGINE_SIZE = "engineSize";
+    public static final String ENGINE_CONFIGURATION = "engineConfiguration";
+    public static final String ENGINE_POWER = "engineHorsePower";
+    public static final String ENGINE_TORQUE = "engineTorque";
+    public static final String ENGINE_DISPLACEMENT = "engineDisplacement";
+
     private String id;
     private String name;
-    private float compressionRation;
+
+    @SerializedName("compressionRatio")
+    private float compressionRatio;
+    @SerializedName("cylinder")
     private int cylinder;
+    @SerializedName("size")
     private float size;
     private String configuration;
     @SerializedName("horsepower")
     private int horsePower;
+    @SerializedName("totalValves")
     private int totalValves;
+    @SerializedName("torque")
     private int torque;
     private String type;
+    @SerializedName("displacement")
     private float displacement;
 
 
@@ -37,12 +55,12 @@ public class Engine implements ListElement {
         this.name = name;
     }
 
-    public float getCompressionRation() {
-        return compressionRation;
+    public float getCompressionRatio() {
+        return compressionRatio;
     }
 
-    public void setCompressionRation(float compressionRation) {
-        this.compressionRation = compressionRation;
+    public void setCompressionRatio(float compressionRatio) {
+        this.compressionRatio = compressionRatio;
     }
 
     public int getCylinder() {
@@ -99,17 +117,18 @@ public class Engine implements ListElement {
     }
 
     public RowConfig getRowConfig(){
-
+        NumberFormat floatFormat = NumberFormat.getNumberInstance();
+        NumberFormat intFormat = NumberFormat.getIntegerInstance();
         //TODO better way to format ints and floats to string NEEDED
         RowConfig config = new RowConfig();
-        config.addValue("engineName", this.name);
-        config.addValue("engineCompressionRation", String.valueOf(this.compressionRation));
-        config.addValue("engineCylinderCount", String.valueOf(this.cylinder));
-        config.addValue("engineSize", String.valueOf(this.size));
-        config.addValue("engineConfiguration", this.configuration);
-        config.addValue("engineHorsePower", String.valueOf(this.horsePower));
-        config.addValue("engineTorque", String.valueOf(this.totalValves));
-        config.addValue("engineDisplacement", String.valueOf(this.displacement));
+        config.addValue(ENGINE_NAME, this.name);
+        config.addValue(ENGINE_COMPRESSION_RATIO, floatFormat.format(this.compressionRatio));
+        config.addValue(ENGINE_CYLINDERS_COUNT, intFormat.format(this.cylinder));
+        config.addValue(ENGINE_SIZE, intFormat.format(this.size));
+        config.addValue(ENGINE_CONFIGURATION, this.configuration);
+        config.addValue(ENGINE_POWER, intFormat.format(this.horsePower));
+        config.addValue(ENGINE_TORQUE, intFormat.format(this.torque));
+        config.addValue(ENGINE_DISPLACEMENT, floatFormat.format(this.displacement));
         return config;
     }
 

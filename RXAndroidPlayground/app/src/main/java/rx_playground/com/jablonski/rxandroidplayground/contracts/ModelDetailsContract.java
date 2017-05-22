@@ -15,11 +15,16 @@ public class ModelDetailsContract {
     }
 
     public interface Presenter{
+        void loadModelData(String modelId);
         void displayModel(Model model);
         Model getModel();
     }
 
     public interface View{
         void displayModelDetails();
+    }
+
+    public interface Repository{
+        void getModelDetails(String modelId);
     }
 }

@@ -5,6 +5,9 @@ package rx_playground.com.jablonski.rxandroidplayground.model;
  */
 
 public class Transmission implements ListElement {
+    public static final String TRANSMISSION_NAME = "transmissionName";
+    public static final String TRANSMISSION_TYPE = "transmissionType";
+
     private String id;
     private String name;
     private String transmissionType;
@@ -41,8 +44,8 @@ public class Transmission implements ListElement {
     @Override
     public RowConfig getRowConfig() {
         RowConfig config = new RowConfig();
-        config.addValue("transmissionName", this.name);
-        config.addValue("transmissionType", this.transmissionType);
+        config.addValue(TRANSMISSION_NAME, this.name);
+        config.addValue(TRANSMISSION_TYPE, this.transmissionType);
         return config;
     }
 }

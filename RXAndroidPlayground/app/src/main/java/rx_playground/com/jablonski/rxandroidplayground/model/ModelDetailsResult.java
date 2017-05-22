@@ -11,10 +11,14 @@ public class ModelDetailsResult {
     private Manufacturer manufacturer;
     @SerializedName("model")
     private Model model;
+    @SerializedName("drivenWheels")
     private String drivenWheels;
+    @SerializedName("numOfDoors")
     private int numOfDoors;
     private Engine engine;
+    @SerializedName("transmission")
     private Transmission transmission;
+    @SerializedName("categories")
     private Category categories;
 
 

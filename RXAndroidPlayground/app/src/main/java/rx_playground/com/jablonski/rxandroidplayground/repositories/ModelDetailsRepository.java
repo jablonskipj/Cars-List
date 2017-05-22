@@ -18,7 +18,7 @@ import rx_playground.com.jablonski.rxandroidplayground.network.NetworkConnector;
  * Created by yabol on 19.04.2017.
  */
 
-public class ModelDetailsRepository {
+public class ModelDetailsRepository implements ModelDetailsContract.Repository{
 
     private NetworkConnector connector;
     private Model model;
@@ -30,7 +30,7 @@ public class ModelDetailsRepository {
 
     }
 
-    public void getCars(String modelId) {
+    public void getModelDetails(String modelId) {
         this.connector.getModelsDetails(modelId).
                 subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<ModelDetailsResult>() {

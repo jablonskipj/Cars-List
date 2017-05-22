@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,10 @@ import java.util.List;
  */
 
 public class Model implements Parcelable, ListElement {
+    public static final String MODEL_NAME = "modelName";
+    public static final String MODEL_DRIVEN_WHEELS = "drivenWheels";
+    public static final String MODEL_NUMBER_OF_DOORS = "numberOfDoors";
+
     @SerializedName("id")
     private String id;
     @SerializedName("name")
@@ -166,8 +171,11 @@ public class Model implements Parcelable, ListElement {
 
     @Override
     public RowConfig getRowConfig() {
+        NumberFormat integerFormat = NumberFormat.getIntegerInstance();
         RowConfig config = new RowConfig();
-        config.addValue("modelName", this.name);
+        config.addValue(MODEL_NAME, this.name);
+        config.addValue(MODEL_DRIVEN_WHEELS, this.drivenWheels);
+        config.addValue(MODEL_NUMBER_OF_DOORS, integerFormat.format(this.numberOfDoors));
         return config;
     }
 }
