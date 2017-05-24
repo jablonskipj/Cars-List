@@ -2,4 +2,5 @@
 <resources>
     <dimen name="item_title_size_16sp">16sp</dimen>
     <dimen name="item_description_size_14sp">14sp</dimen>
+    <dimen name="item_model_name_text_size_24sp">24sp</dimen>
 </resources>

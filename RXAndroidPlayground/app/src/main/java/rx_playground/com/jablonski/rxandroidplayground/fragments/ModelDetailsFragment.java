@@ -34,8 +34,6 @@ public class ModelDetailsFragment extends Fragment implements ModelDetailsContra
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,7 +53,7 @@ public class ModelDetailsFragment extends Fragment implements ModelDetailsContra
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_cars_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_model_details, container, false);
 
         ButterKnife.bind(this, view);
 
@@ -71,16 +69,6 @@ public class ModelDetailsFragment extends Fragment implements ModelDetailsContra
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.presenter.loadModelData(this.modelId);
-    }
-
-    protected void showLoadingIndicator(){
-        this.refreshLayout.setEnabled(true);
-        this.refreshLayout.setRefreshing(true);
-    }
-
-    protected void hideLoadingIndicator() {
-        this.refreshLayout.setEnabled(false);
-        this.refreshLayout.setRefreshing(false);
     }
 
     @Override

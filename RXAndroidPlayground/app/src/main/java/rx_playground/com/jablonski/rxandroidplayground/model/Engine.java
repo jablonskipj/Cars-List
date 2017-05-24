@@ -119,7 +119,7 @@ public class Engine implements ListElement {
     public RowConfig getRowConfig(){
         NumberFormat floatFormat = NumberFormat.getNumberInstance();
         NumberFormat intFormat = NumberFormat.getIntegerInstance();
-        //TODO better way to format ints and floats to string NEEDED
+
         RowConfig config = new RowConfig();
         config.addValue(ENGINE_NAME, this.name);
         config.addValue(ENGINE_COMPRESSION_RATIO, floatFormat.format(this.compressionRatio));

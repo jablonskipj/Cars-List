@@ -16,12 +16,25 @@ import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.fragments.ManufacturersListFragment;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends AppCompatActivity {
+    FragmentManager manager;
+    ActionBar actionBar;
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
+
+        actionBar = getSupportActionBar();
+        manager = getSupportFragmentManager();
 
         if(savedInstanceState == null) {
             ManufacturersListFragment fragment = new ManufacturersListFragment();

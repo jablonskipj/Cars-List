@@ -10,7 +10,8 @@
         style="@style/card_item_title_element"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/details_category_title" />
+        android:text="@string/details_category_title"
+        android:textSize="@dimen/item_title_size_16sp"/>
 
     <TextView
         android:id="@+id/vehicleSize"
