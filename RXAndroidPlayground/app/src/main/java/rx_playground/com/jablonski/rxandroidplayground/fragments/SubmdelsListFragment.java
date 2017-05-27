@@ -16,6 +16,7 @@ import rx_playground.com.jablonski.rxandroidplayground.activities.DetailsActivit
 import rx_playground.com.jablonski.rxandroidplayground.contracts.SubmodelsViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.presenters.SubmodelsListPresenter;
+import rx_playground.com.jablonski.rxandroidplayground.repositories.SubmodelReposioryMock;
 import rx_playground.com.jablonski.rxandroidplayground.repositories.SubmodelsRepository;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.SubmodelsListAdapter;
 
@@ -33,7 +34,8 @@ public class SubmdelsListFragment extends BaseListFragment implements SubmodelsV
         super.onCreate(savedInstanceState);
 
         presenter = new SubmodelsListPresenter(this);
-        SubmodelsRepository repository = new SubmodelsRepository(presenter);
+        //SubmodelsRepository repository = new SubmodelsRepository(presenter);
+        SubmodelReposioryMock repository = new SubmodelReposioryMock(presenter);
         presenter.setRepository(repository);
     }
 

@@ -27,16 +27,20 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
 
         Intent intent = getIntent();
-        Log.e("DetailsActivity", intent.getStringExtra("StyleId"));
+        String styleId = intent.getStringExtra("StyleId");
 
-        ModelDetailsFragment framgnet = new ModelDetailsFragment();
-        Bundle args = new Bundle();
-        args.putString("modelId", intent.getStringExtra("StyleId"));
-        framgnet.setArguments(args);
 
-        this.manager = getSupportFragmentManager();
+        if(styleId != null) {
+            Log.e("DetailsActivity", styleId);
+            ModelDetailsFragment framgnet = new ModelDetailsFragment();
+            Bundle args = new Bundle();
+            args.putString("modelId", styleId);
+            framgnet.setArguments(args);
 
-        showFragment(framgnet);
+            this.manager = getSupportFragmentManager();
+
+            showFragment(framgnet);
+        }
 
     }
 

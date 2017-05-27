@@ -5,17 +5,19 @@ import java.util.List;
 
 import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ManufacturersViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.fragments.ManufacturersListFragment;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
+import rx_playground.com.jablonski.rxandroidplayground.presenters.ManufacturersListPresenter;
 
 /**
  * Created by yabol on 13.04.2017.
  */
 
 public class ManufacturersRepositoryMock implements ManufacturersViewContract.Repository {
-    private BaseViewCotract.BasePresenter presenter;
+    private ManufacturersListPresenter presenter;
 
-    public ManufacturersRepositoryMock(BaseViewCotract.BasePresenter presenter){
+    public ManufacturersRepositoryMock(ManufacturersListPresenter presenter){
         this.presenter = presenter;
     }
     @Override
