@@ -1,4 +1,4 @@
-package rx_playground.com.jablonski.rxandroidplayground.views.adapters;
+package rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,12 +9,11 @@ import android.view.ViewGroup;
 import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelDetailsContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.RowConfig;
-import rx_playground.com.jablonski.rxandroidplayground.views.adapters.holder.BaseDetailViewHolder;
-import rx_playground.com.jablonski.rxandroidplayground.views.adapters.holder.CategoryViewHolder;
-import rx_playground.com.jablonski.rxandroidplayground.views.adapters.holder.DetailHolder;
-import rx_playground.com.jablonski.rxandroidplayground.views.adapters.holder.EngineViewHolder;
-import rx_playground.com.jablonski.rxandroidplayground.views.adapters.holder.ModelViewHolder;
-import rx_playground.com.jablonski.rxandroidplayground.views.adapters.holder.TransmissionViewHolder;
+import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.holder.BaseDetailViewHolder;
+import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.holder.CategoryViewHolder;
+import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.holder.EngineViewHolder;
+import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.holder.ModelViewHolder;
+import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.holder.TransmissionViewHolder;
 
 /**
  * Created by yabol on 15.05.2017.

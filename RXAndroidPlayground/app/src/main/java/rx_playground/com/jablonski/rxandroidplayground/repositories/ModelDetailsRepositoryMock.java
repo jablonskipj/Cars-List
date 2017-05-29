@@ -46,4 +46,9 @@ public class ModelDetailsRepositoryMock implements ModelDetailsContract.Reposito
 
         this.presenter.displayModel(model);
     }
+
+    @Override
+    public void getModelPhotos(String modelId) {
+
+    }
 }

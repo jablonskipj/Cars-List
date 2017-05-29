@@ -1,6 +1,10 @@
 package rx_playground.com.jablonski.rxandroidplayground.contracts;
 
+import android.support.v4.app.Fragment;
+
+import rx_playground.com.jablonski.rxandroidplayground.model.ImageSource;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
+import rx_playground.com.jablonski.rxandroidplayground.model.Photo;
 import rx_playground.com.jablonski.rxandroidplayground.model.RowConfig;
 
 /**
@@ -14,17 +18,25 @@ public class ModelDetailsContract {
         int getPositionType(int position);
     }
 
+    public interface ImagesProvider{
+        ImageSource getImage(int position);
+        int getPhotosCount();
+    }
+
     public interface Presenter{
         void loadModelData(String modelId);
         void displayModel(Model model);
+        void displayPhotos(Photo photos);
         Model getModel();
     }
 
     public interface View{
         void displayModelDetails();
+        void displayPhotos();
     }
 
     public interface Repository{
         void getModelDetails(String modelId);
+        void getModelPhotos(String modelId);
     }
 }

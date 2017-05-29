@@ -1,4 +1,4 @@
-package rx_playground.com.jablonski.rxandroidplayground.views.adapters;
+package rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

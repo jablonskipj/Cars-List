@@ -12,6 +12,8 @@ import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelDetailsContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.model.ModelDetailsResult;
+import rx_playground.com.jablonski.rxandroidplayground.model.Photo;
+import rx_playground.com.jablonski.rxandroidplayground.model.PhotosResult;
 import rx_playground.com.jablonski.rxandroidplayground.network.NetworkConnector;
 
 /**
@@ -23,6 +25,7 @@ public class ModelDetailsRepository implements ModelDetailsContract.Repository{
     private NetworkConnector connector;
     private Model model;
     private ModelDetailsContract.Presenter presenter;
+    private Photo photo;
 
     public ModelDetailsRepository(ModelDetailsContract.Presenter presenter){
         this.connector = new NetworkConnector();
@@ -31,9 +34,10 @@ public class ModelDetailsRepository implements ModelDetailsContract.Repository{
     }
 
     public void getModelDetails(String modelId) {
-        this.connector.getModelsDetails(modelId).
-                subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<ModelDetailsResult>() {
+        this.connector.getModelsDetails(modelId)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ModelDetailsResult>() {
             @Override
             public void onSubscribe(Disposable d) {
                 Log.e("Subscribe", "hello");
@@ -51,7 +55,7 @@ public class ModelDetailsRepository implements ModelDetailsContract.Repository{
 
             @Override
             public void onError(Throwable e) {
-                Log.e("Excepion", e.getMessage());
+                Log.e("Exception", e.getMessage());
             }
 
             @Override
@@ -59,5 +63,33 @@ public class ModelDetailsRepository implements ModelDetailsContract.Repository{
                presenter.displayModel(model);
             }
         });
+    }
+
+    @Override
+    public void getModelPhotos(String modelId) {
+        this.connector.getPhotos(modelId)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<PhotosResult>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(PhotosResult photosResult) {
+                        photo = photosResult.getPhotos().get(0);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("Exception", e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        presenter.displayPhotos(photo);
+                    }
+                });
     }
 }

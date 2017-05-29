@@ -20,7 +20,7 @@ import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelsViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.presenters.ModelsListPresenter;
-import rx_playground.com.jablonski.rxandroidplayground.views.adapters.CarsListAdapter;
+import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.CarsListAdapter;
 
 /**
  * Created by yabol on 14.04.2017.

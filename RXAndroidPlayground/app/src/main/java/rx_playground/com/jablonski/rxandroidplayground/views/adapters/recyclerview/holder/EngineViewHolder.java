@@ -1,10 +1,8 @@
-package rx_playground.com.jablonski.rxandroidplayground.views.adapters.holder;
+package rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.holder;
 
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
-
-import java.text.NumberFormat;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

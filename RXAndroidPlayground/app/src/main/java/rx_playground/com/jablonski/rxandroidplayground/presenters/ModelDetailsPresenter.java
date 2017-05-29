@@ -5,8 +5,10 @@ import java.util.List;
 
 import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelDetailsContract;
+import rx_playground.com.jablonski.rxandroidplayground.model.ImageSource;
 import rx_playground.com.jablonski.rxandroidplayground.model.ListElement;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
+import rx_playground.com.jablonski.rxandroidplayground.model.Photo;
 import rx_playground.com.jablonski.rxandroidplayground.model.RowConfig;
 import rx_playground.com.jablonski.rxandroidplayground.repositories.ModelDetailsRepository;
 
@@ -14,11 +16,12 @@ import rx_playground.com.jablonski.rxandroidplayground.repositories.ModelDetails
  * Created by yabol on 16.05.2017.
  */
 
-public class ModelDetailsPresenter implements ModelDetailsContract.Presenter, ModelDetailsContract.Provider {
+public class ModelDetailsPresenter implements ModelDetailsContract.Presenter, ModelDetailsContract.Provider, ModelDetailsContract.ImagesProvider {
     private Model model;
     private List<ListElement> elements;
     private ModelDetailsContract.View view;
     private ModelDetailsContract.Repository repository;
+    private Photo photo;
 
     public ModelDetailsPresenter(ModelDetailsContract.View view){
         this.view = view;
@@ -32,6 +35,7 @@ public class ModelDetailsPresenter implements ModelDetailsContract.Presenter, Mo
     @Override
     public void loadModelData(String modelId) {
         this.repository.getModelDetails(modelId);
+        this.repository.getModelPhotos(modelId);
     }
 
     @Override
@@ -42,6 +46,11 @@ public class ModelDetailsPresenter implements ModelDetailsContract.Presenter, Mo
         this.elements.add(model.getEngine());
         this.elements.add(model.getTransmission());
         this.view.displayModelDetails();
+    }
+
+    @Override
+    public void displayPhotos(Photo photos) {
+        this.view.displayPhotos();
     }
 
     @Override
@@ -62,5 +71,21 @@ public class ModelDetailsPresenter implements ModelDetailsContract.Presenter, Mo
     @Override
     public int getPositionType(int position) {
         return this.elements.get(position).getViewType();
+    }
+
+    @Override
+    public ImageSource getImage(int position) {
+        if(this.photo != null){
+            return this.photo.getSources().get(position);
+        }
+        return null;
+    }
+
+    @Override
+    public int getPhotosCount() {
+        if(this.photo != null){
+            return this.photo.getSources().size();
+        }
+        return 0;
     }
 }

@@ -1,4 +1,4 @@
-package rx_playground.com.jablonski.rxandroidplayground.views.adapters.holder;
+package rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.holder;
 
 import rx_playground.com.jablonski.rxandroidplayground.model.RowConfig;
 

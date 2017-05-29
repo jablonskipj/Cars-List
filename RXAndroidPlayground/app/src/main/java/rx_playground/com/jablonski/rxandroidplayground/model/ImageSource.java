@@ -1,22 +1,36 @@
 package rx_playground.com.jablonski.rxandroidplayground.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by yabol on 27.05.2017.
  */
 
-public class ImageSource {
+public class ImageSource implements Parcelable {
     private ImageLink imageLink;
-    private ImageSize size;
     private String extension;
     private int photosCount;
 
-    public ImageSize getSize() {
-        return size;
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator<ImageSource>() {
+
+        @Override
+        public ImageSource createFromParcel(Parcel source) {
+            return new ImageSource(source);
+        }
+
+        @Override
+        public ImageSource[] newArray(int size) {
+            return new ImageSource[size];
+        }
+    };
+
+    private ImageSource(Parcel in){
+        this.photosCount = in.readInt();
+        this.extension = in.readString();
+        this.imageLink = in.readParcelable(ImageLink.class.getClassLoader());
     }
 
-    public void setSize(ImageSize size) {
-        this.size = size;
-    }
 
     public ImageLink getImageLink() {
         return imageLink;
@@ -40,5 +54,18 @@ public class ImageSource {
 
     public void setPhotosCount(int photosCount) {
         this.photosCount = photosCount;
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.photosCount);
+        dest.writeString(this.extension);
+        dest.writeParcelable(this.imageLink, flags);
     }
 }

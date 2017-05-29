@@ -17,8 +17,7 @@ import rx_playground.com.jablonski.rxandroidplayground.contracts.SubmodelsViewCo
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.presenters.SubmodelsListPresenter;
 import rx_playground.com.jablonski.rxandroidplayground.repositories.SubmodelReposioryMock;
-import rx_playground.com.jablonski.rxandroidplayground.repositories.SubmodelsRepository;
-import rx_playground.com.jablonski.rxandroidplayground.views.adapters.SubmodelsListAdapter;
+import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.SubmodelsListAdapter;
 
 /**
  * Created by yabol on 23.04.2017.

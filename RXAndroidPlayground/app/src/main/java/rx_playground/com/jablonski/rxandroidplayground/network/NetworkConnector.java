@@ -14,6 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import rx_playground.com.jablonski.rxandroidplayground.deserializer.GsonModelsResultDeserializer;
 import rx_playground.com.jablonski.rxandroidplayground.model.ModelDetailsResult;
 import rx_playground.com.jablonski.rxandroidplayground.model.ModelsResult;
+import rx_playground.com.jablonski.rxandroidplayground.model.PhotosResult;
 import rx_playground.com.jablonski.rxandroidplayground.model.Result;
 
 /**
@@ -49,6 +50,10 @@ public class NetworkConnector {
 
     public Observable<ModelDetailsResult> getModelsDetails(String modelId){
         return api.getModelDetails(modelId);
+    }
+
+    public Observable<PhotosResult> getPhotos(String styleId){
+        return api.getCarPhotos(styleId);
     }
 
 }

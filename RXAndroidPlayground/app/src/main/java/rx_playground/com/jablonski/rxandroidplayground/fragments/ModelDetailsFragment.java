@@ -1,16 +1,16 @@
 package rx_playground.com.jablonski.rxandroidplayground.fragments;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,9 +18,8 @@ import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelDetailsContract;
 import rx_playground.com.jablonski.rxandroidplayground.presenters.ModelDetailsPresenter;
 import rx_playground.com.jablonski.rxandroidplayground.repositories.ModelDetailsRepository;
-import rx_playground.com.jablonski.rxandroidplayground.repositories.ModelDetailsRepositoryMock;
-import rx_playground.com.jablonski.rxandroidplayground.views.adapters.CarsListAdapter;
-import rx_playground.com.jablonski.rxandroidplayground.views.adapters.ModelDetailsAdapter;
+import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.ModelDetailsAdapter;
+import rx_playground.com.jablonski.rxandroidplayground.views.adapters.viewpager.ImagesPagerAdapter;
 
 /**
  * Created by yabol on 19.05.2017.
@@ -29,11 +28,14 @@ import rx_playground.com.jablonski.rxandroidplayground.views.adapters.ModelDetai
 public class ModelDetailsFragment extends Fragment implements ModelDetailsContract.View {
     private ModelDetailsAdapter adapter;
     private ModelDetailsPresenter presenter;
+    private ImagesPagerAdapter viewPagerAdapter;
 
     String modelId;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.imagesPager)
+    ViewPager imagePager;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,6 +71,7 @@ public class ModelDetailsFragment extends Fragment implements ModelDetailsContra
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.presenter.loadModelData(this.modelId);
+
     }
 
     @Override
@@ -80,5 +83,14 @@ public class ModelDetailsFragment extends Fragment implements ModelDetailsContra
             this.recyclerView.setAdapter(this.adapter);
         }
         this.adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void displayPhotos() {
+        if(this.viewPagerAdapter == null){
+            this.viewPagerAdapter = new ImagesPagerAdapter(getFragmentManager(), this.presenter);
+            this.imagePager.setAdapter(this.viewPagerAdapter);
+        }
+        this.viewPagerAdapter.notifyDataSetChanged();
     }
 }
