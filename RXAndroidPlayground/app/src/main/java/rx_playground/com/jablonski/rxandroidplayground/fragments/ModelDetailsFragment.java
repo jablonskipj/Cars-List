@@ -18,6 +18,7 @@ import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelDetailsContract;
 import rx_playground.com.jablonski.rxandroidplayground.presenters.ModelDetailsPresenter;
 import rx_playground.com.jablonski.rxandroidplayground.repositories.ModelDetailsRepository;
+import rx_playground.com.jablonski.rxandroidplayground.repositories.ModelDetailsRepositoryMock;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.ModelDetailsAdapter;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.viewpager.ImagesPagerAdapter;
 
@@ -29,8 +30,7 @@ public class ModelDetailsFragment extends Fragment implements ModelDetailsContra
     private ModelDetailsAdapter adapter;
     private ModelDetailsPresenter presenter;
     private ImagesPagerAdapter viewPagerAdapter;
-
-    String modelId;
+    private String modelId;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -42,8 +42,8 @@ public class ModelDetailsFragment extends Fragment implements ModelDetailsContra
         super.onCreate(savedInstanceState);
 
         this.presenter = new ModelDetailsPresenter(this);
-        ModelDetailsRepository repository = new ModelDetailsRepository(this.presenter);
-        //ModelDetailsRepositoryMock repository = new ModelDetailsRepositoryMock(this.presenter);
+        //ModelDetailsRepository repository = new ModelDetailsRepository(this.presenter);
+        ModelDetailsRepositoryMock repository = new ModelDetailsRepositoryMock(this.presenter);
         this.presenter.setRepository(repository);
 
         Bundle args = getArguments();

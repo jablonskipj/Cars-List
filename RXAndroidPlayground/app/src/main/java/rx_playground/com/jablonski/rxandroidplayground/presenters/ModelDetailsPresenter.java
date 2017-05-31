@@ -50,6 +50,7 @@ public class ModelDetailsPresenter implements ModelDetailsContract.Presenter, Mo
 
     @Override
     public void displayPhotos(Photo photos) {
+        this.photo = photos;
         this.view.displayPhotos();
     }
 

@@ -35,8 +35,8 @@ public class ManufacturersListFragment extends BaseListFragment implements Manuf
         activity = (MainActivity) getActivity();
         if(this.presenter == null){
             this.presenter = new ManufacturersListPresenter(this);
-            ManufacturersRepository repository = new ManufacturersRepository(this.presenter);
-            //ManufacturersRepositoryMock repository = new ManufacturersRepositoryMock(this.presenter);
+            //ManufacturersRepository repository = new ManufacturersRepository(this.presenter);
+            ManufacturersRepositoryMock repository = new ManufacturersRepositoryMock(this.presenter);
             this.presenter.setRepository(repository);
         }
     }

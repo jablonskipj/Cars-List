@@ -27,7 +27,7 @@ public class ImageLink implements Parcelable {
     };
 
     public String getHref() {
-        return href;
+        return "http://media.ed.edmunds-media.com" + href;
     }
 
     public void setHref(String href) {

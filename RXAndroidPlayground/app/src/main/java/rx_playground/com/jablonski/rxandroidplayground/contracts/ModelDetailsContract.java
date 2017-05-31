@@ -2,6 +2,8 @@ package rx_playground.com.jablonski.rxandroidplayground.contracts;
 
 import android.support.v4.app.Fragment;
 
+import java.util.List;
+
 import rx_playground.com.jablonski.rxandroidplayground.model.ImageSource;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.model.Photo;
@@ -26,7 +28,7 @@ public class ModelDetailsContract {
     public interface Presenter{
         void loadModelData(String modelId);
         void displayModel(Model model);
-        void displayPhotos(Photo photos);
+        void displayPhotos(List<Photo> photos);
         Model getModel();
     }
 

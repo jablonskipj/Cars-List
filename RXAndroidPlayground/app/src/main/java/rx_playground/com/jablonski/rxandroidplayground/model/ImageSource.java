@@ -3,11 +3,14 @@ package rx_playground.com.jablonski.rxandroidplayground.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by yabol on 27.05.2017.
  */
 
 public class ImageSource implements Parcelable {
+    @SerializedName("link")
     private ImageLink imageLink;
     private String extension;
     private int photosCount;

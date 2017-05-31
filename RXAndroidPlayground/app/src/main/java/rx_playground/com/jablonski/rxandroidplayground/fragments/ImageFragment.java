@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
+import rx_playground.com.jablonski.rxandroidplayground.model.ImageLink;
 import rx_playground.com.jablonski.rxandroidplayground.model.ImageSource;
 
 /**
@@ -56,6 +57,6 @@ public class ImageFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Picasso.with(getContext()).load(this.source.getImageLink().getHref()).fit().centerInside().into(this.image);
+        Picasso.with(getContext()).load(this.source.getImageLink().getHref()).fit().centerCrop().into(this.image);
     }
 }

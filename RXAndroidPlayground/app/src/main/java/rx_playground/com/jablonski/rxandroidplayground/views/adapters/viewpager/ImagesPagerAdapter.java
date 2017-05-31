@@ -23,7 +23,7 @@ public class ImagesPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if(provider != null){
+        if(this.provider != null){
             return ImageFragment.getInstance(this.provider.getImage(position));
         }
         return null;
