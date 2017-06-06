@@ -26,7 +26,7 @@
             style="@style/item_manufacturer_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/item_title_size_16sp"
+            android:textSize="@dimen/text_size_large"
             android:textStyle="bold" />
 
         <TextView
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/item_manufacturer_style"
-        android:textSize="@dimen/item_description_size_14sp"
+        android:textSize="@dimen/text_size_medium"
         android:maxLines="2"
         android:ellipsize="marquee" />
     </LinearLayout>

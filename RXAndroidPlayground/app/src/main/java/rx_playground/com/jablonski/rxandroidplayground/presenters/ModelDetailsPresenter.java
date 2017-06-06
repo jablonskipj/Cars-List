@@ -41,6 +41,9 @@ public class ModelDetailsPresenter implements ModelDetailsContract.Presenter, Mo
     @Override
     public void displayModel(Model model) {
         this.model = model;
+        if(this.elements.size() > 0){
+            this.elements.clear();
+        }
         this.elements.add(model);
         this.elements.add(model.getCategory());
         this.elements.add(model.getEngine());
@@ -52,6 +55,10 @@ public class ModelDetailsPresenter implements ModelDetailsContract.Presenter, Mo
     public void displayPhotos(Photo photos) {
         this.photo = photos;
         this.view.displayPhotos();
+    }
+
+    public Photo getPhoto(){
+        return this.photo;
     }
 
     @Override

@@ -1,36 +1,41 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="item_manufacturer_style">
+        <item name="android:paddingRight">@dimen/spacing_medium</item>
+        <item name="android:paddingLeft">@dimen/spacing_medium</item>
+    </style>
+
     <style name="item_text_style">
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">@dimen/spacing_medium</item>
+        <item name="android:paddingLeft">@dimen/spacing_medium</item>
     </style>
 
     <style name="card_item_left_element">
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingLeft">@dimen/spacing_medium</item>
+        <item name="android:paddingBottom">@dimen/spacing_small</item>
         <item name="android:layout_alignParentLeft">true</item>
     </style>
 
     <style name="card_item_right_element">
-        <item name="android:paddingLeft">8dp</item>
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingLeft">@dimen/spacing_small</item>
+        <item name="android:paddingRight">@dimen/spacing_medium</item>
+        <item name="android:paddingBottom">@dimen/spacing_small</item>
         <item name="android:layout_alignParentRight">true</item>
     </style>
 
     <style name="card_item_title_element">
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:paddingTop">24dp</item>
-        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingLeft">@dimen/spacing_medium</item>
+        <item name="android:paddingRight">@dimen/spacing_medium</item>
+        <item name="android:paddingTop">@dimen/spacing_large</item>
+        <item name="android:paddingBottom">@dimen/spacing_medium</item>
     </style>
 
     <style name="ToolBarStyle" parent="Theme.AppCompat">

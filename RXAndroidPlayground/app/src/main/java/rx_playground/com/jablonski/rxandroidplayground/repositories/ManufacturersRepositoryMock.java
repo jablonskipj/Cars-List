@@ -24,7 +24,11 @@ public class ManufacturersRepositoryMock implements ManufacturersViewContract.Re
     public void getManufacturers(String year) {
         List<Manufacturer> manufacturers = new ArrayList<>();
         Manufacturer manu = new Manufacturer("bmw");
-        manu.addModel(new Model("x3"));
+        manu.setName("BMW");
+        Model bmw = new Model("x3");
+        bmw.setNiceName("X3 3.0D");
+        bmw.setSubmodelName("X3 3.0D M");
+        manu.addModel(bmw);
         manufacturers.add(manu);
         manufacturers.add(new Manufacturer("Audi"));
         presenter.displayElements(manufacturers);

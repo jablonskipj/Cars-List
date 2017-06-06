@@ -1,9 +1,10 @@
-package rx_playground.com.jablonski.rxandroidplayground.utils.images;
+package rx_playground.com.jablonski.rxandroidplayground.utils;
 
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.RequiresApi;
 
 import rx_playground.com.jablonski.rxandroidplayground.R;
 
@@ -40,4 +41,18 @@ public class ResourcesUtils {
             return context.getResources().getDrawable(id);
         }
     }
+
+    public static int getColor(Context context, int colorId){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return context.getColor(colorId);
+        }else{
+            return context.getResources().getColor(colorId);
+        }
+    }
+
+    public static String getText(Context context, int stringId){
+        return context.getString(stringId);
+    }
+
+
 }

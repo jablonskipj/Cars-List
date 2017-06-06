@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
-import rx_playground.com.jablonski.rxandroidplayground.utils.images.ResourcesUtils;
+import rx_playground.com.jablonski.rxandroidplayground.utils.ResourcesUtils;
 
 /**
  * Created by yabol on 12.04.2017.

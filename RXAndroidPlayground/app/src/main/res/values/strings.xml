@@ -19,4 +19,5 @@
     <string name="details_vehicle_type">Type: %1$s</string>
     <string name="details_vehicle_doors_number">Doors number: %1$s</string>
     <string name="details_vehicle_driven_wheels">Driven wheels: %1$s</string>
+    <string name="details_title">Details</string>
 </resources>

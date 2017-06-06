@@ -1,5 +1,8 @@
 package rx_playground.com.jablonski.rxandroidplayground.repositories;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -7,6 +10,8 @@ import io.reactivex.schedulers.Schedulers;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelDetailsContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Category;
 import rx_playground.com.jablonski.rxandroidplayground.model.Engine;
+import rx_playground.com.jablonski.rxandroidplayground.model.ImageLink;
+import rx_playground.com.jablonski.rxandroidplayground.model.ImageSource;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.model.Photo;
 import rx_playground.com.jablonski.rxandroidplayground.model.PhotosResult;
@@ -59,7 +64,7 @@ public class ModelDetailsRepositoryMock implements ModelDetailsContract.Reposito
 
     @Override
     public void getModelPhotos(String modelId) {
-        this.connector.getPhotos(modelId).subscribeOn(Schedulers.newThread())
+        /*this.connector.getPhotos(modelId).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<PhotosResult>() {
                     @Override
@@ -81,6 +86,15 @@ public class ModelDetailsRepositoryMock implements ModelDetailsContract.Reposito
                     public void onComplete() {
                         presenter.displayPhotos(photo);
                     }
-                });
+                });*/
+        ImageLink link = new ImageLink("/mazda/3/2015/oem/2015_mazda_3_sedan_s-grand-touring_fq_oem_1_815.jpg");
+        ImageSource source = new ImageSource(link);
+        List<ImageSource> sources = new ArrayList<>();
+        sources.add(source);
+        link = new ImageLink("/mazda/3/2015/oem/2015_mazda_3_4dr-hatchback_i-touring_fq_oem_2_423.jpg");
+        source = new ImageSource(link);
+        sources.add(source);
+        Photo photo = new Photo(sources);
+        presenter.displayPhotos(photo);
     }
 }

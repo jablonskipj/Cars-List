@@ -26,11 +26,12 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
+
         Intent intent = getIntent();
         String styleId = intent.getStringExtra("StyleId");
 
 
-        if(styleId != null) {
+        if(styleId != null && savedInstanceState == null) {
             Log.e("DetailsActivity", styleId);
             ModelDetailsFragment framgnet = new ModelDetailsFragment();
             Bundle args = new Bundle();
@@ -47,6 +48,7 @@ public class DetailsActivity extends AppCompatActivity {
     private void showFragment(Fragment fragment){
         this.manager.beginTransaction().add(R.id.fragmentContainer, fragment, null).commitAllowingStateLoss();
     }
+
 
 
 

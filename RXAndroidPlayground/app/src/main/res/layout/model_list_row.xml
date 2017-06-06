@@ -9,7 +9,7 @@
         style="@style/card_item_title_element"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/item_model_name_text_size_24sp"/>
+        android:textSize="@dimen/text_size_xxlarge"/>
 
     <TextView
         android:id="@+id/numberOfDoors"

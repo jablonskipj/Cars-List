@@ -10,6 +10,10 @@ import android.os.Parcelable;
 public class ImageLink implements Parcelable {
     private String href;
 
+    public ImageLink(String href){
+        this.href = href;
+    }
+
     private ImageLink(Parcel in) {
         href = in.readString();
     }

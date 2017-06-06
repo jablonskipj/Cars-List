@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/details_engine_title"
-        android:textSize="@dimen/item_title_size_16sp"/>
+        android:textSize="@dimen/text_size_large"/>
 
     <TextView
         android:id="@+id/engineName"
@@ -21,7 +21,7 @@
         android:layout_below="@id/engineTitle"
         android:layout_toLeftOf="@+id/engineCompression"
         android:layout_toStartOf="@id/engineCompression"
-        android:textSize="@dimen/item_description_size_14sp" />
+        android:textSize="@dimen/text_size_medium" />
 
     <TextView
         android:id="@id/engineCompression"
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/engineTitle"
-        android:textSize="@dimen/item_description_size_14sp" />
+        android:textSize="@dimen/text_size_medium" />
 
     <TextView
         android:id="@+id/engineCylindersCount"
@@ -39,7 +39,7 @@
         android:layout_below="@id/engineName"
         android:layout_toLeftOf="@+id/engineSize"
         android:layout_toStartOf="@id/engineSize"
-        android:textSize="@dimen/item_description_size_14sp" />
+        android:textSize="@dimen/text_size_medium" />
 
     <TextView
         android:id="@id/engineSize"
@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/engineName"
-        android:textSize="@dimen/item_description_size_14sp" />
+        android:textSize="@dimen/text_size_medium" />
 
     <TextView
         android:id="@+id/engineDisplacement"
@@ -57,7 +57,7 @@
         android:layout_below="@id/engineCylindersCount"
         android:layout_toLeftOf="@+id/engineConfiguration"
         android:layout_toStartOf="@id/engineConfiguration"
-        android:textSize="@dimen/item_description_size_14sp" />
+        android:textSize="@dimen/text_size_medium" />
 
     <TextView
         android:id="@id/engineConfiguration"
@@ -65,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/engineCylindersCount"
-        android:textSize="@dimen/item_description_size_14sp" />
+        android:textSize="@dimen/text_size_medium" />
 
     <TextView
         android:id="@+id/engineHorsePower"
@@ -75,7 +75,7 @@
         android:layout_below="@id/engineDisplacement"
         android:layout_toLeftOf="@+id/engineTorque"
         android:layout_toStartOf="@id/engineTorque"
-        android:textSize="@dimen/item_description_size_14sp" />
+        android:textSize="@dimen/text_size_medium" />
 
     <TextView
         android:id="@id/engineTorque"
@@ -83,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/engineDisplacement"
-        android:textSize="@dimen/item_description_size_14sp" />
+        android:textSize="@dimen/text_size_medium" />
 
 
 </RelativeLayout>

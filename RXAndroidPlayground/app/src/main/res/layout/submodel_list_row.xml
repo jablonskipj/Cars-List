@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:textSize="@dimen/item_title_size_16sp"
+        android:textSize="@dimen/text_size_large"
         android:maxLines="1"
         style="@style/item_text_style"/>
     <TextView
@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
-        android:textSize="@dimen/item_description_size_14sp"
+        android:textSize="@dimen/text_size_medium"
         android:maxLines="1"
         style="@style/item_text_style"/>
 

@@ -28,6 +28,9 @@ public class ImageSource implements Parcelable {
         }
     };
 
+    public ImageSource(ImageLink link){
+        this.imageLink = link;
+    }
     private ImageSource(Parcel in){
         this.photosCount = in.readInt();
         this.extension = in.readString();
