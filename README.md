@@ -12,3 +12,7 @@ List of libraries that are in use:
 - Picasso
 - JUnit
 - Espresso
+
+App consumes Edmunds Vechicle API:
+
+http://edmunds.mashery.com/

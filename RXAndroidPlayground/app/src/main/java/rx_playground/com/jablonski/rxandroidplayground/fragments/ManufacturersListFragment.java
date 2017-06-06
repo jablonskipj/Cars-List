@@ -1,12 +1,10 @@
 package rx_playground.com.jablonski.rxandroidplayground.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +12,14 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.activities.MainActivity;
-import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ManufacturersViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
 import rx_playground.com.jablonski.rxandroidplayground.presenters.ManufacturersListPresenter;
 import rx_playground.com.jablonski.rxandroidplayground.repositories.ManufacturersRepository;
-import rx_playground.com.jablonski.rxandroidplayground.views.adapters.ManufacturersListAdapter;
+import rx_playground.com.jablonski.rxandroidplayground.repositories.ManufacturersRepositoryMock;
+import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.ManufacturersListAdapter;
 
 /**
  * Created by yabol on 06.04.2017.
@@ -33,19 +29,21 @@ public class ManufacturersListFragment extends BaseListFragment implements Manuf
     private ManufacturersListPresenter presenter;
     private ManufacturersListAdapter adapter;
 
-
-    MainActivity activity;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
         activity = (MainActivity) getActivity();
         if(this.presenter == null){
             this.presenter = new ManufacturersListPresenter(this);
-            ManufacturersRepository repository = new ManufacturersRepository(this.presenter);
+            //ManufacturersRepository repository = new ManufacturersRepository(this.presenter);
+            ManufacturersRepositoryMock repository = new ManufacturersRepositoryMock(this.presenter);
             this.presenter.setRepository(repository);
         }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
     }
 
     @Nullable

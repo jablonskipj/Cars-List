@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,11 @@ import java.util.List;
  * Created by yabol on 08.04.2017.
  */
 
-public class Model implements Parcelable {
+public class Model implements Parcelable, ListElement {
+    public static final String MODEL_NAME = "modelName";
+    public static final String MODEL_DRIVEN_WHEELS = "drivenWheels";
+    public static final String MODEL_NUMBER_OF_DOORS = "numberOfDoors";
+
     @SerializedName("id")
     private String id;
     @SerializedName("name")
@@ -23,6 +28,12 @@ public class Model implements Parcelable {
     private List<Model> submodels;
     @SerializedName("trim")
     private String submodelName;
+    private Engine engine;
+    private Transmission transmission;
+    private Category category;
+    private int numberOfDoors;
+    private String drivenWheels;
+
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator<Model>() {
 
@@ -66,15 +77,19 @@ public class Model implements Parcelable {
         });
     }
 
-    public void addSubmodel(Model model){
-        if(this.submodels == null){
+    public void addSubmodel(Model model) {
+        if (this.submodels == null) {
             this.submodels = new ArrayList<>();
         }
         this.submodels.add(model);
     }
 
-    public void setId(String id){
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public String getId() {
+        return this.id;
     }
 
     public String getNiceName() {
@@ -107,5 +122,60 @@ public class Model implements Parcelable {
 
     public void setSubmodelName(String submodelName) {
         this.submodelName = submodelName;
+    }
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
+    public Transmission getTransmission() {
+        return transmission;
+    }
+
+    public void setTransmission(Transmission transmission) {
+        this.transmission = transmission;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public int getNumberOfDoors() {
+        return numberOfDoors;
+    }
+
+    public void setNumberOfDoors(int numberOfDoors) {
+        this.numberOfDoors = numberOfDoors;
+    }
+
+    public String getDrivenWheels() {
+        return drivenWheels;
+    }
+
+    public void setDrivenWheels(String drivenWheels) {
+        this.drivenWheels = drivenWheels;
+    }
+
+    @Override
+    public int getViewType() {
+        return 0;
+    }
+
+    @Override
+    public RowConfig getRowConfig() {
+        NumberFormat integerFormat = NumberFormat.getIntegerInstance();
+        RowConfig config = new RowConfig();
+        config.addValue(MODEL_NAME, this.name);
+        config.addValue(MODEL_DRIVEN_WHEELS, this.drivenWheels);
+        config.addValue(MODEL_NUMBER_OF_DOORS, integerFormat.format(this.numberOfDoors));
+        return config;
     }
 }

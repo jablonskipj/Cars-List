@@ -20,10 +20,10 @@ import rx_playground.com.jablonski.rxandroidplayground.network.NetworkConnector;
 
 public class ManufacturersRepository implements ManufacturersViewContract.Repository {
     private NetworkConnector connector;
-    private BaseViewCotract.BasePresenter presenter;
+    private ManufacturersViewContract.Presenter presenter;
     private List<Manufacturer> manufacturers;
 
-    public ManufacturersRepository(BaseViewCotract.BasePresenter presenter){
+    public ManufacturersRepository(ManufacturersViewContract.Presenter presenter){
         this.connector = new NetworkConnector();
         this.presenter = presenter;
     }
@@ -45,7 +45,7 @@ public class ManufacturersRepository implements ManufacturersViewContract.Reposi
 
             @Override
             public void onError(Throwable e) {
-                Log.e("Excepion", e.getMessage());
+                Log.e("Exception", e.getMessage());
             }
 
             @Override

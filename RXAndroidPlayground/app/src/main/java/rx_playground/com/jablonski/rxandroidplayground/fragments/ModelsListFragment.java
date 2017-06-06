@@ -20,7 +20,7 @@ import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelsViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.presenters.ModelsListPresenter;
-import rx_playground.com.jablonski.rxandroidplayground.views.adapters.CarsListAdapter;
+import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.CarsListAdapter;
 
 /**
  * Created by yabol on 14.04.2017.
@@ -30,23 +30,14 @@ public class ModelsListFragment extends BaseListFragment implements ModelsViewCo
     private ModelsListPresenter presenter;
     private CarsListAdapter adapter;
     private ArrayList<Model> models;
-    private MainActivity activity;
     private String manufacturer;
-
-   /* @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;*/
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        activity = (MainActivity) getActivity();
-
         Bundle bundle = getArguments();
-        setRetainInstance(true);
 
         proceedBundle(bundle);
         if(savedInstanceState != null){

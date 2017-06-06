@@ -4,8 +4,12 @@ import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import rx_playground.com.jablonski.rxandroidplayground.model.ModelDetailsResult;
 import rx_playground.com.jablonski.rxandroidplayground.model.ModelsResult;
+import rx_playground.com.jablonski.rxandroidplayground.model.PhotosResult;
 import rx_playground.com.jablonski.rxandroidplayground.model.Result;
+
+import static rx_playground.com.jablonski.rxandroidplayground.network.CarsAPI.VEHICLES_API_KEY;
 
 /**
  * Created by yabol on 08.04.2017.
@@ -19,4 +23,10 @@ public interface CarsAPI {
 
     @GET("api/vehicle/v2/{manufacturer}/models?state=used&view=basic&fmt=json&api_key=" + VEHICLES_API_KEY)
     Observable<ModelsResult> getSubmodels(@Path("manufacturer") String manufacturer, @Query("submodel") String modelNiceName, @Query("year") String year);
+
+    @GET("api/vehicle/v2/styles/{styleID}?view=full&fmt=json&api_key=" + VEHICLES_API_KEY)
+    Observable<ModelDetailsResult> getModelDetails(@Path("styleID") String styleID);
+
+    @GET("api/media/v2/styles/{styleId}/photos?height=267&pagenum=1&pagesize=10&view=basic&fmt=json&api_key=" + VEHICLES_API_KEY)
+    Observable<PhotosResult> getCarPhotos(@Path("styleId") String styleId);
 }

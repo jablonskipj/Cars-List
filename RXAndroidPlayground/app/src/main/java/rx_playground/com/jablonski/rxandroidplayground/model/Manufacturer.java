@@ -21,34 +21,8 @@ public class Manufacturer implements Parcelable {
     @SerializedName("id")
     private int id;
     @SerializedName("models")
-    ArrayList<Model> models;
+    private ArrayList<Model> models;
 
-    public Manufacturer(String niceName){
-        this.niceName = niceName;
-    }
-    public Manufacturer(){
-
-    }
-
-    public void addModel(Model model){
-        if(models == null) models = new ArrayList<>();
-
-        models.add(model);
-    }
-
-    public String getName(){
-        return this.name;
-    }
-    public String getNiceName(){
-        return this.niceName;
-    }
-
-    public String getManufactureName(){
-        return this.niceName == null ? this.name : this.niceName;
-    }
-    public ArrayList<Model>getModels(){
-        return this.models;
-    }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator<Manufacturer>(){
 
@@ -88,6 +62,44 @@ public class Manufacturer implements Parcelable {
                 this.country
         });
         dest.writeList(models);
+    }
+
+    public Manufacturer(String niceName){
+        this.niceName = niceName;
+    }
+
+    public Manufacturer(){
+
+    }
+
+    public void addModel(Model model){
+        if(models == null) models = new ArrayList<>();
+
+        models.add(model);
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getNiceName(){
+        return this.niceName;
+    }
+
+    public void setNiceName(String niceName){
+        this.niceName = niceName;
+    }
+
+    public String getManufactureName(){
+        return this.niceName == null ? this.name : this.niceName;
+    }
+
+    public ArrayList<Model>getModels(){
+        return this.models;
     }
 
     public String getCountry() {

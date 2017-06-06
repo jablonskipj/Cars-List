@@ -1,4 +1,4 @@
-package rx_playground.com.jablonski.rxandroidplayground.views.adapters;
+package rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,15 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
-import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
-import rx_playground.com.jablonski.rxandroidplayground.presenters.SubmodelsListPresenter;
 
 /**
  * Created by yabol on 26.04.2017.

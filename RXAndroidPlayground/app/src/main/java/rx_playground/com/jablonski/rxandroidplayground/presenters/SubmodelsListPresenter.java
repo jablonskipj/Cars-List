@@ -56,6 +56,6 @@ public class SubmodelsListPresenter implements SubmodelsViewContract.Presenter, 
 
     @Override
     public void performClick(Model object) {
-
+        view.openModelDetails(object.getId());
     }
 }

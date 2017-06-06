@@ -1,4 +1,4 @@
-package rx_playground.com.jablonski.rxandroidplayground.views.adapters;
+package rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -36,6 +36,11 @@ public class CarsListAdapter extends RecyclerView.Adapter<CarsListAdapter.ViewHo
         View row = LayoutInflater.from(this.context).inflate(R.layout.car_list_row, parent, false);
 
         return new ViewHolder(row);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
     }
 
     @Override
