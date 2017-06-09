@@ -11,8 +11,10 @@ List of libraries that are in use:
 - OkHttp
 - Picasso
 - JUnit
-- Espresso
 
 App consumes Edmunds Vechicle API:
 
 http://edmunds.mashery.com/
+
+
+Unfortunatley there is an limitation in Edmunds api to maximum 25 requests per day but I am working with it and soon there should be a solution.

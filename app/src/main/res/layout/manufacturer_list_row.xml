@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="72dp">
+
+    <ImageView
+        android:id="@+id/manufacturerLogo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="0dp"
+        android:paddingEnd="0dp"
+        android:scaleType="fitCenter"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/manufacturerLogo"
+        android:layout_toEndOf="@id/manufacturerLogo"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/manufacturerName"
+            style="@style/item_manufacturer_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold" />
+
+        <TextView
+        android:id="@+id/manufacturerFullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/item_manufacturer_style"
+        android:textSize="@dimen/text_size_medium"
+        android:maxLines="2"
+        android:ellipsize="marquee" />
+    </LinearLayout>
+
+</RelativeLayout>
