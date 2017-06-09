@@ -34,8 +34,8 @@ public class SubmdelsListFragment extends BaseListFragment implements SubmodelsV
         super.onCreate(savedInstanceState);
 
         presenter = new SubmodelsListPresenter(this);
-        //SubmodelsRepository repository = new SubmodelsRepository(presenter);
-        SubmodelReposioryMock repository = new SubmodelReposioryMock(presenter);
+        SubmodelsRepository repository = new SubmodelsRepository(presenter);
+        //SubmodelReposioryMock repository = new SubmodelReposioryMock(presenter);
         presenter.setRepository(repository);
     }
 

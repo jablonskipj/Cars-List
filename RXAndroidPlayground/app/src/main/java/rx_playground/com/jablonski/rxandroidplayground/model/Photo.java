@@ -3,6 +3,7 @@ package rx_playground.com.jablonski.rxandroidplayground.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,6 +14,10 @@ public class Photo implements Parcelable{
     private String title;
     private String category;
     private List<ImageSource> sources;
+
+    public Photo(){
+        this.sources = new ArrayList<>();
+    }
 
     public Photo(List<ImageSource> sources){
         this.sources = sources;
@@ -49,6 +54,13 @@ public class Photo implements Parcelable{
     @Override
     public int describeContents() {
         return 0;
+    }
+
+    public void addPhotoSources(List<ImageSource> sources){
+        if(this.sources == null){
+            this.sources = new ArrayList<>();
+        }
+        this.sources.addAll(sources);
     }
 
     @Override

@@ -53,8 +53,8 @@ public class ModelDetailsFragment extends Fragment implements ModelDetailsContra
         super.onCreate(savedInstanceState);
 
         this.presenter = new ModelDetailsPresenter(this);
-        //ModelDetailsRepository repository = new ModelDetailsRepository(this.presenter);
-        ModelDetailsRepositoryMock repository = new ModelDetailsRepositoryMock(this.presenter);
+        ModelDetailsRepository repository = new ModelDetailsRepository(this.presenter);
+        //ModelDetailsRepositoryMock repository = new ModelDetailsRepositoryMock(this.presenter);
         this.presenter.setRepository(repository);
 
         Bundle args = getArguments();

@@ -8,7 +8,6 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
 import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelDetailsContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.model.ModelDetailsResult;
@@ -25,7 +24,7 @@ public class ModelDetailsRepository implements ModelDetailsContract.Repository{
     private NetworkConnector connector;
     private Model model;
     private ModelDetailsContract.Presenter presenter;
-    private Photo photo;
+    private Photo resultPhoto;
 
     public ModelDetailsRepository(ModelDetailsContract.Presenter presenter){
         this.connector = new NetworkConnector();
@@ -78,7 +77,11 @@ public class ModelDetailsRepository implements ModelDetailsContract.Repository{
 
                     @Override
                     public void onNext(PhotosResult photosResult) {
-                        photo = photosResult.getPhotos().get(0);
+                        List<Photo> photos = photosResult.getPhotos();
+                        resultPhoto = new Photo();
+                        for(Photo singlePhoto: photos){
+                            resultPhoto.addPhotoSources(singlePhoto.getSources());
+                        }
                     }
 
                     @Override
@@ -88,7 +91,7 @@ public class ModelDetailsRepository implements ModelDetailsContract.Repository{
 
                     @Override
                     public void onComplete() {
-                        presenter.displayPhotos(photo);
+                        presenter.displayPhotos(resultPhoto);
                     }
                 });
     }
