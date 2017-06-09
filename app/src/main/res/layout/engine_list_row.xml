@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/engineTitle"
+        style="@style/card_item_title_element"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/details_engine_title"
+        android:textSize="@dimen/text_size_large"/>
+
+    <TextView
+        android:id="@+id/engineName"
+        style="@style/card_item_left_element"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/engineTitle"
+        android:layout_toLeftOf="@+id/engineCompression"
+        android:layout_toStartOf="@id/engineCompression"
+        android:textSize="@dimen/text_size_medium" />
+
+    <TextView
+        android:id="@id/engineCompression"
+        style="@style/card_item_right_element"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/engineTitle"
+        android:textSize="@dimen/text_size_medium" />
+
+    <TextView
+        android:id="@+id/engineCylindersCount"
+        style="@style/card_item_left_element"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/engineName"
+        android:layout_toLeftOf="@+id/engineSize"
+        android:layout_toStartOf="@id/engineSize"
+        android:textSize="@dimen/text_size_medium" />
+
+    <TextView
+        android:id="@id/engineSize"
+        style="@style/card_item_right_element"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/engineName"
+        android:textSize="@dimen/text_size_medium" />
+
+    <TextView
+        android:id="@+id/engineDisplacement"
+        style="@style/card_item_left_element"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/engineCylindersCount"
+        android:layout_toLeftOf="@+id/engineConfiguration"
+        android:layout_toStartOf="@id/engineConfiguration"
+        android:textSize="@dimen/text_size_medium" />
+
+    <TextView
+        android:id="@id/engineConfiguration"
+        style="@style/card_item_right_element"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/engineCylindersCount"
+        android:textSize="@dimen/text_size_medium" />
+
+    <TextView
+        android:id="@+id/engineHorsePower"
+        style="@style/card_item_left_element"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/engineDisplacement"
+        android:layout_toLeftOf="@+id/engineTorque"
+        android:layout_toStartOf="@id/engineTorque"
+        android:textSize="@dimen/text_size_medium" />
+
+    <TextView
+        android:id="@id/engineTorque"
+        style="@style/card_item_right_element"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/engineDisplacement"
+        android:textSize="@dimen/text_size_medium" />
+
+
+</RelativeLayout>

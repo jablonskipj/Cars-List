@@ -1,0 +1,26 @@
+<resources>
+    <style name="item_manufacturer_style">
+        <item name="android:paddingEnd">@dimen/spacing_medium</item>
+        <item name="android:paddingStart">@dimen/spacing_medium</item>
+    </style>
+
+    <style name="card_item_left_element">
+        <item name="android:paddingStart">@dimen/spacing_medium</item>
+        <item name="android:layout_alignParentStart">true</item>
+    </style>
+
+    <style name="card_item_right_element">
+        <item name="android:paddingStart">@dimen/spacing_small</item>
+        <item name="android:paddingEnd">@dimen/spacing_medium</item>
+        <item name="android:paddingBottom">@dimen/spacing_small</item>
+        <item name="android:layout_alignParentEnd">true</item>
+    </style>
+    <style name="card_item_title_element">
+        <item name="android:paddingStart">@dimen/spacing_medium</item>
+        <item name="android:paddingEnd">@dimen/spacing_medium</item>
+        <item name="android:paddingTop">@dimen/spacing_large</item>
+        <item name="android:paddingBottom">@dimen/spacing_medium</item>
+    </style>
+
+
+</resources>

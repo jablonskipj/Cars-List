@@ -1,0 +1,40 @@
+{
+  "models": [
+    {
+      "id": "BMW_3_Series",
+      "name": "3 Series",
+      "niceName": "3-series"
+    },
+    {
+      "id": "BMW_5_Series",
+      "name": "5 Series",
+      "niceName": "5-series"
+    },
+    {
+      "id": "BMW_6_Series_Gran_Coupe",
+      "name": "6 Series Gran Coupe",
+      "niceName": "6-series-gran-coupe"
+    },
+    {
+      "id": "BMW_7_Series",
+      "name": "7 Series",
+      "niceName": "7-series"
+    },
+    {
+      "id": "BMW_ALPINA_B7",
+      "name": "ALPINA B7",
+      "niceName": "alpina-b7"
+    },
+    {
+      "id": "BMW_ActiveHybrid_7",
+      "name": "ActiveHybrid 7",
+      "niceName": "activehybrid-7"
+    },
+    {
+      "id": "BMW_M5",
+      "name": "M5",
+      "niceName": "m5"
+    }
+  ],
+  "modelsCount": 7
+}
