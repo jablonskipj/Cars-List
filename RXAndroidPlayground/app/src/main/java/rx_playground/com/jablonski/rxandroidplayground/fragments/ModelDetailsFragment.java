@@ -91,6 +91,12 @@ public class ModelDetailsFragment extends Fragment implements ModelDetailsContra
         this.toolbarLayout.setContentScrimColor(primary);
         this.toolbarLayout.setStatusBarScrimColor(primaryDark);
         this.toolbarLayout.setCollapsedTitleTextColor(collapsedTextColor);
+        this.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
     }
 
     @Override

@@ -28,7 +28,8 @@
                 android:layout_height="?attr/actionBarSize"
                 android:elevation="4dp"
                 app:theme="@style/ToolBarStyle"
-                app:layout_collapseMode="pin" />
+                app:layout_collapseMode="pin"
+                app:navigationIcon="?attr/homeAsUpIndicator"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
