@@ -2,7 +2,7 @@ package rx_playground.com.jablonski.rxandroidplayground.manufacturers;
 
 import java.util.List;
 
-import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
+import rx_playground.com.jablonski.rxandroidplayground.mvp.BaseViewCotract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
 

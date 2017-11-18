@@ -1,4 +1,4 @@
-package rx_playground.com.jablonski.rxandroidplayground.contracts;
+package rx_playground.com.jablonski.rxandroidplayground.mvp;
 
 import java.util.List;
 

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import rx_playground.com.jablonski.rxandroidplayground.R;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelDetailsContract;
+import rx_playground.com.jablonski.rxandroidplayground.modeldetails.ModelDetailsContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.RowConfig;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.holder.BaseDetailViewHolder;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.holder.CategoryViewHolder;

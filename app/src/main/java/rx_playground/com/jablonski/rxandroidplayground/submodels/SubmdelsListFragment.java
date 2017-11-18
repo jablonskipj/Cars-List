@@ -1,4 +1,4 @@
-package rx_playground.com.jablonski.rxandroidplayground.fragments;
+package rx_playground.com.jablonski.rxandroidplayground.submodels;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rx_playground.com.jablonski.rxandroidplayground.activities.DetailsActivity;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.SubmodelsViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.mvp.BaseListFragment;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
-import rx_playground.com.jablonski.rxandroidplayground.presenters.SubmodelsListPresenter;
-import rx_playground.com.jablonski.rxandroidplayground.repositories.SubmodelReposioryMock;
-import rx_playground.com.jablonski.rxandroidplayground.repositories.SubmodelsRepository;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.SubmodelsListAdapter;
 
 /**

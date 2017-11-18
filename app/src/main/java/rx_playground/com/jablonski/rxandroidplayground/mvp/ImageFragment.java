@@ -1,4 +1,4 @@
-package rx_playground.com.jablonski.rxandroidplayground.fragments;
+package rx_playground.com.jablonski.rxandroidplayground.mvp;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,7 +13,6 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
-import rx_playground.com.jablonski.rxandroidplayground.model.ImageLink;
 import rx_playground.com.jablonski.rxandroidplayground.model.ImageSource;
 
 /**

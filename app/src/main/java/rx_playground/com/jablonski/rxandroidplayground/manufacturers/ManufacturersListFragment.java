@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rx_playground.com.jablonski.rxandroidplayground.activities.MainActivity;
-import rx_playground.com.jablonski.rxandroidplayground.fragments.BaseListFragment;
-import rx_playground.com.jablonski.rxandroidplayground.fragments.ModelsListFragment;
+import rx_playground.com.jablonski.rxandroidplayground.mvp.BaseListFragment;
+import rx_playground.com.jablonski.rxandroidplayground.modellist.ModelsListFragment;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.ManufacturersListAdapter;

@@ -1,6 +1,5 @@
-package rx_playground.com.jablonski.rxandroidplayground.fragments;
+package rx_playground.com.jablonski.rxandroidplayground.mvp;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,7 +15,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.activities.MainActivity;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
 
 /**
  * Created by yabol on 26.04.2017.
@@ -24,11 +22,11 @@ import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract
 
 public abstract class BaseListFragment extends Fragment {
     @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
+    protected  RecyclerView recyclerView;
     @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
+    protected SwipeRefreshLayout refreshLayout;
 
-    MainActivity activity;
+    protected MainActivity activity;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

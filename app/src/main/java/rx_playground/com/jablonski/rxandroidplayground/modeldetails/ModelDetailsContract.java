@@ -1,4 +1,4 @@
-package rx_playground.com.jablonski.rxandroidplayground.contracts;
+package rx_playground.com.jablonski.rxandroidplayground.modeldetails;
 
 import android.support.v4.app.Fragment;
 

@@ -1,18 +1,15 @@
 package rx_playground.com.jablonski.rxandroidplayground.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
 
 import rx_playground.com.jablonski.rxandroidplayground.R;
-import rx_playground.com.jablonski.rxandroidplayground.fragments.ModelDetailsFragment;
+import rx_playground.com.jablonski.rxandroidplayground.modeldetails.ModelDetailsFragment;
 
 /**
  * Created by yabol on 09.05.2017.

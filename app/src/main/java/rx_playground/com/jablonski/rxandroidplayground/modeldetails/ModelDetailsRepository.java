@@ -1,4 +1,4 @@
-package rx_playground.com.jablonski.rxandroidplayground.repositories;
+package rx_playground.com.jablonski.rxandroidplayground.modeldetails;
 
 import android.util.Log;
 
@@ -8,7 +8,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelDetailsContract;
+import rx_playground.com.jablonski.rxandroidplayground.modeldetails.ModelDetailsContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.model.ModelDetailsResult;
 import rx_playground.com.jablonski.rxandroidplayground.model.Photo;

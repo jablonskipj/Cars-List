@@ -1,11 +1,8 @@
-package rx_playground.com.jablonski.rxandroidplayground.fragments;
+package rx_playground.com.jablonski.rxandroidplayground.modellist;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +10,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import rx_playground.com.jablonski.rxandroidplayground.activities.MainActivity;
-import rx_playground.com.jablonski.rxandroidplayground.R;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelsViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.mvp.BaseListFragment;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
-import rx_playground.com.jablonski.rxandroidplayground.presenters.ModelsListPresenter;
+import rx_playground.com.jablonski.rxandroidplayground.submodels.SubmdelsListFragment;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.CarsListAdapter;
 
 /**

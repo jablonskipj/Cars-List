@@ -1,4 +1,4 @@
-package rx_playground.com.jablonski.rxandroidplayground.repositories;
+package rx_playground.com.jablonski.rxandroidplayground.submodels;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.SubmodelsViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.submodels.SubmodelsViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.model.ModelsResult;
 import rx_playground.com.jablonski.rxandroidplayground.network.NetworkConnector;

@@ -1,9 +1,8 @@
-package rx_playground.com.jablonski.rxandroidplayground.presenters;
+package rx_playground.com.jablonski.rxandroidplayground.modellist;
 
 import java.util.List;
 
-import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelsViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.mvp.BaseViewCotract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 
 /**

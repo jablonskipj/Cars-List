@@ -1,12 +1,11 @@
 package rx_playground.com.jablonski.rxandroidplayground.views.adapters.viewpager;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelDetailsContract;
-import rx_playground.com.jablonski.rxandroidplayground.fragments.ImageFragment;
+import rx_playground.com.jablonski.rxandroidplayground.modeldetails.ModelDetailsContract;
+import rx_playground.com.jablonski.rxandroidplayground.mvp.ImageFragment;
 
 /**
  * Created by yabol on 27.05.2017.

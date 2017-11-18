@@ -1,4 +1,4 @@
-package rx_playground.com.jablonski.rxandroidplayground.repositories;
+package rx_playground.com.jablonski.rxandroidplayground.manufacturers;
 
 import java.util.ArrayList;
 import java.util.List;

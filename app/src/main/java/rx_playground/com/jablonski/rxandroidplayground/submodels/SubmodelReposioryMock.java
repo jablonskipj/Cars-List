@@ -1,9 +1,9 @@
-package rx_playground.com.jablonski.rxandroidplayground.repositories;
+package rx_playground.com.jablonski.rxandroidplayground.submodels;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import rx_playground.com.jablonski.rxandroidplayground.contracts.SubmodelsViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.submodels.SubmodelsViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 
 /**

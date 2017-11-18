@@ -1,16 +1,14 @@
-package rx_playground.com.jablonski.rxandroidplayground.presenters;
+package rx_playground.com.jablonski.rxandroidplayground.modeldetails;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.ModelDetailsContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.ImageSource;
 import rx_playground.com.jablonski.rxandroidplayground.model.ListElement;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.model.Photo;
 import rx_playground.com.jablonski.rxandroidplayground.model.RowConfig;
-import rx_playground.com.jablonski.rxandroidplayground.repositories.ModelDetailsRepository;
+import rx_playground.com.jablonski.rxandroidplayground.modeldetails.ModelDetailsContract;
 
 /**
  * Created by yabol on 16.05.2017.
