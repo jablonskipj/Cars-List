@@ -1,9 +1,9 @@
-package rx_playground.com.jablonski.rxandroidplayground.presenters;
+package rx_playground.com.jablonski.rxandroidplayground.manufacturers;
 
 import java.util.List;
 
 import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.ManufacturersViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.manufacturers.ManufacturersViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
 
 /**

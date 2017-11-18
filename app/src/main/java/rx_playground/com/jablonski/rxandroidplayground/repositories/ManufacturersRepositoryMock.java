@@ -3,12 +3,10 @@ package rx_playground.com.jablonski.rxandroidplayground.repositories;
 import java.util.ArrayList;
 import java.util.List;
 
-import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.ManufacturersViewContract;
-import rx_playground.com.jablonski.rxandroidplayground.fragments.ManufacturersListFragment;
+import rx_playground.com.jablonski.rxandroidplayground.manufacturers.ManufacturersViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
-import rx_playground.com.jablonski.rxandroidplayground.presenters.ManufacturersListPresenter;
+import rx_playground.com.jablonski.rxandroidplayground.manufacturers.ManufacturersListPresenter;
 
 /**
  * Created by yabol on 13.04.2017.

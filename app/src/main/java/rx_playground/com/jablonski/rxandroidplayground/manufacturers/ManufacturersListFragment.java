@@ -1,4 +1,4 @@
-package rx_playground.com.jablonski.rxandroidplayground.fragments;
+package rx_playground.com.jablonski.rxandroidplayground.manufacturers;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,12 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rx_playground.com.jablonski.rxandroidplayground.activities.MainActivity;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.ManufacturersViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.fragments.BaseListFragment;
+import rx_playground.com.jablonski.rxandroidplayground.fragments.ModelsListFragment;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
-import rx_playground.com.jablonski.rxandroidplayground.presenters.ManufacturersListPresenter;
-import rx_playground.com.jablonski.rxandroidplayground.repositories.ManufacturersRepository;
-import rx_playground.com.jablonski.rxandroidplayground.repositories.ManufacturersRepositoryMock;
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.ManufacturersListAdapter;
 
 /**

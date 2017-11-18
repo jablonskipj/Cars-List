@@ -1,4 +1,4 @@
-package rx_playground.com.jablonski.rxandroidplayground.repositories;
+package rx_playground.com.jablonski.rxandroidplayground.manufacturers;
 
 import android.util.Log;
 
@@ -8,8 +8,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.BaseViewCotract;
-import rx_playground.com.jablonski.rxandroidplayground.contracts.ManufacturersViewContract;
+import rx_playground.com.jablonski.rxandroidplayground.manufacturers.ManufacturersViewContract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
 import rx_playground.com.jablonski.rxandroidplayground.model.Result;
 import rx_playground.com.jablonski.rxandroidplayground.network.NetworkConnector;

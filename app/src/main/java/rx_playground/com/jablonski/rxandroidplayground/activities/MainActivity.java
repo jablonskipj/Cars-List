@@ -14,7 +14,7 @@ import android.util.Log;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx_playground.com.jablonski.rxandroidplayground.R;
-import rx_playground.com.jablonski.rxandroidplayground.fragments.ManufacturersListFragment;
+import rx_playground.com.jablonski.rxandroidplayground.manufacturers.ManufacturersListFragment;
 
 public class MainActivity extends AppCompatActivity {
     FragmentManager manager;
