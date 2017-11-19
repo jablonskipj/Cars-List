@@ -109,13 +109,22 @@ public class ModelDetailsFragment extends Fragment implements ModelDetailsContra
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        this.presenter.loadModelData(this.modelId);
-        if (savedInstanceState != null) {
-            this.presenter.displayModel((Model) savedInstanceState.getParcelable(EXTRA_MODEL));
-            this.presenter.displayPhotos((Photo) savedInstanceState.getParcelable(EXTRA_IMAGE));
-            this.imagePager.setCurrentItem(savedInstanceState.getInt(EXTRA_CURRENT_IMAGE));
-        }
+        processInstanceState(savedInstanceState);
+    }
 
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        processInstanceState(savedInstanceState);
+    }
+
+    private void processInstanceState(Bundle instanceState){
+        this.presenter.loadModelData(this.modelId);
+        if (instanceState != null) {
+            this.presenter.displayModel((Model) instanceState.getParcelable(EXTRA_MODEL));
+            this.presenter.displayPhotos((Photo) instanceState.getParcelable(EXTRA_IMAGE));
+            this.imagePager.setCurrentItem(instanceState.getInt(EXTRA_CURRENT_IMAGE));
+        }
     }
 
 

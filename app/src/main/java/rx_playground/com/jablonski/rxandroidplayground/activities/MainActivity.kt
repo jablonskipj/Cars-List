@@ -13,7 +13,7 @@ import rx_playground.com.jablonski.rxandroidplayground.manufacturers.Manufacture
 
 class MainActivity : AppCompatActivity() {
     lateinit var manager: FragmentManager
-    var actionBar: ActionBar? = null
+    private var actionBar: ActionBar? = null
     lateinit var toolbar: Toolbar
 
 
@@ -64,8 +64,8 @@ class MainActivity : AppCompatActivity() {
     private fun manageToolbarBackButton(manager: FragmentManager) {
         val fragmentsCount = manager.backStackEntryCount
         if (fragmentsCount > 0) {
-            actionBar!!.setDisplayShowHomeEnabled(true)
-            actionBar!!.setDisplayHomeAsUpEnabled(true)
+            actionBar?.setDisplayShowHomeEnabled(true)
+            actionBar?.setDisplayHomeAsUpEnabled(true)
         }
     }
 
@@ -74,8 +74,8 @@ class MainActivity : AppCompatActivity() {
 
         Log.e("MainActivity", "BackPress fragments count: " + fragmentsCount)
         if (fragmentsCount == 2) {
-            actionBar!!.setDisplayHomeAsUpEnabled(false)
-            actionBar!!.setDisplayShowHomeEnabled(false)
+            actionBar?.setDisplayHomeAsUpEnabled(false)
+            actionBar?.setDisplayShowHomeEnabled(false)
         }
 
         if (fragmentsCount == 1) {

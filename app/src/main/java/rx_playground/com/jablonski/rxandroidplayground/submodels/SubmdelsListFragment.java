@@ -72,19 +72,29 @@ public class SubmdelsListFragment extends BaseListFragment implements SubmodelsV
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        processInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        processInstanceState(savedInstanceState);
+    }
+
+
+    private void processInstanceState(Bundle instanceState){
         Bundle args = getArguments();
-        if(savedInstanceState == null){
+        if(instanceState == null){
             String manufacturer = args.getString(EXTRA_MANUFACTURER);
             String name = args.getString(EXTRA_MODEL_NICE_NAME);
             String year = args.getString(EXTRA_YEAR);
             showLoadingIndicator();
             presenter.loadElements(manufacturer, name, year);
         }else{
-            List<Model> models = savedInstanceState.getParcelableArrayList(EXTRA_SUBMODELS);
+            List<Model> models = instanceState.getParcelableArrayList(EXTRA_SUBMODELS);
             presenter.displayElements(models);
         }
     }
-
     @Override
     public void openModelDetails(String styleId) {
         getContext().startActivity(DetailsActivity.createDeafaultIntent(getContext(), styleId));

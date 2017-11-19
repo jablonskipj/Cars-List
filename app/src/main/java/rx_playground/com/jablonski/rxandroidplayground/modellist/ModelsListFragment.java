@@ -70,10 +70,19 @@ public class ModelsListFragment extends BaseListFragment implements ModelsViewCo
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        proceedBundle(savedInstanceState);
-        this.presenter.displayElements(this.models);
+        processInstanceState(savedInstanceState);
     }
 
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        processInstanceState(savedInstanceState);
+    }
+
+    private void processInstanceState(Bundle instanceState){
+        proceedBundle(instanceState);
+        this.presenter.displayElements(this.models);
+    }
     private void proceedBundle(@Nullable Bundle bundle){
         if(bundle != null) {
             this.models = bundle.getParcelableArrayList(EXTRA_CARS);

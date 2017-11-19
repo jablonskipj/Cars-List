@@ -35,7 +35,7 @@ public class ManufacturersListFragment extends BaseListFragment implements Manuf
         activity = (MainActivity) getActivity();
         if(this.presenter == null){
             this.presenter = new ManufacturersListPresenter(this);
-            ManufacturersRepository repository = new ManufacturersRepository(this.presenter);
+            ManufacturersRepositoryMock repository = new ManufacturersRepositoryMock(this.presenter);
             this.presenter.setRepository(repository);
         }
     }
@@ -54,14 +54,27 @@ public class ManufacturersListFragment extends BaseListFragment implements Manuf
         return view;
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(savedInstanceState != null && savedInstanceState.getParcelableArrayList(EXTRA_CONCERNS) != null){
-            presenter.displayElements(savedInstanceState.<Manufacturer>getParcelableArrayList(EXTRA_CONCERNS));
+        processInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        processInstanceState(savedInstanceState);
+    }
+
+    private void processInstanceState(Bundle instanceState){
+        if(instanceState != null && instanceState.getParcelableArrayList(EXTRA_CONCERNS) != null){
+            presenter.displayElements(instanceState.<Manufacturer>getParcelableArrayList(EXTRA_CONCERNS));
         }else {
             showLoadingIndicator();
             presenter.loadElements("2017");
