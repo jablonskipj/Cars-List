@@ -1,16 +1,12 @@
 package rx_playground.com.jablonski.rxandroidplayground.activities
 
-import android.app.Activity
-import android.content.res.Configuration
-import android.os.PersistableBundle
+import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import android.util.Log
-
 import butterknife.ButterKnife
 import rx_playground.com.jablonski.rxandroidplayground.R
 import rx_playground.com.jablonski.rxandroidplayground.manufacturers.ManufacturersListFragment
@@ -73,15 +69,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-    }
-
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        super.onSaveInstanceState(outState, outPersistentState)
-
-    }
-
     override fun onBackPressed() {
         val fragmentsCount = manager.backStackEntryCount
 
@@ -98,8 +85,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
-    fun Activity.setTitle(title: String) {
-        supportActionBar?.title = title
-    }
 }
+
+
