@@ -2,6 +2,7 @@ package rx_playground.com.jablonski.rxandroidplayground.manufacturers;
 
 import java.util.List;
 
+import io.reactivex.annotations.Nullable;
 import rx_playground.com.jablonski.rxandroidplayground.mvp.BaseViewCotract;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
@@ -13,7 +14,7 @@ import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer;
 public interface ManufacturersViewContract {
 
     interface View extends BaseViewCotract.BaseView<Manufacturer> {
-        void showListFragment(String manufacturer, List<Model> models);
+        void showListFragment(@Nullable String manufacturer, @Nullable List<Model> models);
     }
 
     interface Presenter extends BaseViewCotract.BasePresenter<Manufacturer>{
