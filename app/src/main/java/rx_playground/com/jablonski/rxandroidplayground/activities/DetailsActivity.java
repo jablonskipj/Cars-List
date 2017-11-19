@@ -1,5 +1,6 @@
 package rx_playground.com.jablonski.rxandroidplayground.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,7 +17,14 @@ import rx_playground.com.jablonski.rxandroidplayground.modeldetails.ModelDetails
  */
 
 public class DetailsActivity extends AppCompatActivity {
+    private static final String EXTRA_STYLE_ID = "StyleId";
     FragmentManager manager;
+
+    public static Intent createDeafaultIntent(Context context, String styleId){
+        Intent intent = new Intent(context, DetailsActivity.class);
+        intent.putExtra(EXTRA_STYLE_ID, styleId);
+        return intent;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,19 +33,14 @@ public class DetailsActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String styleId = intent.getStringExtra("StyleId");
+        String styleId = intent.getStringExtra(EXTRA_STYLE_ID);
 
 
         if(styleId != null && savedInstanceState == null) {
             Log.e("DetailsActivity", styleId);
-            ModelDetailsFragment framgnet = new ModelDetailsFragment();
-            Bundle args = new Bundle();
-            args.putString("modelId", styleId);
-            framgnet.setArguments(args);
-
             this.manager = getSupportFragmentManager();
 
-            showFragment(framgnet);
+            showFragment(ModelDetailsFragment.createInstance(styleId));
         }
 
     }

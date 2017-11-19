@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.activities.MainActivity;
 import rx_playground.com.jablonski.rxandroidplayground.mvp.BaseListFragment;
 import rx_playground.com.jablonski.rxandroidplayground.modellist.ModelsListFragment;
@@ -24,6 +25,7 @@ import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclervi
  */
 
 public class ManufacturersListFragment extends BaseListFragment implements ManufacturersViewContract.View{
+    private static final String EXTRA_CONCERNS = "Concerns";
     private ManufacturersListPresenter presenter;
     private ManufacturersListAdapter adapter;
 
@@ -34,7 +36,6 @@ public class ManufacturersListFragment extends BaseListFragment implements Manuf
         if(this.presenter == null){
             this.presenter = new ManufacturersListPresenter(this);
             ManufacturersRepository repository = new ManufacturersRepository(this.presenter);
-            //ManufacturersRepositoryMock repository = new ManufacturersRepositoryMock(this.presenter);
             this.presenter.setRepository(repository);
         }
     }
@@ -49,6 +50,7 @@ public class ManufacturersListFragment extends BaseListFragment implements Manuf
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         this.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        activity.setTitle(getString(R.string.manufacturers_fragment_title));
         return view;
     }
 
@@ -58,8 +60,8 @@ public class ManufacturersListFragment extends BaseListFragment implements Manuf
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(savedInstanceState != null && savedInstanceState.getParcelableArrayList("Concerns") != null){
-            presenter.displayElements(savedInstanceState.<Manufacturer>getParcelableArrayList("Concerns"));
+        if(savedInstanceState != null && savedInstanceState.getParcelableArrayList(EXTRA_CONCERNS) != null){
+            presenter.displayElements(savedInstanceState.<Manufacturer>getParcelableArrayList(EXTRA_CONCERNS));
         }else {
             showLoadingIndicator();
             presenter.loadElements("2017");
@@ -69,7 +71,7 @@ public class ManufacturersListFragment extends BaseListFragment implements Manuf
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelableArrayList("Concerns", (ArrayList<? extends Parcelable>) presenter.getElements());
+        outState.putParcelableArrayList(EXTRA_CONCERNS, (ArrayList<? extends Parcelable>) presenter.getElements());
     }
 
     @Override
@@ -89,12 +91,7 @@ public class ManufacturersListFragment extends BaseListFragment implements Manuf
 
     @Override
     public void showListFragment(String manufacturer, List<Model> models) {
-        ModelsListFragment fragment = new ModelsListFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("Manufacturer", manufacturer);
-        bundle.putParcelableArrayList("Cars", (ArrayList<? extends Parcelable>) models);
-        fragment.setArguments(bundle);
-        activity.startFragment(fragment, false);
+        activity.startFragment(ModelsListFragment.createInstance(manufacturer, models), false);
     }
 
 }

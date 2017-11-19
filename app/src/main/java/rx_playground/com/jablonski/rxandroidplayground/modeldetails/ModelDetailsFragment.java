@@ -27,10 +27,15 @@ import rx_playground.com.jablonski.rxandroidplayground.views.adapters.viewpager.
  */
 
 public class ModelDetailsFragment extends Fragment implements ModelDetailsContract.View {
+    public static final String EXTRA_MODEL_ID = "modelId";
+    private static final String EXTRA_MODEL = "model";
+    private static final String EXTRA_IMAGE = "imageSource";
+    private static final String EXTRA_CURRENT_IMAGE = "displayedImage";
     private ModelDetailsAdapter adapter;
     private ModelDetailsPresenter presenter;
     private ImagesPagerAdapter viewPagerAdapter;
     private String modelId;
+
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -40,6 +45,15 @@ public class ModelDetailsFragment extends Fragment implements ModelDetailsContra
     CollapsingToolbarLayout toolbarLayout;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
+    public static ModelDetailsFragment createInstance(String modelId){
+        ModelDetailsFragment framgnet = new ModelDetailsFragment();
+        Bundle args = new Bundle();
+        args.putString(ModelDetailsFragment.EXTRA_MODEL_ID, modelId);
+        framgnet.setArguments(args);
+
+        return framgnet;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,7 +66,7 @@ public class ModelDetailsFragment extends Fragment implements ModelDetailsContra
 
         Bundle args = getArguments();
         if (args != null) {
-            this.modelId = args.getString("modelId");
+            this.modelId = args.getString(EXTRA_MODEL_ID);
         }
     }
 
@@ -97,9 +111,9 @@ public class ModelDetailsFragment extends Fragment implements ModelDetailsContra
         super.onViewCreated(view, savedInstanceState);
         this.presenter.loadModelData(this.modelId);
         if (savedInstanceState != null) {
-            this.presenter.displayModel((Model) savedInstanceState.getParcelable("model"));
-            this.presenter.displayPhotos((Photo) savedInstanceState.getParcelable("imageSource"));
-            this.imagePager.setCurrentItem(savedInstanceState.getInt("displayedImage"));
+            this.presenter.displayModel((Model) savedInstanceState.getParcelable(EXTRA_MODEL));
+            this.presenter.displayPhotos((Photo) savedInstanceState.getParcelable(EXTRA_IMAGE));
+            this.imagePager.setCurrentItem(savedInstanceState.getInt(EXTRA_CURRENT_IMAGE));
         }
 
     }
@@ -109,9 +123,9 @@ public class ModelDetailsFragment extends Fragment implements ModelDetailsContra
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         if (outState != null) {
-            outState.putParcelable("model", this.presenter.getModel());
-            outState.putParcelable("imageSource", this.presenter.getPhoto());
-            outState.putInt("displayedImage", imagePager.getCurrentItem());
+            outState.putParcelable(EXTRA_MODEL, this.presenter.getModel());
+            outState.putParcelable(EXTRA_IMAGE, this.presenter.getPhoto());
+            outState.putInt(EXTRA_CURRENT_IMAGE, imagePager.getCurrentItem());
         }
     }
 

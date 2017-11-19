@@ -1,6 +1,7 @@
 package rx_playground.com.jablonski.rxandroidplayground.modellist;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import rx_playground.com.jablonski.rxandroidplayground.R;
 import rx_playground.com.jablonski.rxandroidplayground.mvp.BaseListFragment;
 import rx_playground.com.jablonski.rxandroidplayground.model.Model;
 import rx_playground.com.jablonski.rxandroidplayground.submodels.SubmdelsListFragment;
@@ -20,11 +22,23 @@ import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclervi
  */
 
 public class ModelsListFragment extends BaseListFragment implements ModelsViewContract.View{
+    private static final String EXTRA_CARS = "Cars";
+    private static final String EXTRA_MANUFACTURER = "Manufacturer";
     private ModelsListPresenter presenter;
     private CarsListAdapter adapter;
     private ArrayList<Model> models;
     private String manufacturer;
 
+
+    public static ModelsListFragment createInstance(String manufacturer, List<Model> models){
+        ModelsListFragment fragment = new ModelsListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(EXTRA_MANUFACTURER, manufacturer);
+        bundle.putParcelableArrayList(EXTRA_CARS, (ArrayList<? extends Parcelable>) models);
+        fragment.setArguments(bundle);
+
+        return fragment;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,7 +62,7 @@ public class ModelsListFragment extends BaseListFragment implements ModelsViewCo
         this.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         this.refreshLayout.setEnabled(false);
         this.refreshLayout.setRefreshing(false);
-
+        this.activity.setTitle(getString(R.string.models_fragment_title));
 
         return view;
     }
@@ -62,8 +76,8 @@ public class ModelsListFragment extends BaseListFragment implements ModelsViewCo
 
     private void proceedBundle(@Nullable Bundle bundle){
         if(bundle != null) {
-            this.models = bundle.getParcelableArrayList("Cars");
-            this.manufacturer = bundle.getString("Manufacturer");
+            this.models = bundle.getParcelableArrayList(EXTRA_CARS);
+            this.manufacturer = bundle.getString(EXTRA_MANUFACTURER);
         }
     }
 
@@ -73,8 +87,8 @@ public class ModelsListFragment extends BaseListFragment implements ModelsViewCo
         if(outState == null){
             outState = new Bundle();
         }
-        outState.putParcelableArrayList("Cars", this.models);
-        outState.putString("Manufacturer", this.manufacturer);
+        outState.putParcelableArrayList(EXTRA_CARS, this.models);
+        outState.putString(EXTRA_MANUFACTURER, this.manufacturer);
     }
 
 
@@ -92,12 +106,6 @@ public class ModelsListFragment extends BaseListFragment implements ModelsViewCo
 
     @Override
     public void openSubmodelsList(String modelNiceName) {
-        SubmdelsListFragment fragment = new SubmdelsListFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("Manufacturer", this.manufacturer);
-        bundle.putString("ModelNiceName", modelNiceName);
-        bundle.putString("year", "2017");
-        fragment.setArguments(bundle);
-        activity.startFragment(fragment, true);
+        activity.startFragment(SubmdelsListFragment.createInstance(manufacturer, modelNiceName, "2017"), true);
     }
 }

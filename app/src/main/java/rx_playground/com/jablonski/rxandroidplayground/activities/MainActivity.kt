@@ -1,5 +1,6 @@
 package rx_playground.com.jablonski.rxandroidplayground.activities
 
+import android.app.Activity
 import android.content.res.Configuration
 import android.os.PersistableBundle
 import android.support.v4.app.Fragment
@@ -49,7 +50,9 @@ class MainActivity : AppCompatActivity() {
 
     fun startFragment(fragment: Fragment, replace: Boolean) {
         val transaction = manager.beginTransaction()
-        //transaction.setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_right)
+
+        transaction.setCustomAnimations(R.anim.slide_to_right, R.anim.slide_from_right)
+
         if (replace) {
             transaction.replace(R.id.fragmentContainer, fragment).addToBackStack(null)
         } else {
@@ -94,5 +97,9 @@ class MainActivity : AppCompatActivity() {
             manager.popBackStack()
         }
 
+    }
+
+    fun Activity.setTitle(title: String) {
+        supportActionBar?.title = title
     }
 }
