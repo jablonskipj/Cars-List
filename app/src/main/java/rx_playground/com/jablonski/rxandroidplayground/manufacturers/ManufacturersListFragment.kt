@@ -24,7 +24,6 @@ import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclervi
 
 class ManufacturersListFragment : BaseListFragment(), ManufacturersViewContract.View {
 
-
     private var presenter: ManufacturersListPresenter? = null
     private var adapter: ManufacturersListAdapter? = null
 
@@ -33,7 +32,7 @@ class ManufacturersListFragment : BaseListFragment(), ManufacturersViewContract.
         activity = getActivity() as MainActivity
         if (this.presenter == null) {
             this.presenter = ManufacturersListPresenter(this)
-            val repository = ManufacturersRepositoryMock(this.presenter)
+            val repository = ManufacturersRepositoryMock(this.presenter!!)
             this.presenter!!.setRepository(repository)
         }
     }
@@ -83,7 +82,7 @@ class ManufacturersListFragment : BaseListFragment(), ManufacturersViewContract.
     }
 
 
-    override fun showListFragment(manufacturer: String?, models: List<Model>?) {
+    override fun showListFragment(manufacturer: String, models: List<Model>) {
         activity.startFragment(ModelsListFragment.createInstance(manufacturer, models), false)
     }
 
