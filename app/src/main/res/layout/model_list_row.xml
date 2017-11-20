@@ -1,30 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    style="@style/CarsCardView">
 
-    <TextView
-        android:id="@+id/modelTitle"
-        style="@style/card_item_title_element"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size_xxlarge"/>
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/numberOfDoors"
-        style="@style/card_item_left_element"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/modelTitle"
-        android:layout_toLeftOf="@+id/drivenWheels"
-        android:layout_toStartOf="@id/drivenWheels" />
+        <TextView
+            android:id="@+id/modelTitle"
+            style="@style/card_item_title_element"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_xxlarge" />
 
-    <TextView
-        android:id="@id/drivenWheels"
-        style="@style/card_item_right_element"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/modelTitle" />
+        <TextView
+            android:id="@+id/numberOfDoors"
+            style="@style/card_item_left_element"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/modelTitle"
+            android:layout_toLeftOf="@+id/drivenWheels"
+            android:layout_toStartOf="@id/drivenWheels" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@id/drivenWheels"
+            style="@style/card_item_right_element"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/modelTitle" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,42 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="72dp">
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    style="@style/CarsCardView">
 
-    <ImageView
-        android:id="@+id/manufacturerLogo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_centerVertical="true"
-        android:paddingLeft="16dp"
-        android:paddingStart="16dp"
-        android:paddingRight="0dp"
-        android:paddingEnd="0dp"
-        android:scaleType="fitCenter"/>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/manufacturerLogo"
-        android:layout_toEndOf="@id/manufacturerLogo"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/manufacturerName"
-            style="@style/item_manufacturer_style"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/manufacturerLogo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:paddingEnd="0dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="0dp"
+            android:paddingStart="16dp"
+            android:scaleType="fitCenter" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_large"
-            android:textStyle="bold" />
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/manufacturerLogo"
+            android:layout_toRightOf="@id/manufacturerLogo"
+            android:orientation="vertical">
 
-        <TextView
-        android:id="@+id/manufacturerFullName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/item_manufacturer_style"
-        android:textSize="@dimen/text_size_medium"
-        android:maxLines="2"
-        android:ellipsize="marquee" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/manufacturerName"
+                style="@style/item_manufacturer_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_large"
+                android:textStyle="bold" />
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/manufacturerFullName"
+                style="@style/item_manufacturer_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:maxLines="2"
+                android:textSize="@dimen/text_size_medium" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
