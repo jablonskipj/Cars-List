@@ -19,9 +19,8 @@ class ManufacturersListPresenter(private val view: ManufacturersViewContract.Vie
     }
 
     override fun loadElements(year: String) {
-        if (this.repository != null) {
-            this.repository!!.getManufacturers(year)
-        }
+        this.repository?.getManufacturers(year)
+
     }
 
     override fun displayElements(elements: List<Manufacturer>) {
