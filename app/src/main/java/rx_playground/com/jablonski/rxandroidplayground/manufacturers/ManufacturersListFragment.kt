@@ -32,8 +32,8 @@ class ManufacturersListFragment : BaseListFragment(), ManufacturersViewContract.
         activity = getActivity() as MainActivity
         if (this.presenter == null) {
             this.presenter = ManufacturersListPresenter(this)
-            val repository = ManufacturersRepositoryMock(this.presenter!!)
-            this.presenter!!.setRepository(repository)
+            val repository = ManufacturersRepository(this.presenter!!)
+            this.presenter?.setRepository(repository)
         }
     }
 
@@ -72,7 +72,7 @@ class ManufacturersListFragment : BaseListFragment(), ManufacturersViewContract.
     override fun showView(manufacturers: List<Manufacturer>) {
         if (this.adapter == null) {
             this.adapter = ManufacturersListAdapter(context, this.presenter)
-            this.adapter!!.setOnClickListener(this.presenter)
+            this.adapter?.setOnClickListener(this.presenter)
         }
         if (this.recyclerView.adapter == null) {
             this.recyclerView.adapter = this.adapter

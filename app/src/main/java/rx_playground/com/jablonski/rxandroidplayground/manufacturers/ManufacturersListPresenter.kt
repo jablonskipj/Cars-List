@@ -28,7 +28,9 @@ class ManufacturersListPresenter(private val view: ManufacturersViewContract.Vie
         this.view.showView(elements)
     }
 
-    override fun getElements(): List<Manufacturer>? = manufacturers
+    override fun getElements(): List<Manufacturer>? {
+        return manufacturers
+    }
 
     override fun getCount(): Int {
         return if (this.manufacturers != null)
@@ -39,11 +41,9 @@ class ManufacturersListPresenter(private val view: ManufacturersViewContract.Vie
 
 
     override fun getObject(position: Int): Manufacturer? =
-            if (this.manufacturers != null) this.manufacturers!![position] else null
+            this.manufacturers?.let { it[position] }
 
     override fun performClick(item: Manufacturer?) {
-        if(item != null) {
-            view.showListFragment(item.name, item.models)
-        }
+        item?.let { view.showListFragment(it.name, it.models) }
     }
 }

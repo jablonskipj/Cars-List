@@ -40,7 +40,7 @@ public class DetailsActivity extends AppCompatActivity {
             Log.e("DetailsActivity", styleId);
             this.manager = getSupportFragmentManager();
 
-            showFragment(ModelDetailsFragment.createInstance(styleId));
+            showFragment(ModelDetailsFragment.Companion.createInstance(styleId));
         }
 
     }

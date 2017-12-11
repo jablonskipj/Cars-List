@@ -25,7 +25,7 @@ public class ImageFragment extends Fragment {
     @BindView(R.id.carImage)
     ImageView image;
 
-    public static ImageFragment getInstance(ImageSource image){
+    public static ImageFragment getInstance(@Nullable ImageSource image){
         Bundle extras = new Bundle();
         extras.putParcelable("Image", image);
         ImageFragment framgnet = new ImageFragment();

@@ -110,7 +110,9 @@ public class ModelsListFragment extends BaseListFragment implements ModelsViewCo
         if(this.recyclerView.getAdapter() == null){
             this.recyclerView.setAdapter(this.adapter);
         }
-        this.adapter.notifyItemRangeInserted(0, this.presenter.getCount() - 1);
+        if(presenter.getCount() > 0) {
+            this.adapter.notifyItemRangeInserted(0, this.presenter.getCount() - 1);
+        }
     }
 
     @Override
