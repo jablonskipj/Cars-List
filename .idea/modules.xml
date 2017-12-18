@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RXAndroidPlayground.iml" filepath="$PROJECT_DIR$/RXAndroidPlayground.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Cars-List.iml" filepath="$PROJECT_DIR$/Cars-List.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
