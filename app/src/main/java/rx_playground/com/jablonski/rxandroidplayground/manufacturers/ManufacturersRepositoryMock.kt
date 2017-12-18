@@ -1,18 +1,17 @@
 package rx_playground.com.jablonski.rxandroidplayground.manufacturers
 
-import java.util.ArrayList
-
-import rx_playground.com.jablonski.rxandroidplayground.manufacturers.ManufacturersViewContract
-import rx_playground.com.jablonski.rxandroidplayground.model.Model
+import io.reactivex.Observable
 import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer
-import rx_playground.com.jablonski.rxandroidplayground.manufacturers.ManufacturersListPresenter
+import rx_playground.com.jablonski.rxandroidplayground.model.Model
+import rx_playground.com.jablonski.rxandroidplayground.model.Result
+import java.util.*
 
 /**
  * Created by yabol on 13.04.2017.
  */
 
-class ManufacturersRepositoryMock(private val presenter: ManufacturersListPresenter) : ManufacturersViewContract.Repository {
-    override fun getManufacturers(year: String) {
+class ManufacturersRepositoryMock() : ManufacturersViewContract.Repository {
+    override fun getManufacturers(year: String): Observable<Result> {
         val manufacturers = ArrayList<Manufacturer>()
         val manu = Manufacturer("bmw")
         manu.name = "BMW"
@@ -22,6 +21,9 @@ class ManufacturersRepositoryMock(private val presenter: ManufacturersListPresen
         manu.addModel(bmw)
         manufacturers.add(manu)
         manufacturers.add(Manufacturer("Audi"))
-        presenter.displayElements(manufacturers)
+
+        val result = Result()
+        result.manufacturers = manufacturers
+        return Observable.just(result)
     }
 }

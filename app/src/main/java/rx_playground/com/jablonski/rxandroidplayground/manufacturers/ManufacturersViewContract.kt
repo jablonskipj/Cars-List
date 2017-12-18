@@ -1,9 +1,11 @@
 package rx_playground.com.jablonski.rxandroidplayground.manufacturers
 
+import io.reactivex.Observable
 import io.reactivex.annotations.Nullable
-import rx_playground.com.jablonski.rxandroidplayground.mvp.BaseViewCotract
-import rx_playground.com.jablonski.rxandroidplayground.model.Model
 import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer
+import rx_playground.com.jablonski.rxandroidplayground.model.Model
+import rx_playground.com.jablonski.rxandroidplayground.model.Result
+import rx_playground.com.jablonski.rxandroidplayground.mvp.BaseViewCotract
 
 /**
  * Created by yabol on 06.04.2017.
@@ -20,7 +22,7 @@ interface ManufacturersViewContract {
     }
 
     interface Repository {
-        fun getManufacturers(year: String)
+        fun getManufacturers(year: String): Observable<Result>
     }
 
 }

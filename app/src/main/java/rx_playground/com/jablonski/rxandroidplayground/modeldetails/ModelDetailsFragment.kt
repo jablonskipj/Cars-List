@@ -1,18 +1,12 @@
 package rx_playground.com.jablonski.rxandroidplayground.modeldetails
 
-import android.content.Context
 import android.os.Bundle
 import android.os.Parcelable
-import android.support.design.widget.CollapsingToolbarLayout
 import android.support.v4.app.Fragment
-import android.support.v4.view.ViewPager
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import kotlinx.android.synthetic.main.fragment_model_details.*
 import rx_playground.com.jablonski.rxandroidplayground.R
 import rx_playground.com.jablonski.rxandroidplayground.model.Model
@@ -26,7 +20,7 @@ import rx_playground.com.jablonski.rxandroidplayground.views.adapters.viewpager.
  */
 
 class ModelDetailsFragment : Fragment(), ModelDetailsContract.View {
-    private lateinit var adapter: ModelDetailsAdapter
+    private var adapter: ModelDetailsAdapter? = null
     private lateinit var presenter: ModelDetailsPresenter
     private var viewPagerAdapter: ImagesPagerAdapter? = null
     private var modelId: String? = null
@@ -38,7 +32,6 @@ class ModelDetailsFragment : Fragment(), ModelDetailsContract.View {
 
         this.presenter = ModelDetailsPresenter(this)
         val repository = ModelDetailsRepository(this.presenter)
-        //ModelDetailsRepositoryMock repository = new ModelDetailsRepositoryMock(this.presenter);
         this.presenter.setRepository(repository)
 
         this.modelId = arguments?.getString(EXTRA_MODEL_ID)
@@ -110,7 +103,7 @@ class ModelDetailsFragment : Fragment(), ModelDetailsContract.View {
         if (this.recyclerView!!.adapter == null) {
             this.recyclerView!!.adapter = this.adapter
         }
-        this.adapter!!.notifyDataSetChanged()
+        this.adapter?.notifyDataSetChanged()
     }
 
     override fun displayPhotos() {

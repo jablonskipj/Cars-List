@@ -117,6 +117,6 @@ public class ModelsListFragment extends BaseListFragment implements ModelsViewCo
 
     @Override
     public void openSubmodelsList(String modelNiceName) {
-        activity.startFragment(SubmdelsListFragment.createInstance(manufacturer, modelNiceName, "2017"), true);
+        activity.startFragment(SubmdelsListFragment.Companion.createInstance(manufacturer, modelNiceName, "2017"), true);
     }
 }

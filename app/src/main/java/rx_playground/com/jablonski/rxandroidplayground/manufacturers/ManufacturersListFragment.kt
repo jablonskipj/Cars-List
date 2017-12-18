@@ -1,22 +1,19 @@
 package rx_playground.com.jablonski.rxandroidplayground.manufacturers
 
-import android.content.Context
 import android.os.Bundle
 import android.os.Parcelable
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-import java.util.ArrayList
-
 import rx_playground.com.jablonski.rxandroidplayground.R
 import rx_playground.com.jablonski.rxandroidplayground.activities.MainActivity
-import rx_playground.com.jablonski.rxandroidplayground.mvp.BaseListFragment
-import rx_playground.com.jablonski.rxandroidplayground.modellist.ModelsListFragment
-import rx_playground.com.jablonski.rxandroidplayground.model.Model
 import rx_playground.com.jablonski.rxandroidplayground.model.Manufacturer
+import rx_playground.com.jablonski.rxandroidplayground.model.Model
+import rx_playground.com.jablonski.rxandroidplayground.modellist.ModelsListFragment
+import rx_playground.com.jablonski.rxandroidplayground.mvp.BaseListFragment
 import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclerview.ManufacturersListAdapter
+import java.util.*
 
 /**
  * Created by yabol on 06.04.2017.
@@ -24,17 +21,14 @@ import rx_playground.com.jablonski.rxandroidplayground.views.adapters.recyclervi
 
 class ManufacturersListFragment : BaseListFragment(), ManufacturersViewContract.View {
 
-    private var presenter: ManufacturersListPresenter? = null
+    private lateinit var presenter: ManufacturersListPresenter
     private var adapter: ManufacturersListAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity = getActivity() as MainActivity
-        if (this.presenter == null) {
-            this.presenter = ManufacturersListPresenter(this)
-            val repository = ManufacturersRepository(this.presenter!!)
-            this.presenter?.setRepository(repository)
-        }
+
+        this.presenter = ManufacturersListPresenter(this, ManufacturersRepository())
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -57,16 +51,18 @@ class ManufacturersListFragment : BaseListFragment(), ManufacturersViewContract.
 
     private fun processInstanceState(instanceState: Bundle?) {
         if (instanceState?.getParcelableArrayList<Parcelable>(EXTRA_CONCERNS) != null) {
-            presenter?.displayElements(instanceState.getParcelableArrayList(EXTRA_CONCERNS))
+            presenter.displayElements(instanceState.getParcelableArrayList(EXTRA_CONCERNS))
         } else {
             showLoadingIndicator()
-            presenter?.loadElements("2017")
+            presenter.loadElements("2017")
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
-        outState!!.putParcelableArrayList(EXTRA_CONCERNS, presenter!!.elements as ArrayList<out Parcelable>)
+        outState?.let {
+            it.putParcelableArrayList(EXTRA_CONCERNS, presenter.elements as ArrayList<out Parcelable>)
+        }
     }
 
     override fun showView(manufacturers: List<Manufacturer>) {
