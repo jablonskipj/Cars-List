@@ -28,7 +28,7 @@ class ManufacturersListFragment : BaseListFragment(), ManufacturersViewContract.
         super.onCreate(savedInstanceState)
         activity = getActivity() as MainActivity
 
-        this.presenter = ManufacturersListPresenter(this, ManufacturersRepositoryMock())
+        this.presenter = ManufacturersListPresenter(this, ManufacturersRepository())
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -24,7 +24,7 @@ class SubmdelsListFragment : BaseListFragment(), SubmodelsViewContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        this.presenter = SubmodelsListPresenter(this, SubmodelsRepositoryMock())
+        this.presenter = SubmodelsListPresenter(this, SubmodelsRepository())
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {

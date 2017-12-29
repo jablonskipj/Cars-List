@@ -30,7 +30,7 @@ class ModelDetailsFragment : Fragment(), ModelDetailsContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        this.presenter = ModelDetailsPresenter(this, ModelDetailsRepositoryMock())
+        this.presenter = ModelDetailsPresenter(this, ModelDetailsRepository())
 
         this.modelId = arguments?.getString(EXTRA_MODEL_ID)
     }

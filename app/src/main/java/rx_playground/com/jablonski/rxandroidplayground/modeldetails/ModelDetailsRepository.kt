@@ -9,7 +9,7 @@ import rx_playground.com.jablonski.rxandroidplayground.network.NetworkConnector
  * Created by yabol on 19.04.2017.
  */
 
-class ModelDetailsRepository(private val presenter: ModelDetailsContract.Presenter) : ModelDetailsContract.Repository {
+class ModelDetailsRepository : ModelDetailsContract.Repository {
 
     private val connector: NetworkConnector = NetworkConnector()
 
