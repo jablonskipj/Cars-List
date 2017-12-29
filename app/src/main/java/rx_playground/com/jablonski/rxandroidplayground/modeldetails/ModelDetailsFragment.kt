@@ -30,9 +30,7 @@ class ModelDetailsFragment : Fragment(), ModelDetailsContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        this.presenter = ModelDetailsPresenter(this)
-        val repository = ModelDetailsRepository(this.presenter)
-        this.presenter.setRepository(repository)
+        this.presenter = ModelDetailsPresenter(this, ModelDetailsRepositoryMock())
 
         this.modelId = arguments?.getString(EXTRA_MODEL_ID)
     }
@@ -96,7 +94,7 @@ class ModelDetailsFragment : Fragment(), ModelDetailsContract.View {
         }
     }
 
-    override fun displayModelDetails() {
+    override fun displayModelDetails(model: Model) {
         if (this.adapter == null) {
             this.adapter = ModelDetailsAdapter(context, this.presenter)
         }

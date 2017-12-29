@@ -40,7 +40,10 @@ class SubmodelsListPresenter(private val view: SubmodelsViewContract.View, priva
             }
 
             override fun onComplete() {
-                displayElements(elements)
+                elements?.let {
+                    displayElements(it)
+                }
+
             }
         })
     }

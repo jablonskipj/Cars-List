@@ -24,7 +24,7 @@ class SubmdelsListFragment : BaseListFragment(), SubmodelsViewContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        this.presenter = SubmodelsListPresenter(this, SubmodelsRepository())
+        this.presenter = SubmodelsListPresenter(this, SubmodelsRepositoryMock())
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -66,7 +66,9 @@ class SubmdelsListFragment : BaseListFragment(), SubmodelsViewContract.View {
             presenter.loadElements(manufacturer, name, year)
         } else {
             val models = instanceState.getParcelableArrayList<Model>(EXTRA_SUBMODELS)
-            presenter.displayElements(models)
+            if(models != null) {
+                presenter.displayElements(models)
+            }
         }
     }
 
@@ -82,8 +84,9 @@ class SubmdelsListFragment : BaseListFragment(), SubmodelsViewContract.View {
         if (this.recyclerView.adapter == null) {
             this.recyclerView.adapter = this.adapter
         }
-        if(presenter.count > 0) {
-            this.adapter!!.notifyItemRangeInserted(0, this.presenter.count - 1)
+        var count = presenter.count
+        if(count > 0) {
+            this.adapter!!.notifyItemRangeInserted(0, count - 1)
         }
         hideLoadingIndicator()
     }

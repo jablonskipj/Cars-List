@@ -1,11 +1,7 @@
 package rx_playground.com.jablonski.rxandroidplayground.modeldetails
 
-import android.support.v4.app.Fragment
-
-import rx_playground.com.jablonski.rxandroidplayground.model.ImageSource
-import rx_playground.com.jablonski.rxandroidplayground.model.Model
-import rx_playground.com.jablonski.rxandroidplayground.model.Photo
-import rx_playground.com.jablonski.rxandroidplayground.model.RowConfig
+import io.reactivex.Observable
+import rx_playground.com.jablonski.rxandroidplayground.model.*
 
 /**
  * Created by yabol on 15.05.2017.
@@ -24,19 +20,18 @@ class ModelDetailsContract {
     }
 
     interface Presenter {
-        var model: Model
         fun loadModelData(modelId: String)
         fun displayModel(model: Model)
         fun displayPhotos(photos: Photo?)
     }
 
     interface View {
-        fun displayModelDetails()
+        fun displayModelDetails(model: Model)
         fun displayPhotos()
     }
 
     interface Repository {
-        fun getModelDetails(modelId: String)
-        fun getModelPhotos(modelId: String)
+        fun getModelDetails(modelId: String): Observable<ModelDetailsResult>
+        fun getModelPhotos(modelId: String): Observable<PhotosResult>
     }
 }

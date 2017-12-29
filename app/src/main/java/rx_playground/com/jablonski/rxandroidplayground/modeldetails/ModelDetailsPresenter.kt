@@ -1,25 +1,22 @@
 package rx_playground.com.jablonski.rxandroidplayground.modeldetails
 
-import java.util.ArrayList
-
-import rx_playground.com.jablonski.rxandroidplayground.model.ImageSource
-import rx_playground.com.jablonski.rxandroidplayground.model.ListElement
-import rx_playground.com.jablonski.rxandroidplayground.model.Model
-import rx_playground.com.jablonski.rxandroidplayground.model.Photo
-import rx_playground.com.jablonski.rxandroidplayground.model.RowConfig
-import rx_playground.com.jablonski.rxandroidplayground.modeldetails.ModelDetailsContract
+import android.util.Log
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import rx_playground.com.jablonski.rxandroidplayground.model.*
+import java.util.*
 
 /**
  * Created by yabol on 16.05.2017.
  */
 
-class ModelDetailsPresenter(private val view: ModelDetailsContract.View) : ModelDetailsContract.Presenter, ModelDetailsContract.Provider, ModelDetailsContract.ImagesProvider {
-    override var model: Model
-        get() = model
-        set(value) { model = value }
+class ModelDetailsPresenter(private val view: ModelDetailsContract.View, private val repository: ModelDetailsContract.Repository) :
+        ModelDetailsContract.Presenter,
+        ModelDetailsContract.Provider,
+        ModelDetailsContract.ImagesProvider {
 
+    var model: Model? = null
     private val elements: MutableList<ListElement>
-    private var repository: ModelDetailsContract.Repository? = null
     var photo: Photo? = null
         private set
 
@@ -35,26 +32,51 @@ class ModelDetailsPresenter(private val view: ModelDetailsContract.View) : Model
         this.elements = ArrayList()
     }
 
-    fun setRepository(repository: ModelDetailsContract.Repository) {
-        this.repository = repository
+    override fun loadModelData(modelId: String) {
+
+        this.repository.getModelDetails(modelId).
+                subscribeOn(Schedulers.newThread()).
+                observeOn(AndroidSchedulers.mainThread()).
+                subscribe({
+                    val result = it.model
+                    result.engine = it.engine
+                    result.transmission = it.transmission
+                    result.category = it.categories
+                    result.drivenWheels = it.drivenWheels
+                    result.numberOfDoors = it.numOfDoors
+
+                    displayModel(result)
+                }, {
+                    Log.e("load model error", it.message)
+                })
+        this.repository.getModelPhotos(modelId).
+                subscribeOn(Schedulers.newThread()).
+                observeOn(AndroidSchedulers.mainThread()).
+                subscribe({
+                    val photos = it.photos
+                    val resultPhoto = Photo()
+                    for (singlePhoto in photos) {
+                        resultPhoto.addPhotoSources(singlePhoto.sources)
+                    }
+                    displayPhotos(resultPhoto)
+                }, {
+                    Log.e("Load photos error", it.message)
+                })
     }
 
-    override fun loadModelData(modelId: String) {
-        this.repository?.getModelDetails(modelId)
-        this.repository?.getModelPhotos(modelId)
-    }
 
     override fun displayModel(model: Model) {
         this.model = model
         if (this.elements.size > 0) {
             this.elements.clear()
         }
-        with(elements){
+        with(elements) {
             add(model)
             add(model.category)
             add(model.engine)
             add(model.transmission)
         }
+        view.displayModelDetails(model)
     }
 
     override fun displayPhotos(photos: Photo?) {
@@ -70,7 +92,7 @@ class ModelDetailsPresenter(private val view: ModelDetailsContract.View) : Model
         return this.elements[position].viewType
     }
 
-    override fun getImage(position: Int): ImageSource?{
+    override fun getImage(position: Int): ImageSource? {
         return if (this.photo != null) {
             this.photo!!.sources[position]
         } else return null
